@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_navigation_graph"
-    app:startDestination="@id/placeListContainer">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation_graph"
+    app:startDestination="@id/placePageFragment">
 
     <fragment
-        android:id="@+id/placeListContainer"
-        android:name="com.downstairs.list.PlaceListContainerFragment"
-        android:label="PlaceListContainer" />
+        android:id="@+id/placePageFragment"
+        android:name="com.downstairs.list.PlacePageFragment"
+        android:label="place_page_fragment" >
+        <action
+            android:id="@+id/actionPlacePageToPlaceListFragment"
+            app:destination="@id/placeListFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/placeListFragment"
+        android:name="com.downstairs.list.PlaceListFragment"
+        android:label="PlaceListFragment"
+        tools:layout="@layout/place_list_fragment" >
+        <action
+            android:id="@+id/actionPlaceListToPlacePageFragment"
+            app:destination="@id/placePageFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/placePageFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
 </navigation>

@@ -7,12 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.downstairs.R
 
-class PagePlaceListAdapter(private val places: List<PlaceListItem>) :
+class PlaceAdapter(private val itemLayout: Int, private val places: List<PlaceListItem>) :
     RecyclerView.Adapter<PlaceListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceListViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.place_page_list_item, parent, false)
+            .inflate(itemLayout, parent, false)
 
         return PlaceListViewHolder(view)
     }
