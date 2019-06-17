@@ -11,7 +11,7 @@ import com.downstairs.R
 import com.downstairs.functions.dipToPixels
 import kotlinx.android.synthetic.main.place_list_container_fragment.*
 
-class PlaceListContainer : Fragment() {
+class PlaceListContainerFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.place_list_container_fragment, container, false)
     }

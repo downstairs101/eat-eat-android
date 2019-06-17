@@ -5,6 +5,6 @@
 
     <fragment
         android:id="@+id/placeListContainer"
-        android:name="com.downstairs.list.PlaceListContainer"
+        android:name="com.downstairs.list.PlaceListContainerFragment"
         android:label="PlaceListContainer" />
 </navigation>
