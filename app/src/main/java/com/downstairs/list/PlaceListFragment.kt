@@ -1,6 +1,7 @@
 package com.downstairs.list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,13 +21,18 @@ class PlaceListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        placeListRecyclerView.layoutManager = LinearLayoutManager(context)
-
-        placeListRecyclerView.adapter = PlaceAdapter(
+        val placeAdapter = PlaceAdapter(
             R.layout.place_list_item, listOf(
                 PlaceListItem("Example", "Some Category", "A very good place"),
                 PlaceListItem("Second Example", "Some Category", "Another very good place")
             )
         )
+
+        placeAdapter.setOnClickListener {
+            Log.d("ITEM TAP", "$it")
+        }
+
+        placeListRecyclerView.layoutManager = LinearLayoutManager(context)
+        placeListRecyclerView.adapter = placeAdapter
     }
 }
