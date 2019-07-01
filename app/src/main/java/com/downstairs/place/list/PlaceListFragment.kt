@@ -1,13 +1,15 @@
-package com.downstairs.list
+package com.downstairs.place.list
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
+import com.downstairs.place.PlaceListItem
+import com.downstairs.place.details.PlaceDetails
 import kotlinx.android.synthetic.main.place_list_fragment.*
 
 class PlaceListFragment : Fragment() {
@@ -24,12 +26,16 @@ class PlaceListFragment : Fragment() {
         val placeAdapter = PlaceAdapter(
             R.layout.place_list_item, listOf(
                 PlaceListItem("Example", "Some Category", "A very good place"),
-                PlaceListItem("Second Example", "Some Category", "Another very good place")
+                PlaceListItem(
+                    "Second Example",
+                    "Some Category",
+                    "Another very good place"
+                )
             )
         )
 
         placeAdapter.setOnClickListener {
-            Log.d("ITEM TAP", "$it")
+            startActivity(Intent(context, PlaceDetails::class.java))
         }
 
         placeListRecyclerView.layoutManager = LinearLayoutManager(context)
