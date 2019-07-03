@@ -1,6 +1,10 @@
 package com.downstairs
 
 import android.os.Bundle
+import android.view.ContextMenu
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
@@ -12,30 +16,33 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
+        setSupportActionBar(placeListToolbar)
+        placeListToolbar.title = getString(R.string.app_name)
+    }
+
+    override fun onStart() {
+        super.onStart()
         val navController = findNavController(R.id.mainFragmentContainer)
 
-        placeListToolbar.title = getString(R.string.app_name)
         placeListToolbar.setOnMenuItemClickListener {
             if (it.isChecked) {
                 navController.navigate(R.id.actionPlacePageToPlaceListFragment)
+                it.icon = getDrawable(R.drawable.ic_list)
+                it.isChecked = false
                 it.onNavDestinationSelected(navController)
             } else {
                 navController.navigate(R.id.actionPlaceListToPlacePageFragment)
+                it.isChecked = true
+                it.icon = getDrawable(R.drawable.ic_carousel)
                 it.onNavDestinationSelected(navController)
             }
         }
+    }
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            val menuItem = placeListToolbar.menu.findItem(R.id.placesVisualizationMenu)
-
-            if (destination.id == R.id.placeListFragment) {
-                menuItem.icon = getDrawable(R.drawable.ic_list)
-                menuItem.isChecked = false
-            } else {
-                menuItem.isChecked = true
-                menuItem.icon = getDrawable(R.drawable.ic_carousel)
-            }
-        }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.place_list_visualization_menu, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }
 
