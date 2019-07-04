@@ -24,7 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:menu="@menu/place_list_visualization_menu"
-            app:titleTextColor="@color/secondary" />
+            app:title="@string/app_name" />
 
         <fragment
             android:id="@+id/mainFragmentContainer"

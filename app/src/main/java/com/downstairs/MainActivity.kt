@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
 
         setSupportActionBar(placeListToolbar)
-        placeListToolbar.title = getString(R.string.app_name)
     }
 
     override fun onStart() {
