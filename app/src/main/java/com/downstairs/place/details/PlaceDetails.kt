@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
+import androidx.lifecycle.ViewModelProviders
 import com.downstairs.R
 import kotlinx.android.synthetic.main.place_details_activity.*
 
@@ -16,6 +18,8 @@ class PlaceDetails : AppCompatActivity() {
         setSupportActionBar(placeDetailsToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_left_arrow)
+
+        val model = ViewModelProviders.of(this).get(PlaceDetailsViewModel::class.java)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -28,5 +32,11 @@ class PlaceDetails : AppCompatActivity() {
             this.onBackPressed()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun enterOnReadOnlyMode() {
+        formContainer.children.forEach {
+            it.isEnabled = false
+        }
     }
 }
