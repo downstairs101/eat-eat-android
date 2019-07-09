@@ -12,11 +12,13 @@ import kotlinx.android.synthetic.main.place_details_activity.*
 
 class PlaceDetailsActivity : AppCompatActivity() {
 
+    private lateinit var viewModel: PlaceDetailsViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.place_details_activity)
 
-        val viewModel = ViewModelProviders.of(this).get(PlaceDetailsViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(PlaceDetailsViewModel::class.java)
         initStreams(viewModel)
 
         setSupportActionBar(placeDetailsToolbar)
@@ -30,8 +32,9 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            this.onBackPressed()
+        when (item.itemId) {
+            android.R.id.home -> this.onBackPressed()
+            R.id.editPlaceDetailsMenu -> viewModel.enterOnEditMode()
         }
         return super.onOptionsItemSelected(item)
     }

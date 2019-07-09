@@ -14,5 +14,9 @@ class PlaceDetailsViewModel : ViewModel() {
 
     fun getViewEditableState(): LiveData<Boolean> = viewEditableState
 
+    fun enterOnEditMode() {
+        viewEditableState.value = true
+    }
+
 
 }
