@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.downstairs.R
 import kotlinx.android.synthetic.main.place_details_activity.*
@@ -15,11 +16,12 @@ class PlaceDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.place_details_activity)
 
+        val viewModel = ViewModelProviders.of(this).get(PlaceDetailsViewModel::class.java)
+        initStreams(viewModel)
+
         setSupportActionBar(placeDetailsToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_left_arrow)
-
-        val model = ViewModelProviders.of(this).get(PlaceDetailsViewModel::class.java)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -34,9 +36,13 @@ class PlaceDetailsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun enterOnReadOnlyMode() {
+    private fun initStreams(viewModel: PlaceDetailsViewModel) {
+        viewModel.getViewEditableState().observe(this, Observer { updateViewEditableState(it) })
+    }
+
+    private fun updateViewEditableState(editable: Boolean) {
         formContainer.children.forEach {
-            it.isEnabled = false
+            it.isEnabled = editable
         }
     }
 }

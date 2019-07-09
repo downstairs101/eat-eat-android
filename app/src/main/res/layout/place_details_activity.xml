@@ -9,11 +9,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/placeDetailsToolbar"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/place_details_menu"
         app:title="@string/place_details_view_title" />
 
