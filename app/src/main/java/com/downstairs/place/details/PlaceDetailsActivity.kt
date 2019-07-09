@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.downstairs.R
 import kotlinx.android.synthetic.main.place_details_activity.*
 
-class PlaceDetails : AppCompatActivity() {
+class PlaceDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

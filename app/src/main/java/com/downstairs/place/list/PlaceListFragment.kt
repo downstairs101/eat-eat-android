@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
 import com.downstairs.place.PlaceListItem
-import com.downstairs.place.details.PlaceDetails
+import com.downstairs.place.details.PlaceDetailsActivity
 import kotlinx.android.synthetic.main.place_list_fragment.*
 
 class PlaceListFragment : Fragment() {
@@ -35,7 +35,7 @@ class PlaceListFragment : Fragment() {
         )
 
         placeAdapter.setOnClickListener {
-            startActivity(Intent(context, PlaceDetails::class.java))
+            startActivity(Intent(context, PlaceDetailsActivity::class.java))
         }
 
         placeListRecyclerView.layoutManager = LinearLayoutManager(context)
