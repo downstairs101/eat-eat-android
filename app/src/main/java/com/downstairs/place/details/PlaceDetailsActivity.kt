@@ -1,17 +1,16 @@
 package com.downstairs.place.details
 
-import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.downstairs.R
 import com.downstairs.databinding.PlaceDetailsActivityBinding
+import com.downstairs.functions.openSoftKeyBoard
 import kotlinx.android.synthetic.main.place_details_activity.*
 
 
@@ -34,6 +33,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
             window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         }
 
+        setupViewListeners()
         setDataObservers()
     }
 
@@ -51,14 +51,16 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun setDataObservers() {
-        nameTextInput.setOnFocusChangeListener { view, hasFocus ->
-            if (hasFocus) {
-                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
-            }
-        }
         viewModel.editableState.observe(this, Observer {
             nameTextInput.postDelayed({ nameTextInput.requestFocus() }, 200)
         })
+    }
+
+    private fun setupViewListeners() {
+        nameTextInput.setOnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                view.openSoftKeyBoard()
+            }
+        }
     }
 }
