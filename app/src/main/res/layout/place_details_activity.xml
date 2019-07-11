@@ -30,6 +30,8 @@
             android:id="@+id/textInputLayout"
             style="@style/TextInputTheme.Outlined"
             android:layout_width="0dp"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
@@ -41,6 +43,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nameTextInput"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="@{viewModel.editableState}"
