@@ -2,6 +2,4 @@ package com.downstairs
 
 import android.app.Application
 
-class EatEatApplication : Application() {
-
-}
+class EatEatApplication : Application()

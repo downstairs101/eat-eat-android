@@ -47,5 +47,9 @@ class PlaceDetailsActivity : AppCompatActivity() {
         formContainer.children.forEach {
             it.isEnabled = editable
         }
+
+        if(editable){
+            nameTextInput.requestFocus()
+        }
     }
 }
