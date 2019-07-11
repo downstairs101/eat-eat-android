@@ -12,7 +12,7 @@ class PlaceDetailsViewModel : ViewModel() {
         }
     }
 
-    fun getViewEditableState(): LiveData<Boolean> = viewEditableState
+    val editableState: LiveData<Boolean> = viewEditableState
 
     fun enterOnEditMode() {
         viewEditableState.value = true

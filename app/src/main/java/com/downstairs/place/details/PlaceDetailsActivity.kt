@@ -4,22 +4,22 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.children
-import androidx.lifecycle.Observer
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.downstairs.R
+import com.downstairs.databinding.PlaceDetailsActivityBinding
 import kotlinx.android.synthetic.main.place_details_activity.*
 
 class PlaceDetailsActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: PlaceDetailsViewModel
+    private val viewModel by lazy { ViewModelProviders.of(this).get(PlaceDetailsViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.place_details_activity)
 
-        viewModel = ViewModelProviders.of(this).get(PlaceDetailsViewModel::class.java)
-        initStreams(viewModel)
+        val binding = DataBindingUtil.setContentView<PlaceDetailsActivityBinding>(this, R.layout.place_details_activity)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
         setSupportActionBar(placeDetailsToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -37,19 +37,5 @@ class PlaceDetailsActivity : AppCompatActivity() {
             R.id.editPlaceDetailsMenu -> viewModel.enterOnEditMode()
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun initStreams(viewModel: PlaceDetailsViewModel) {
-        viewModel.getViewEditableState().observe(this, Observer { updateViewEditableState(it) })
-    }
-
-    private fun updateViewEditableState(editable: Boolean) {
-        formContainer.children.forEach {
-            it.isEnabled = editable
-        }
-
-        if(editable){
-            nameTextInput.requestFocus()
-        }
     }
 }
