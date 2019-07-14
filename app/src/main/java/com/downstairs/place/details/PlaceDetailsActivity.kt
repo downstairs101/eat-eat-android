@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -51,9 +52,12 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun setDataObservers() {
-        viewModel.editableState.observe(this, Observer {
-            nameTextInput.postDelayed({ nameTextInput.requestFocus() }, 200)
-        })
+        viewModel.editableState.observe(this, Observer { isOnEditMode -> editMode(isOnEditMode) })
+    }
+
+    private fun editMode(isOnEditMode: Boolean) {
+        formContainer.children.forEach { it.isEnabled = isOnEditMode }
+        nameTextInput.requestFocus()
     }
 
     private fun setupViewListeners() {
