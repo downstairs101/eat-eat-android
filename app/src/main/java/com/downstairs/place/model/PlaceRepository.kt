@@ -1,7 +1,8 @@
 package com.downstairs.place.model
 
-class PlaceRepository(val placeDAO: PlaceDAO) {
+class PlaceRepository(private val placeDAO: PlaceDAO) {
 
-    fun getPlace(placeId:Int){
-    }
+    suspend fun get(placeId: Int) = placeDAO.findById(placeId)
+
+    suspend fun insert(place: Place) = placeDAO.insertPlace(place)
 }

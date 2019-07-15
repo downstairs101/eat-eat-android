@@ -23,7 +23,6 @@ class PlaceDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val binding = DataBindingUtil.setContentView<PlaceDetailsActivityBinding>(this, R.layout.place_details_activity)
-        binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
         setSupportActionBar(placeDetailsToolbar)
