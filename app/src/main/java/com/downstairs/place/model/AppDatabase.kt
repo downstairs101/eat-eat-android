@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database(entities = [PlaceDAO::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun plantDao(): PlaceDAO
+    abstract fun placeDAO(): PlaceDAO
 
     companion object {
 
