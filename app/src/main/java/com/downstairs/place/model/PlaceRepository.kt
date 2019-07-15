@@ -4,5 +4,5 @@ class PlaceRepository(private val placeDAO: PlaceDAO) {
 
     suspend fun get(placeId: Int) = placeDAO.findById(placeId)
 
-    suspend fun insert(place: Place) = placeDAO.insertPlace(place)
+    suspend fun insert() = placeDAO.insertPlace(Place(0, "EdFines", "Pub", "Nice"))
 }
