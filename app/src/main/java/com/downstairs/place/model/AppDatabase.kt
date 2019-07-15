@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [PlaceDAO::class], version = 1)
+@Database(entities = [Place::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun placeDAO(): PlaceDAO
@@ -22,7 +22,8 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         private fun buildDatabase(context: Context): AppDatabase {
-            return Room.databaseBuilder(context, AppDatabase::class.java, "app_database")
+            return Room.databaseBuilder(context, AppDatabase::class.java,
+                "app_database")
                 .build()
         }
     }

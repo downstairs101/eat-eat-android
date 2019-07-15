@@ -2,15 +2,15 @@ package com.downstairs.place.model
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
-import kotlinx.coroutines.Deferred
 
 @Dao
 interface PlaceDAO {
 
-    @Query("SELECT * from place where id = :placeId")
-    suspend fun findById(placeId: Int): Deferred<Place>
+    @Query("SELECT * from Place where id = :placeId")
+    fun findById(placeId: Int): Place
 
-    @Insert
-    suspend fun insertPlace(place: Place)
+    @Insert(onConflict = REPLACE)
+    fun insertPlace(vararg place: Place)
 }

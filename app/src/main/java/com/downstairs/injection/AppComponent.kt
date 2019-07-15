@@ -1,18 +1,19 @@
 package com.downstairs.injection
 
+import android.content.Context
 import com.downstairs.EatEatApplication
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
+import javax.inject.Singleton
 
-@Component(modules = [ViewModelModule::class, DatabaseModule::class])
-class AppComponent {
-    interface AppComponent {
-        @Component.Builder
-        interface Builder {
-            @BindsInstance
-            fun application(application: EatEatApplication): Builder
+@Singleton
+@Component(modules = [AndroidInjectionModule::class, AppComponentsModule::class])
+interface AppComponent : AndroidInjector<EatEatApplication> {
 
-            fun build(): AppComponent
-        }
+    @Component.Factory
+    interface Factory {
+        fun create(@BindsInstance context: Context): AppComponent
     }
 }
