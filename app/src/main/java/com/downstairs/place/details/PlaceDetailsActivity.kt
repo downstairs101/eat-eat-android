@@ -28,13 +28,14 @@ class PlaceDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        val binding = bind(R.layout.place_details_activity)
 
+        val binding = bind(R.layout.place_details_activity)
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        setDataObservers()
         setupActionBar()
         setupViewListeners()
-        setDataObservers()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -9,8 +9,11 @@ import androidx.room.Query
 interface PlaceDAO {
 
     @Query("SELECT * from Place where id = :placeId")
-    fun findById(placeId: Int): Place
+    suspend fun findById(placeId: Int): Place?
+
+    @Query("SELECT * from Place")
+    suspend fun findAll(): List<Place>
 
     @Insert(onConflict = REPLACE)
-    fun insertPlace(vararg place: Place)
+    suspend fun insertPlace(vararg place: Place)
 }

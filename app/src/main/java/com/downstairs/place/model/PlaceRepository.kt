@@ -2,12 +2,9 @@ package com.downstairs.place.model
 
 import javax.inject.Inject
 
-class PlaceRepository {
+class PlaceRepository @Inject constructor(private val placeDAO: PlaceDAO) {
 
-    @Inject
-    lateinit var placeDAO: PlaceDAO
-
-    suspend fun get(placeId: Int) = placeDAO.findById(placeId)
+    suspend fun getPlace(placeId: Int) = placeDAO.findById(placeId)
 
     suspend fun insert() = placeDAO.insertPlace(Place(0, "EdFines", "Pub", "Nice"))
 }
