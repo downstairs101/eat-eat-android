@@ -9,11 +9,11 @@ import dagger.android.AndroidInjector
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AndroidInjectionModule::class, AppComponentsModule::class])
-interface AppComponent : AndroidInjector<EatEatApplication> {
+@Component(modules = [AndroidInjectionModule::class, AppComponentsModule::class, AppModule::class, ViewModelModule::class])
+interface ApplicationModule : AndroidInjector<EatEatApplication> {
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance context: Context): AppComponent
+        fun create(@BindsInstance context: Context): ApplicationModule
     }
 }
