@@ -32,12 +32,12 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
 
 
     private fun loadPlace() {
-        viewModelScope.launch(IO) {
-            val result = repository.getPlace(0)
-            result?.also {
-                _name.value = result.name
-                _category.value = result.category
-                _description.value = result.description
+        viewModelScope.launch {
+            val place = repository.getPlace(1)
+            place?.also {
+                _name.value = it.name
+                _category.value = it.category
+                _description.value = it.description
             }
         }
     }

@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 interface PlaceDAO {
 
-    @Query("SELECT * from Place where id = :placeId")
+    @Query("SELECT * from Place where id=:placeId")
     suspend fun findById(placeId: Int): Place?
 
     @Query("SELECT * from Place")
