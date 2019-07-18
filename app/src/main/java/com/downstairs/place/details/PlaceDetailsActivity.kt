@@ -22,27 +22,26 @@ class PlaceDetailsActivity : AppCompatActivity() {
     @Inject
     lateinit var factory: ViewModelProvider.Factory
 
-    private val viewModel by lazy { ViewModelProviders.of(this, factory).get(PlaceDetailsViewModel::class.java) }
-
+    private val viewModel by lazy {
+        ViewModelProviders.of(this, factory).get(PlaceDetailsViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-
-        val binding = bind(R.layout.place_details_activity)
-        binding.lifecycleOwner = this
-        binding.viewModel = viewModel
+        bind()
 
         setDataObservers()
         setupActionBar()
-        setupViewListeners()
+        setViewListeners()
+
+        fetchPlace(null)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.place_details_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -52,7 +51,14 @@ class PlaceDetailsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun bind(layoutId: Int) =
+
+    private fun bind() {
+        val binding = bindLayout(R.layout.place_details_activity)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+    }
+
+    private fun bindLayout(layoutId: Int) =
         DataBindingUtil.setContentView<PlaceDetailsActivityBinding>(this, layoutId)
 
     private fun setupActionBar() {
@@ -61,7 +67,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_left_arrow)
     }
 
-    private fun setupViewListeners() {
+    private fun setViewListeners() {
         nameTextInput.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus) {
                 view.openSoftKeyBoard()
@@ -71,6 +77,10 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     private fun setDataObservers() {
         viewModel.editableState.observe(this, Observer { isOnEditMode -> editMode(isOnEditMode) })
+    }
+
+    private fun fetchPlace(placeId: Int?) {
+        viewModel.fetchPlace(placeId)
     }
 
     private fun editMode(isOnEditMode: Boolean) {

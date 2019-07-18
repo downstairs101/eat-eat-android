@@ -12,18 +12,10 @@ import javax.inject.Inject
 
 class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRepository) : ViewModel() {
 
-    init {
-        insertPlace()
-        loadPlace()
-    }
-
-    private val _editableState: MutableLiveData<Boolean> by lazy {
-        MutableLiveData<Boolean>().also { it.value = false }
-    }
-
     private val _name = MutableLiveData<String>()
     private val _category = MutableLiveData<String>()
     private val _description = MutableLiveData<String>()
+    private val _editableState = MutableLiveData<Boolean>()
 
     val editableState: LiveData<Boolean> = _editableState
 
@@ -31,14 +23,21 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     val category: LiveData<String> = _category
     val description: LiveData<String> = _description
 
+    fun fetchPlace(placeId: Int?) {
+        if (placeId == null) {
+            enterOnEditMode()
+        } else {
+            loadPlace(placeId)
+        }
+    }
 
     fun enterOnEditMode() {
         _editableState.postValue(true)
     }
 
-    private fun loadPlace() {
+    private fun loadPlace(placeId: Int) {
         viewModelScope.launch {
-            val place = repository.getPlace(1)
+            val place = repository.getPlace(placeId)
             place?.also { bindPlace(it) }
         }
     }
