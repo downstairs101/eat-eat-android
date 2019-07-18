@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.downstairs.place.model.Place
 import com.downstairs.place.model.PlaceRepository
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -31,19 +32,21 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     val description: LiveData<String> = _description
 
 
+    fun enterOnEditMode() {
+        _editableState.postValue(true)
+    }
+
     private fun loadPlace() {
         viewModelScope.launch {
             val place = repository.getPlace(1)
-            place?.also {
-                _name.value = it.name
-                _category.value = it.category
-                _description.value = it.description
-            }
+            place?.also { bindPlace(it) }
         }
     }
 
-    fun enterOnEditMode() {
-        _editableState.postValue(true)
+    private fun bindPlace(it: Place) {
+        _name.value = it.name
+        _category.value = it.category
+        _description.value = it.description
     }
 
     private fun insertPlace() {
@@ -51,6 +54,4 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
             repository.insert()
         }
     }
-
-
 }
