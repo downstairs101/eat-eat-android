@@ -17,11 +17,10 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     private val _description = MutableLiveData<String>()
     private val _editableState = MutableLiveData<Boolean>()
 
-    val editableState: LiveData<Boolean> = _editableState
-
     val name: LiveData<String> = _name
     val category: LiveData<String> = _category
     val description: LiveData<String> = _description
+    val editableState: LiveData<Boolean> = _editableState
 
     fun fetchPlace(placeId: Int?) {
         if (placeId == null) {

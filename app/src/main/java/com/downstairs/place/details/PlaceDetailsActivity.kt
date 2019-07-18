@@ -34,7 +34,10 @@ class PlaceDetailsActivity : AppCompatActivity() {
         setDataObservers()
         setupActionBar()
         setViewListeners()
+    }
 
+    override fun onStart() {
+        super.onStart()
         fetchPlace(null)
     }
 
@@ -69,9 +72,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     private fun setViewListeners() {
         nameTextInput.setOnFocusChangeListener { view, hasFocus ->
-            if (hasFocus) {
-                view.openSoftKeyBoard()
-            }
+            if (hasFocus) view.openSoftKeyBoard()
         }
     }
 
