@@ -30,7 +30,7 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
         }
     }
 
-    fun enterOnEditMode() {
+    private fun enterOnEditMode() {
         _editableState.postValue(true)
     }
 
@@ -50,6 +50,12 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     private fun insertPlace() {
         viewModelScope.launch(IO) {
             repository.insert()
+        }
+    }
+
+    fun validateViewState(isEdition: Boolean) {
+        if (isEdition) {
+            enterOnEditMode()
         }
     }
 }

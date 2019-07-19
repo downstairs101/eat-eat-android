@@ -49,7 +49,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> this.onBackPressed()
-            R.id.editPlaceDetailsMenu -> viewModel.enterOnEditMode()
+            R.id.editPlaceDetailsMenu -> viewModel.validateViewState(item.isChecked)
         }
         return super.onOptionsItemSelected(item)
     }
