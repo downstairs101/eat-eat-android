@@ -49,9 +49,14 @@ class PlaceDetailsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> this.onBackPressed()
-            R.id.editPlaceDetailsMenu -> viewModel.validateViewState(item.isChecked)
+            R.id.editPlaceDetailsMenu -> setupViewState(item)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun setupViewState(item: MenuItem) {
+        val toEdit = item.isChecked
+        viewModel.setupViewState(toEdit)
     }
 
 

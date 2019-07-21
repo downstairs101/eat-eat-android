@@ -53,9 +53,15 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
         }
     }
 
-    fun validateViewState(isEdition: Boolean) {
-        if (isEdition) {
+    fun setupViewState(isToEdit: Boolean) {
+        if (isToEdit) {
             enterOnEditMode()
+        } else {
+            enterOnViewOnlyState()
         }
+    }
+
+    private fun enterOnViewOnlyState() {
+        _editableState.postValue(false)
     }
 }
