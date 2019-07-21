@@ -100,14 +100,21 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     private fun viewToWriteMode() {
         isViewsEnabled(true)
+        setMenuItemDrawable(R.drawable.ic_list)
         nameTextInput.requestFocus()
     }
 
     private fun viewToReadMode() {
         isViewsEnabled(false)
+        setMenuItemDrawable(R.drawable.ic_edit_pencil)
     }
 
     private fun isViewsEnabled(isEnabled: Boolean) {
         formContainer.children.forEach { it.isEnabled = isEnabled }
+    }
+
+    private fun setMenuItemDrawable(drawableId: Int) {
+        val menuItem = placeDetailsToolbar.menu.findItem(R.id.editPlaceDetailsMenu)
+        menuItem?.icon = getDrawable(drawableId)
     }
 }
