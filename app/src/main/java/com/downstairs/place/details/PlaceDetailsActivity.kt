@@ -55,8 +55,9 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun setupViewState(item: MenuItem) {
-        val toEdit = item.isChecked
-        viewModel.setupViewState(toEdit)
+        val isReadOnly = item.isChecked
+        viewModel.changeViewState(PlaceDetailsViewModel.ViewState(isReadOnly))
+        item.isChecked = !isReadOnly
     }
 
 
@@ -82,15 +83,31 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun setDataObservers() {
-        viewModel.editableState.observe(this, Observer { isOnEditMode -> editMode(isOnEditMode) })
+        viewModel.viewState.observe(this, Observer { viewStateChanged(it) })
+    }
+
+    private fun viewStateChanged(viewState: PlaceDetailsViewModel.ViewState) {
+        if (viewState.isInWriteMode) {
+            viewToWriteMode()
+        } else {
+            viewToReadMode()
+        }
     }
 
     private fun fetchPlace(placeId: Int?) {
         viewModel.fetchPlace(placeId)
     }
 
-    private fun editMode(isOnEditMode: Boolean) {
-        formContainer.children.forEach { it.isEnabled = isOnEditMode }
+    private fun viewToWriteMode() {
+        isViewsEnabled(true)
         nameTextInput.requestFocus()
+    }
+
+    private fun viewToReadMode() {
+        isViewsEnabled(false)
+    }
+
+    private fun isViewsEnabled(isEnabled: Boolean) {
+        formContainer.children.forEach { it.isEnabled = isEnabled }
     }
 }

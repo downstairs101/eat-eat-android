@@ -15,23 +15,19 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     private val _name = MutableLiveData<String>()
     private val _category = MutableLiveData<String>()
     private val _description = MutableLiveData<String>()
-    private val _editableState = MutableLiveData<Boolean>()
+    private val _viewState = MutableLiveData<ViewState>()
 
     val name: LiveData<String> = _name
     val category: LiveData<String> = _category
     val description: LiveData<String> = _description
-    val editableState: LiveData<Boolean> = _editableState
+    val viewState: LiveData<ViewState> = _viewState
 
     fun fetchPlace(placeId: Int?) {
         if (placeId == null) {
-            enterOnEditMode()
+            toWriteState()
         } else {
             loadPlace(placeId)
         }
-    }
-
-    private fun enterOnEditMode() {
-        _editableState.postValue(true)
     }
 
     private fun loadPlace(placeId: Int) {
@@ -53,15 +49,24 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
         }
     }
 
-    fun setupViewState(isToEdit: Boolean) {
-        if (isToEdit) {
-            enterOnEditMode()
+    fun changeViewState(viewState: ViewState) {
+        if (viewState.isInWriteMode) {
+            //savePlace
+            toReadState()
         } else {
-            enterOnViewOnlyState()
+            toWriteState()
         }
     }
 
-    private fun enterOnViewOnlyState() {
-        _editableState.postValue(false)
+    private fun toWriteState() {
+        _viewState.postValue(ViewState(false))
+    }
+
+    private fun toReadState() {
+        _viewState.postValue(ViewState(true))
+    }
+
+    class ViewState(isReadOnly: Boolean) {
+        val isInWriteMode = !isReadOnly
     }
 }
