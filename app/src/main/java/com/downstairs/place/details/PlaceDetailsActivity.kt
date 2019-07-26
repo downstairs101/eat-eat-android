@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.place_details_activity.*
 import javax.inject.Inject
 import android.util.DisplayMetrics
 import com.downstairs.R
+import com.downstairs.functions.displayHeight
 
 
 class PlaceDetailsActivity : AppCompatActivity() {
@@ -47,16 +48,13 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun animateViewsEntry() {
-        val displayMetrics = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(displayMetrics)
-        val y = displayMetrics.heightPixels
         formContainer.children.forEach {
-            it.y = y + it.height.toFloat()
+            it.y = displayHeight() + it.height.toFloat()
         }
 
-        var delayTime = 100L
+        var delayTime = 150L
         formContainer.children.forEach {
-            it.animate().translationY(0f).startDelay = delayTime
+            it.animate().translationY(0f).setDuration(350L).startDelay = delayTime
             delayTime += 60
         }
 
