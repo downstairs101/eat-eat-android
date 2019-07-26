@@ -1,6 +1,8 @@
 package com.downstairs.place.details
 
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -16,7 +18,8 @@ import com.downstairs.functions.openSoftKeyBoard
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.place_details_activity.*
 import javax.inject.Inject
-import android.util.DisplayMetrics
+import android.view.View
+import android.view.animation.Animation
 import com.downstairs.R
 import com.downstairs.functions.displayHeight
 
@@ -48,14 +51,28 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun animateViewsEntry() {
-        formContainer.children.forEach {
-            it.y = displayHeight() + it.height.toFloat()
-        }
+        formContainer.alpha = 0f
 
-        var delayTime = 150L
-        formContainer.children.forEach {
-            it.animate().translationY(0f).setDuration(350L).startDelay = delayTime
-            delayTime += 60
+        formContainer.post {
+            val animatorList = mutableListOf<ObjectAnimator>()
+            animatorList.add(ObjectAnimator.ofFloat(formContainer, "alpha", 0f, 1f).apply {
+                duration = 200
+            })
+
+            var delay = 100L
+            formContainer.children.forEach {
+                val from = displayHeight() + it.height.toFloat()
+                val target = 0f
+
+                animatorList.add(ObjectAnimator.ofFloat(it, "y", from, it.top - target).apply {
+
+                    duration = 350
+                    startDelay = delay
+                    delay += 50
+                })
+            }
+
+            animatorList.forEach { it.start() }
         }
 
     }
