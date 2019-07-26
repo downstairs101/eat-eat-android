@@ -1,5 +1,6 @@
 package com.downstairs.place.details
 
+
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,12 +10,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import com.downstairs.R
+
 import com.downstairs.databinding.PlaceDetailsActivityBinding
 import com.downstairs.functions.openSoftKeyBoard
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.place_details_activity.*
 import javax.inject.Inject
+import android.util.DisplayMetrics
+import com.downstairs.R
 
 
 class PlaceDetailsActivity : AppCompatActivity() {
@@ -31,9 +34,32 @@ class PlaceDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bind()
 
+        animateViewsEntry()
         setDataObservers()
         setupActionBar()
         setViewListeners()
+    }
+
+    private fun bind() {
+        val binding = bindLayout(R.layout.place_details_activity)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+    }
+
+    private fun animateViewsEntry() {
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val y = displayMetrics.heightPixels
+        formContainer.children.forEach {
+            it.y = y + it.height.toFloat()
+        }
+
+        var delayTime = 100L
+        formContainer.children.forEach {
+            it.animate().translationY(0f).startDelay = delayTime
+            delayTime += 60
+        }
+
     }
 
     override fun onStart() {
@@ -60,15 +86,8 @@ class PlaceDetailsActivity : AppCompatActivity() {
         item.isChecked = !isReadOnly
     }
 
-
-    private fun bind() {
-        val binding = bindLayout(R.layout.place_details_activity)
-        binding.lifecycleOwner = this
-        binding.viewModel = viewModel
-    }
-
     private fun bindLayout(layoutId: Int) =
-        DataBindingUtil.setContentView<PlaceDetailsActivityBinding>(this, layoutId)
+            DataBindingUtil.setContentView<PlaceDetailsActivityBinding>(this, layoutId)
 
     private fun setupActionBar() {
         setSupportActionBar(placeDetailsToolbar)

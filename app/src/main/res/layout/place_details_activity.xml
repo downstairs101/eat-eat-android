@@ -1,58 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".place.details.PlaceDetailsActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".place.details.PlaceDetailsActivity">
 
     <data>
-        <import type="androidx.lifecycle.LiveData"/>
+
+        <import type="androidx.lifecycle.LiveData" />
+
         <variable
-                name="viewModel"
-                type="com.downstairs.place.details.PlaceDetailsViewModel"/>
+            name="viewModel"
+            type="com.downstairs.place.details.PlaceDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/formContainer"
-            android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-                android:id="@+id/placeDetailsToolbar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:menu="@menu/place_details_menu"
-                app:title="@string/place_details_view_title"/>
+            android:id="@+id/placeDetailsToolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/place_details_menu"
+            app:title="@string/place_details_view_title" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/formContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/placeDetailsToolbar">
+
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
                 style="@style/TextInputTheme.Outlined"
                 android:layout_width="0dp"
-                android:focusableInTouchMode="true"
-                android:focusable="true"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="15dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:hint="Name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/placeDetailsToolbar">
+                app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/nameTextInput"
-                    android:focusable="true"
-                    android:text="@{viewModel.name}"
-                    android:focusableInTouchMode="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondary"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:text="@{viewModel.name}"
+                    android:textColor="@color/secondary" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout2"
                 style="@style/TextInputTheme.Outlined"
                 android:layout_width="0dp"
@@ -63,14 +74,14 @@
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
-            <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:text="@{viewModel.category}"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondary"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                    android:text="@{viewModel.category}"
+                    android:textColor="@color/secondary" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout3"
                 style="@style/TextInputTheme.Outlined"
                 android:layout_width="0dp"
@@ -80,12 +91,13 @@
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
-            <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.description}"
                     android:hint="hint"
-                    android:textColor="@color/secondary"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                    android:text="@{viewModel.description}"
+                    android:textColor="@color/secondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
