@@ -123,7 +123,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     private fun viewToWriteMode() {
         isViewsEnabled(true)
-        setMenuItemDrawable(R.drawable.ic_list)
+        setMenuItemDrawable(R.drawable.ic_save)
         nameTextInput.requestFocus()
     }
 
