@@ -50,10 +50,11 @@ class PlaceDetailsActivity : AppCompatActivity() {
     private fun animateViewsEntry() {
         formContainer.post {
             val animatorList = mutableListOf<ObjectAnimator>()
+            val displayHeight = displayHeight()
 
             var delay = 80L
             formContainer.children.forEach {
-                val origin = displayHeight() + it.height.toFloat()
+                val origin = (displayHeight + it.height).toFloat()
                 val target = it.top.toFloat()
 
                 animatorList.add(ObjectAnimator.ofFloat(it, "y", origin, target).apply {
@@ -92,7 +93,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun bindLayout(layoutId: Int) =
-            DataBindingUtil.setContentView<PlaceDetailsActivityBinding>(this, layoutId)
+        DataBindingUtil.setContentView<PlaceDetailsActivityBinding>(this, layoutId)
 
     private fun setupActionBar() {
         setSupportActionBar(placeDetailsToolbar)
