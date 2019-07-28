@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
@@ -54,14 +55,11 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
             var delay = 80L
             formContainer.children.forEach {
-                val origin = (displayHeight + it.height).toFloat()
-                val target = it.top.toFloat()
+                val origin = (displayHeight + it.height)
+                val target = it.top
 
-                animatorList.add(ObjectAnimator.ofFloat(it, "y", origin, target).apply {
-                    duration = 350
-                    startDelay = delay
-                    delay += 50
-                })
+                animatorList.add(it.createTranslateYAnimation(origin, target, delay))
+                delay += 50
             }
             animatorList.forEach { it.start() }
         }
@@ -142,4 +140,12 @@ class PlaceDetailsActivity : AppCompatActivity() {
         val menuItem = placeDetailsToolbar.menu.findItem(R.id.editPlaceDetailsMenu)
         menuItem?.icon = getDrawable(drawableId)
     }
+
+    private fun View.createTranslateYAnimation(origin: Int, target: Int, delay: Long) =
+        ObjectAnimator.ofFloat(this, "y", origin.toFloat(), target.toFloat())
+            .apply {
+                duration = 350
+                startDelay = delay
+            }
 }
+
