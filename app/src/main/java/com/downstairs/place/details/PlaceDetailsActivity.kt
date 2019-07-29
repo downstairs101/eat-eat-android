@@ -137,8 +137,10 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun setMenuItemDrawable(drawableId: Int) {
-        val menuItem = placeDetailsToolbar.menu.findItem(R.id.editPlaceDetailsMenu)
-        menuItem?.icon = getDrawable(drawableId)
+        placeDetailsToolbar.post {
+            val menuItem = placeDetailsToolbar.menu.findItem(R.id.editPlaceDetailsMenu)
+            menuItem?.icon = getDrawable(drawableId)
+        }
     }
 
     private fun View.createTranslateYAnimation(origin: Int, target: Int, delay: Long) =
