@@ -58,22 +58,6 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     }
 
-    private fun getAnimatorsList(): List<ObjectAnimator> {
-        val animatorList = mutableListOf<ObjectAnimator>()
-        val displayHeight = displayHeight()
-
-        var delay = 80L
-        formContainer.children.forEach {
-            val origin = (displayHeight + it.height)
-            val target = it.top
-
-            animatorList.add(it.createTranslateYAnimation(origin, target, delay))
-            delay += 50
-        }
-
-        return animatorList.toList()
-    }
-
     override fun onStart() {
         super.onStart()
         fetchPlace(null)
@@ -149,6 +133,22 @@ class PlaceDetailsActivity : AppCompatActivity() {
             val menuItem = placeDetailsToolbar.menu.findItem(R.id.editPlaceDetailsMenu)
             menuItem?.icon = getDrawable(drawableId)
         }
+    }
+
+    private fun getAnimatorsList(): List<ObjectAnimator> {
+        val animatorList = mutableListOf<ObjectAnimator>()
+        val displayHeight = displayHeight()
+
+        var delay = 80L
+        formContainer.children.forEach {
+            val origin = (displayHeight + it.height)
+            val target = it.top
+
+            animatorList.add(it.createTranslateYAnimation(origin, target, delay))
+            delay += 50
+        }
+
+        return animatorList.toList()
     }
 
     private fun View.createTranslateYAnimation(origin: Int, target: Int, delay: Long) =
