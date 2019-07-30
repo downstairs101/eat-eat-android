@@ -1,6 +1,7 @@
 package com.downstairs.place.details
 
 
+import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.Menu
@@ -50,20 +51,27 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     private fun animateViewsEntry() {
         formContainer.post {
-            val animatorList = mutableListOf<ObjectAnimator>()
-            val displayHeight = displayHeight()
-
-            var delay = 80L
-            formContainer.children.forEach {
-                val origin = (displayHeight + it.height)
-                val target = it.top
-
-                animatorList.add(it.createTranslateYAnimation(origin, target, delay))
-                delay += 50
-            }
-            animatorList.forEach { it.start() }
+            val animatorSet = AnimatorSet()
+            animatorSet.playTogether(getAnimatorsList())
+            animatorSet.start()
         }
 
+    }
+
+    private fun getAnimatorsList(): List<ObjectAnimator> {
+        val animatorList = mutableListOf<ObjectAnimator>()
+        val displayHeight = displayHeight()
+
+        var delay = 80L
+        formContainer.children.forEach {
+            val origin = (displayHeight + it.height)
+            val target = it.top
+
+            animatorList.add(it.createTranslateYAnimation(origin, target, delay))
+            delay += 50
+        }
+
+        return animatorList.toList()
     }
 
     override fun onStart() {
