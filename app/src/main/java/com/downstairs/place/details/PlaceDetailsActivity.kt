@@ -139,7 +139,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
         val animatorList = mutableListOf<ObjectAnimator>()
         val displayHeight = displayHeight()
 
-        var delay = 80L
+        var delay = 50L
         formContainer.children.forEach {
             val origin = (displayHeight + it.height)
             val target = it.top
