@@ -28,7 +28,7 @@
             app:menu="@menu/place_details_menu"
             app:title="@string/place_details_view_title" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/formContainer"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -98,6 +98,6 @@
                     android:text="@{viewModel.description}"
                     android:textColor="@color/secondary" />
             </com.google.android.material.textfield.TextInputLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.motion.widget.MotionLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
