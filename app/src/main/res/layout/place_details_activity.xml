@@ -40,7 +40,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/nameTextInputLayout"
                 style="@style/TextInputTheme.Outlined"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -71,9 +71,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="Category"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+                app:layout_constraintEnd_toEndOf="@+id/nameTextInputLayout"
+                app:layout_constraintStart_toStartOf="@+id/nameTextInputLayout"
+                app:layout_constraintTop_toBottomOf="@+id/nameTextInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -95,7 +95,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="hint"
+                    android:hint="Description"
                     android:text="@{viewModel.description}"
                     android:textColor="@color/secondary" />
             </com.google.android.material.textfield.TextInputLayout>

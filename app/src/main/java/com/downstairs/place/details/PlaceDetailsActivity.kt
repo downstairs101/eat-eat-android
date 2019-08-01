@@ -50,10 +50,14 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun animateViewsEntry() {
+//        formContainer.post {
+//            val animatorSet = AnimatorSet()
+//            animatorSet.playTogether(getAnimatorsList())
+//            animatorSet.start()
+//        }
+
         formContainer.post {
-            val animatorSet = AnimatorSet()
-            animatorSet.playTogether(getAnimatorsList())
-            animatorSet.start()
+            formContainer.transitionToEnd()
         }
 
     }
