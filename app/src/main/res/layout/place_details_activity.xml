@@ -55,7 +55,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/nameTextInput"
+                    android:id="@+id/nameTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="true"
@@ -65,7 +65,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout2"
+                android:id="@+id/descriptionInputLayout"
                 style="@style/TextInputTheme.Outlined"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -88,9 +88,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+                app:layout_constraintEnd_toEndOf="@+id/descriptionInputLayout"
+                app:layout_constraintStart_toStartOf="@+id/descriptionInputLayout"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

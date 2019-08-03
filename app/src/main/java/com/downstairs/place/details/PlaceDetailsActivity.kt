@@ -1,7 +1,6 @@
 package com.downstairs.place.details
 
 
-import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.Menu
@@ -96,7 +95,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun setViewListeners() {
-        nameTextInput.setOnFocusChangeListener { view, hasFocus ->
+        nameTxt.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus) view.openSoftKeyBoard()
         }
     }
@@ -120,7 +119,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
     private fun viewToWriteMode() {
         isViewsEnabled(true)
         setMenuItemDrawable(R.drawable.ic_save)
-        nameTextInput.requestFocus()
+        nameTxt.requestFocus()
     }
 
     private fun viewToReadMode() {
