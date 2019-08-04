@@ -65,7 +65,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/descriptionInputLayout"
+                android:id="@+id/categoryInputLayout"
                 style="@style/TextInputTheme.Outlined"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -76,6 +76,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/nameTextInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/categoryTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.category}"
@@ -83,16 +84,17 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout3"
+                android:id="@+id/descriptionInputLayout"
                 style="@style/TextInputTheme.Outlined"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/descriptionInputLayout"
-                app:layout_constraintStart_toStartOf="@+id/descriptionInputLayout"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionInputLayout">
+                app:layout_constraintEnd_toEndOf="@+id/categoryInputLayout"
+                app:layout_constraintStart_toStartOf="@+id/categoryInputLayout"
+                app:layout_constraintTop_toBottomOf="@+id/categoryInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descriptionTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Description"
