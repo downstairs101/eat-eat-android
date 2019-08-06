@@ -1,25 +1,20 @@
 package com.downstairs.place.details
 
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-
+import com.downstairs.R
 import com.downstairs.databinding.PlaceDetailsActivityBinding
 import com.downstairs.functions.openSoftKeyBoard
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.place_details_activity.*
 import javax.inject.Inject
-import com.downstairs.R
-import com.downstairs.functions.displayHeight
 
 
 class PlaceDetailsActivity : AppCompatActivity() {
@@ -36,7 +31,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bind()
 
-        animateViewsEntry()
+        animateViewEntry()
         setDataObservers()
         setupActionBar()
         setViewListeners()
@@ -48,15 +43,9 @@ class PlaceDetailsActivity : AppCompatActivity() {
         binding.viewModel = viewModel
     }
 
-    private fun animateViewsEntry() {
-//        formContainer.post {
-//            val animatorSet = AnimatorSet()
-//            animatorSet.playTogether(getAnimatorsList())
-//            animatorSet.start()
-//        }
-
-        formContainer.post {
-            formContainer.transitionToEnd()
+    private fun animateViewEntry() {
+        placeDetailsContainer.post {
+            placeDetailsContainer.transitionToEnd()
         }
 
     }
@@ -128,7 +117,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun isViewsEnabled(isEnabled: Boolean) {
-        formContainer.children.forEach { it.isEnabled = isEnabled }
+        //formContainer.children.forEach { it.isEnabled = isEnabled }
     }
 
     private fun setMenuItemDrawable(drawableId: Int) {
@@ -137,28 +126,5 @@ class PlaceDetailsActivity : AppCompatActivity() {
             menuItem?.icon = getDrawable(drawableId)
         }
     }
-
-    private fun getAnimatorsList(): List<ObjectAnimator> {
-        val animatorList = mutableListOf<ObjectAnimator>()
-        val displayHeight = displayHeight()
-
-        var delay = 50L
-        formContainer.children.forEach {
-            val origin = (displayHeight + it.height)
-            val target = it.top
-
-            animatorList.add(it.createTranslateYAnimation(origin, target, delay))
-            delay += 50
-        }
-
-        return animatorList.toList()
-    }
-
-    private fun View.createTranslateYAnimation(origin: Int, target: Int, delay: Long) =
-        ObjectAnimator.ofFloat(this, "y", origin.toFloat(), target.toFloat())
-            .apply {
-                duration = 350
-                startDelay = delay
-            }
 }
 
