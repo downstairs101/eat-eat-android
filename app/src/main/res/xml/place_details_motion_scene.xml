@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<MotionScene  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:defaultDuration="300">
     <Transition
         app:constraintSetEnd="@id/end"
         app:constraintSetStart="@id/start"
-        app:duration="300"
         app:motionInterpolator="easeIn" />
 
     <ConstraintSet android:id="@+id/start">
@@ -28,8 +28,10 @@
             android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/placeDetailsToolbar"/>
+            app:layout_constraintTop_toBottomOf="@+id/placeDetailsToolbar" />
 
     </ConstraintSet>
+
+    <Transition />
 
 </MotionScene>
