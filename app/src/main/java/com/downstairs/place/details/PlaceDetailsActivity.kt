@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +13,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.downstairs.R
 import com.downstairs.databinding.PlaceDetailsActivityBinding
 import com.downstairs.functions.openSoftKeyBoard
+import com.downstairs.functions.setTransitionListener
+import com.google.android.material.textfield.TextInputLayout
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.place_details_activity.*
 import javax.inject.Inject
@@ -31,9 +34,9 @@ class PlaceDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bind()
 
+        setupActionBar()
         animateViewEntry()
         setDataObservers()
-        setupActionBar()
         setViewListeners()
     }
 
@@ -43,12 +46,8 @@ class PlaceDetailsActivity : AppCompatActivity() {
         binding.viewModel = viewModel
     }
 
-    private fun animateViewEntry() {
-        placeDetailsContainer.post {
-            placeDetailsContainer.transitionToEnd()
-        }
-
-    }
+    private fun bindLayout(layoutId: Int) =
+        DataBindingUtil.setContentView<PlaceDetailsActivityBinding>(this, layoutId)
 
     override fun onStart() {
         super.onStart()
@@ -68,23 +67,37 @@ class PlaceDetailsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setupViewState(item: MenuItem) {
-        val isReadOnly = item.isChecked
-        viewModel.changeViewState(PlaceDetailsViewModel.ViewState(isReadOnly))
-        item.isChecked = !isReadOnly
-    }
-
-    private fun bindLayout(layoutId: Int) =
-        DataBindingUtil.setContentView<PlaceDetailsActivityBinding>(this, layoutId)
-
     private fun setupActionBar() {
         setSupportActionBar(placeDetailsToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_left_arrow)
     }
 
+    private fun animateViewEntry() {
+        placeDetailsContainer.post {
+            setTransitionListener()
+            startTransition()
+        }
+    }
+
+    private fun setTransitionListener() {
+        placeDetailsContainer.setTransitionListener(onComplete = {
+            requestFocusToFirstEditText()
+        })
+    }
+
+    private fun startTransition() {
+        placeDetailsContainer.transitionToEnd()
+    }
+
+    private fun setupViewState(item: MenuItem) {
+        val isReadOnly = item.isChecked
+        viewModel.changeViewState(PlaceDetailsViewModel.ViewState(isReadOnly))
+        item.isChecked = !isReadOnly
+    }
+
     private fun setViewListeners() {
-        nameTxt.setOnFocusChangeListener { view, hasFocus ->
+        nameInput.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus) view.openSoftKeyBoard()
         }
     }
@@ -108,7 +121,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
     private fun viewToWriteMode() {
         isViewsEnabled(true)
         setMenuItemDrawable(R.drawable.ic_save)
-        nameTxt.requestFocus()
+        requestFocusToFirstEditText()
     }
 
     private fun viewToReadMode() {
@@ -116,8 +129,16 @@ class PlaceDetailsActivity : AppCompatActivity() {
         setMenuItemDrawable(R.drawable.ic_edit_pencil)
     }
 
+    private fun requestFocusToFirstEditText() {
+        nameInput.requestFocus()
+    }
+
     private fun isViewsEnabled(isEnabled: Boolean) {
-        //formContainer.children.forEach { it.isEnabled = isEnabled }
+        placeDetailsContainer.children.forEach {
+            if (it is TextInputLayout) {
+                it.isEnabled = isEnabled
+            }
+        }
     }
 
     private fun setMenuItemDrawable(drawableId: Int) {
