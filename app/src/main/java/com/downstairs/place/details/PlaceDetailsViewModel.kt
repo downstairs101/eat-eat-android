@@ -10,7 +10,8 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRepository) : ViewModel() {
+class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRepository) :
+    ViewModel() {
 
     private val _name = MutableLiveData<String>()
     private val _category = MutableLiveData<String>()
@@ -22,15 +23,15 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     val description: LiveData<String> = _description
     val viewState: LiveData<ViewState> = _viewState
 
-    fun fetchPlace(placeId: Int?) {
-        if (placeId == null) {
+    fun fetchPlace(placeId: Long) {
+        if (placeId <= 0) {
             toWriteState()
         } else {
             loadPlace(placeId)
         }
     }
 
-    private fun loadPlace(placeId: Int) {
+    private fun loadPlace(placeId: Long) {
         viewModelScope.launch {
             val place = repository.getPlace(placeId)
             place?.also { bindPlace(it) }

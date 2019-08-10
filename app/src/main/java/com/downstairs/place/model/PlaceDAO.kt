@@ -9,7 +9,7 @@ import androidx.room.Query
 interface PlaceDAO {
 
     @Query("SELECT * from Place where id=:placeId")
-    suspend fun findById(placeId: Int): Place?
+    suspend fun findById(placeId: Long): Place?
 
     @Query("SELECT * from Place")
     suspend fun findAll(): List<Place>

@@ -51,7 +51,9 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        fetchPlace(null)
+
+        val placeId = intent.getLongExtra("placeId", -1)
+        fetchPlace(placeId)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -114,7 +116,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchPlace(placeId: Int?) {
+    private fun fetchPlace(placeId: Long) {
         viewModel.fetchPlace(placeId)
     }
 
