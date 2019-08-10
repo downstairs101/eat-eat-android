@@ -136,9 +136,9 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun isViewsEnabled(isEnabled: Boolean) {
-        placeDetailsContainer.children.forEach {
-            if (it is TextInputLayout) {
-                it.isEnabled = isEnabled
+        placeDetailsContainer.children.forEach {view->
+            if (view is TextInputLayout) {
+                view.isEnabled = isEnabled
             }
         }
     }
