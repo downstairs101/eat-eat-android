@@ -1,17 +1,20 @@
 package com.downstairs.place.details
 
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.downstairs.R
 import com.downstairs.databinding.PlaceDetailsActivityBinding
+import com.downstairs.functions.bindLayout
 import com.downstairs.functions.openSoftKeyBoard
 import com.downstairs.functions.setTransitionListener
 import com.google.android.material.textfield.TextInputLayout
@@ -41,13 +44,10 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun bind() {
-        val binding = bindLayout(R.layout.place_details_activity)
+        val binding = bindLayout<PlaceDetailsActivityBinding>(this, R.layout.place_details_activity)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
     }
-
-    private fun bindLayout(layoutId: Int) =
-        DataBindingUtil.setContentView<PlaceDetailsActivityBinding>(this, layoutId)
 
     override fun onStart() {
         super.onStart()
@@ -136,7 +136,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun isViewsEnabled(isEnabled: Boolean) {
-        placeDetailsContainer.children.forEach {view->
+        placeDetailsContainer.children.forEach { view ->
             if (view is TextInputLayout) {
                 view.isEnabled = isEnabled
             }
