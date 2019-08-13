@@ -11,7 +11,7 @@ import com.downstairs.place.PlaceListItem
 class PlaceAdapter(private val itemLayout: Int, private val places: List<PlaceListItem>) :
     RecyclerView.Adapter<PlaceAdapter.PlaceListViewHolder>() {
 
-    private var onItemClick: (position: Int) -> Unit = {}
+    private var onItemClick: (item: PlaceListItem) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceListViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -26,7 +26,7 @@ class PlaceAdapter(private val itemLayout: Int, private val places: List<PlaceLi
         viewHolder.bind(places[position])
     }
 
-    fun setOnClickListener(onItemClick: (position: Int) -> Unit) {
+    fun setOnClickListener(onItemClick: (item: PlaceListItem) -> Unit) {
         this.onItemClick = onItemClick
     }
 
@@ -42,7 +42,7 @@ class PlaceAdapter(private val itemLayout: Int, private val places: List<PlaceLi
             placeDescription.text = placeListItem.description
 
             itemView.setOnClickListener {
-                onItemClick(adapterPosition)
+                onItemClick(places[adapterPosition])
             }
         }
     }

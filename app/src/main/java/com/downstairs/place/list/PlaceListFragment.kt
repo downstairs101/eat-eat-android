@@ -25,11 +25,9 @@ class PlaceListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val placeAdapter = PlaceAdapter(
             R.layout.place_list_item, listOf(
-                PlaceListItem("Example", "Some Category", "A very good place"),
+                PlaceListItem(0, "Example", "Some Category", "A very good place"),
                 PlaceListItem(
-                    "Second Example",
-                    "Some Category",
-                    "Another very good place"
+                    0, "Second Example", "Some Category", "Another very good place"
                 )
             )
         )

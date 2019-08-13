@@ -24,9 +24,9 @@ class PlacePageFragment : Fragment() {
 
     private fun setViewPagerItems() {
         placeViewPager.adapter = PlaceAdapter(R.layout.place_page_item, listOf(
-            PlaceListItem("Example", "Some Category", "A very good place"),
+            PlaceListItem(0, "Example", "Some Category", "A very good place"),
             PlaceListItem(
-                "Second Example",
+                0,"Second Example",
                 "Some Category",
                 "Another very good place"
             )
