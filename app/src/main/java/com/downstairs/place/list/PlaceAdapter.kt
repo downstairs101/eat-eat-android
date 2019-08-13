@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.downstairs.R
-import com.downstairs.place.PlaceListItem
 
 class PlaceAdapter(private val itemLayout: Int, private val places: List<PlaceListItem>) :
     RecyclerView.Adapter<PlaceAdapter.PlaceListViewHolder>() {

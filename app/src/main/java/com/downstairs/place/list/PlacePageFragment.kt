@@ -9,11 +9,14 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2.ORIENTATION_HORIZONTAL
 import com.downstairs.R
 import com.downstairs.functions.dipToPixels
-import com.downstairs.place.PlaceListItem
 import kotlinx.android.synthetic.main.place_page_fragment.*
 
 class PlacePageFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.place_page_fragment, container, false)
     }
 
@@ -23,14 +26,20 @@ class PlacePageFragment : Fragment() {
     }
 
     private fun setViewPagerItems() {
-        placeViewPager.adapter = PlaceAdapter(R.layout.place_page_item, listOf(
-            PlaceListItem(0, "Example", "Some Category", "A very good place"),
-            PlaceListItem(
-                0,"Second Example",
-                "Some Category",
-                "Another very good place"
+        placeViewPager.adapter = PlaceAdapter(
+            R.layout.place_page_item, listOf(
+                PlaceListItem(
+                    0,
+                    "Example",
+                    "Some Category",
+                    "A very good place"
+                ),
+                PlaceListItem(
+                    0, "Second Example",
+                    "Some Category",
+                    "Another very good place"
+                )
             )
-        )
         )
     }
 

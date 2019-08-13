@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
-import com.downstairs.place.PlaceListItem
 import com.downstairs.place.details.PlaceDetailsActivity
 import kotlinx.android.synthetic.main.place_list_fragment.*
 
@@ -25,7 +24,12 @@ class PlaceListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val placeAdapter = PlaceAdapter(
             R.layout.place_list_item, listOf(
-                PlaceListItem(0, "Example", "Some Category", "A very good place"),
+                PlaceListItem(
+                    0,
+                    "Example",
+                    "Some Category",
+                    "A very good place"
+                ),
                 PlaceListItem(
                     0, "Second Example", "Some Category", "Another very good place"
                 )

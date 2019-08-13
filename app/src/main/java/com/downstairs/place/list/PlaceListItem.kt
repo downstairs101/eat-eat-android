@@ -1,4 +1,4 @@
-package com.downstairs.place
+package com.downstairs.place.list
 
 data class PlaceListItem(
     val id: Int,
