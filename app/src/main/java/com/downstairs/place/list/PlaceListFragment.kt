@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
 import com.downstairs.place.details.PlaceDetailsActivity
 import com.downstairs.place.details.PlaceDetailsViewModel
+import com.downstairs.place.model.Place
 import kotlinx.android.synthetic.main.place_list_fragment.*
 import javax.inject.Inject
 
@@ -23,24 +24,17 @@ class PlaceListFragment : Fragment() {
         ViewModelProviders.of(this, factory).get(PlaceListVIewModel::class.java)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.place_list_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val placeAdapter = PlaceAdapter(
-            R.layout.place_list_item, listOf(
-                PlaceListItem(
-                    0,
-                    "Example",
-                    "Some Category",
-                    "A very good place"
-                ),
-                PlaceListItem(
-                    0, "Second Example", "Some Category", "Another very good place"
-                )
-            )
-        )
+        val placeList = mutableListOf<PlaceListItem>()
+        val placeAdapter = PlaceAdapter(R.layout.place_list_item, placeList.toList())
 
         placeAdapter.setOnClickListener {
             startActivity(Intent(context, PlaceDetailsActivity::class.java))

@@ -14,7 +14,7 @@ class PlaceListVIewModel @Inject constructor(private val repository: PlaceReposi
 
     private val _places = MutableLiveData<List<Place>>()
 
-    fun getPlaces(): LiveData<List<Place>> = _places
+    fun places(): LiveData<List<Place>> = _places
 
     fun loadPlaces() {
         viewModelScope.async {
