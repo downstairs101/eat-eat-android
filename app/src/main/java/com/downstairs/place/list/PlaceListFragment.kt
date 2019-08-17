@@ -1,5 +1,6 @@
 package com.downstairs.place.list
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,12 +13,12 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
 import com.downstairs.place.details.PlaceDetailsActivity
-import com.downstairs.place.details.PlaceDetailsViewModel
-import com.downstairs.place.model.Place
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.place_list_fragment.*
 import javax.inject.Inject
 
 class PlaceListFragment : Fragment() {
+
     @Inject
     lateinit var factory: ViewModelProvider.Factory
 
@@ -25,11 +26,12 @@ class PlaceListFragment : Fragment() {
         ViewModelProviders.of(this, factory).get(PlaceListVIewModel::class.java)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.place_list_fragment, container, false)
     }
 

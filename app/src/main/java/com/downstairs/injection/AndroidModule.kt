@@ -2,6 +2,7 @@ package com.downstairs.injection
 
 import com.downstairs.MainActivity
 import com.downstairs.place.details.PlaceDetailsActivity
+import com.downstairs.place.list.PlaceListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -13,4 +14,7 @@ abstract class AndroidModule {
 
     @ContributesAndroidInjector
     abstract fun injectPlaceDetailsActivity(): PlaceDetailsActivity
+
+    @ContributesAndroidInjector
+    abstract fun injectPlaceListFragment(): PlaceListFragment
 }

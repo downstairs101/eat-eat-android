@@ -3,6 +3,8 @@ package com.downstairs.injection
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.downstairs.place.details.PlaceDetailsViewModel
+import com.downstairs.place.list.PlaceListFragment
+import com.downstairs.place.list.PlaceListVIewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -28,11 +30,16 @@ abstract class ViewModelModule {
     @ViewModelKey(PlaceDetailsViewModel::class)
     internal abstract fun placeDetailsViewModel(viewModel: PlaceDetailsViewModel): ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(PlaceListVIewModel::class)
+    internal abstract fun placeListViewModel(viewModel: PlaceListVIewModel): ViewModel
 }
 
 @Singleton
 class ViewModelFactory @Inject constructor(private val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>>) :
-    ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T = viewModels[modelClass]?.get() as T
+        ViewModelProvider.Factory {
 
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T = viewModels[modelClass]?.get() as T
 }

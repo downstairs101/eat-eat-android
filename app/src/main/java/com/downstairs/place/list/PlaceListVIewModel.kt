@@ -11,11 +11,11 @@ import javax.inject.Inject
 class PlaceListVIewModel @Inject constructor(private val repository: PlaceRepository) :
     ViewModel() {
 
-    private val _places = MutableLiveData<List<PlaceListItem>>()
+    private val _places by lazy { MutableLiveData<List<PlaceListItem>>().also { loadPlaces() } }
 
     fun places(): LiveData<List<PlaceListItem>> = _places
 
-    fun loadPlaces() {
+    private fun loadPlaces() {
         viewModelScope.async {
             val places = repository.getAll()
 
