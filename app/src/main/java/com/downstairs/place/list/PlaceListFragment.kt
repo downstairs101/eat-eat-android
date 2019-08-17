@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,6 +36,12 @@ class PlaceListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val placeList = mutableListOf<PlaceListItem>()
         val placeAdapter = PlaceAdapter(R.layout.place_list_item, placeList.toList())
+
+        viewModel.places().observe(this, Observer {
+            placeList.clear()
+            placeList.addAll(it)
+            placeAdapter.notifyDataSetChanged()
+        })
 
         placeAdapter.setOnClickListener {
             startActivity(Intent(context, PlaceDetailsActivity::class.java))
