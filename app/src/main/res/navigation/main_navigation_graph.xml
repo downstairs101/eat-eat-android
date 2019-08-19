@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/placePageFragment"
         android:name="com.downstairs.place.list.PlacePageFragment"
-        android:label="place_page_fragment" >
+        android:label="place_page_fragment">
         <action
             android:id="@+id/actionPlacePageToPlaceListFragment"
             app:destination="@id/placeListFragment"
@@ -19,7 +19,7 @@
         android:id="@+id/placeListFragment"
         android:name="com.downstairs.place.list.PlaceListFragment"
         android:label="PlaceListFragment"
-        tools:layout="@layout/place_list_fragment" >
+        tools:layout="@layout/place_list_fragment">
         <action
             android:id="@+id/actionPlaceListToPlacePageFragment"
             app:destination="@id/placePageFragment"

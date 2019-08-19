@@ -1,6 +1,5 @@
 package com.downstairs.place.details
 
-
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -18,7 +17,6 @@ import com.google.android.material.textfield.TextInputLayout
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.place_details_activity.*
 import javax.inject.Inject
-
 
 class PlaceDetailsActivity : AppCompatActivity() {
 

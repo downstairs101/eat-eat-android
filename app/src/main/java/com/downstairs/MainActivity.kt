@@ -10,7 +10,6 @@ import com.downstairs.place.details.PlaceDetailsActivity
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.main_activity.*
 
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

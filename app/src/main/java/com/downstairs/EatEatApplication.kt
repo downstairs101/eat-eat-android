@@ -18,5 +18,4 @@ class EatEatApplication : Application(), HasAndroidInjector {
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
-
 }

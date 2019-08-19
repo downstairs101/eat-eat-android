@@ -12,6 +12,7 @@ import com.downstairs.functions.dipToPixels
 import kotlinx.android.synthetic.main.place_page_fragment.*
 
 class PlacePageFragment : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
