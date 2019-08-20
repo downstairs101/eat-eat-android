@@ -41,7 +41,7 @@ class PlaceListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val placeList = mutableListOf<PlaceListItem>()
-        val placeAdapter = PlaceAdapter(R.layout.place_list_item, placeList.toList())
+        val placeAdapter = PlaceAdapter(R.layout.place_list_item, placeList)
 
         viewModel.places().observe(this, Observer {
             placeList.clear()

@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.downstairs.place.model.Place
 import com.downstairs.place.model.PlaceRepository
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -42,12 +41,6 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
         _name.value = it.name
         _category.value = it.category
         _description.value = it.description
-    }
-
-    private fun insertPlace() {
-        viewModelScope.launch(IO) {
-            repository.insert()
-        }
     }
 
     fun changeViewState(viewState: ViewState) {

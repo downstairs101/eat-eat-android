@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.downstairs.R
 
-class PlaceAdapter(private val itemLayout: Int, private val places: List<PlaceListItem>) :
+class PlaceAdapter(private val itemLayout: Int, private val places: MutableList<PlaceListItem>) :
     RecyclerView.Adapter<PlaceAdapter.PlaceListViewHolder>() {
 
     private var onItemClick: (item: PlaceListItem) -> Unit = {}
