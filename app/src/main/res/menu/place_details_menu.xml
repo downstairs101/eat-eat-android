@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/editPlaceDetailsMenu"
+        android:id="@+id/placeDetailsMenu"
         android:icon="@drawable/ic_edit_pencil"
         android:title="@string/edit_place_menu_title"
         app:showAsAction="always">

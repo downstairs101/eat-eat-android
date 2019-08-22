@@ -13,6 +13,7 @@ import com.downstairs.databinding.PlaceDetailsActivityBinding
 import com.downstairs.functions.bindLayout
 import com.downstairs.functions.openSoftKeyBoard
 import com.downstairs.functions.setTransitionListener
+import com.downstairs.place.model.Place
 import com.google.android.material.textfield.TextInputLayout
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.place_details_activity.*
@@ -59,7 +60,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> this.onBackPressed()
-            R.id.editPlaceDetailsMenu -> setupViewState(item)
+            R.id.placeDetailsMenu -> setupViewState(item)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -89,7 +90,13 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     private fun setupViewState(item: MenuItem) {
         val isReadOnly = item.isChecked
-        viewModel.changeViewState(PlaceDetailsViewModel.ViewState(isReadOnly))
+
+        if(isReadOnly){
+            viewModel.viewToWriteState()
+        }else{
+            viewModel.savePlace(Place(name="Example", category = "Category", description = "Treta"))
+        }
+
         item.isChecked = !isReadOnly
     }
 
@@ -140,7 +147,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     private fun setMenuItemDrawable(drawableId: Int) {
         placeDetailsToolbar.post {
-            val menuItem = placeDetailsToolbar.menu.findItem(R.id.editPlaceDetailsMenu)
+            val menuItem = placeDetailsToolbar.menu.findItem(R.id.placeDetailsMenu)
             menuItem?.icon = getDrawable(drawableId)
         }
     }

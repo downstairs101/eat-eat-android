@@ -24,7 +24,7 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
 
     fun fetchPlace(placeId: Long) {
         if (placeId <= 0) {
-            toWriteState()
+            viewToWriteState()
         } else {
             loadPlace(placeId)
         }
@@ -43,21 +43,20 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
         _description.value = it.description
     }
 
-    fun changeViewState(viewState: ViewState) {
-        if (viewState.isInWriteMode) {
-            //savePlace
-            toReadState()
-        } else {
-            toWriteState()
+    fun savePlace(place: Place) {
+        viewModelScope.launch {
+            repository.insert(place)
+
+            toReadOnlyState()
         }
     }
 
-    private fun toWriteState() {
-        _viewState.postValue(ViewState(false))
+    private fun toReadOnlyState() {
+        _viewState.postValue(ViewState(true))
     }
 
-    private fun toReadState() {
-        _viewState.postValue(ViewState(true))
+    fun viewToWriteState() {
+        _viewState.postValue(ViewState(false))
     }
 
     class ViewState(isReadOnly: Boolean) {
