@@ -15,6 +15,10 @@ class PlaceListVIewModel @Inject constructor(private val repository: PlaceReposi
 
     fun places(): LiveData<List<PlaceListItem>> = _places
 
+    fun updatePlaceList() {
+        loadPlaces()
+    }
+
     private fun loadPlaces() {
         viewModelScope.launch {
             val places = repository.getAll()

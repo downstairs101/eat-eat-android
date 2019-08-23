@@ -56,4 +56,9 @@ class PlaceListFragment : Fragment() {
         placeListRecyclerView.layoutManager = LinearLayoutManager(context)
         placeListRecyclerView.adapter = placeAdapter
     }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.updatePlaceList()
+    }
 }
