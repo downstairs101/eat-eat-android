@@ -91,10 +91,16 @@ class PlaceDetailsActivity : AppCompatActivity() {
     private fun setupViewState(item: MenuItem) {
         val isReadOnly = item.isChecked
 
-        if(isReadOnly){
+        if (isReadOnly) {
             viewModel.viewToWriteState()
-        }else{
-            viewModel.savePlace(Place(name="Example", category = "Category", description = "Treta"))
+        } else {
+            viewModel.savePlace(
+                Place(
+                    name = nameInput.text.toString(),
+                    category = categoryInput.text.toString()
+                    , description = descriptionInput.text.toString()
+                )
+            )
         }
 
         item.isChecked = !isReadOnly

@@ -67,7 +67,7 @@
             app:layout_constraintTop_toBottomOf="@+id/nameTextInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/categoryTxt"
+                android:id="@+id/categoryInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.category}"
@@ -85,7 +85,7 @@
             app:layout_constraintTop_toBottomOf="@+id/categoryInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/descriptionTxt"
+                android:id="@+id/descriptionInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Description"
