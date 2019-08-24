@@ -97,8 +97,8 @@ class PlaceDetailsActivity : AppCompatActivity() {
             viewModel.savePlace(
                 Place(
                     name = nameInput.text.toString(),
-                    category = categoryInput.text.toString()
-                    , description = descriptionInput.text.toString()
+                    category = categoryInput.text.toString(),
+                    description = descriptionInput.text.toString()
                 )
             )
         }
