@@ -49,12 +49,17 @@ class PlaceListFragment : Fragment() {
             placeAdapter.notifyDataSetChanged()
         })
 
-        placeAdapter.setOnClickListener {
-            startActivity(Intent(context, PlaceDetailsActivity::class.java))
-        }
+        placeAdapter.setOnClickListener { editPlace(it.id) }
 
         placeListRecyclerView.layoutManager = LinearLayoutManager(context)
         placeListRecyclerView.adapter = placeAdapter
+    }
+
+    private fun editPlace(placeId: Long) {
+        val intent = Intent(context, PlaceDetailsActivity::class.java)
+        intent.putExtra("placeId", placeId)
+
+        startActivity(intent)
     }
 
     override fun onResume() {
