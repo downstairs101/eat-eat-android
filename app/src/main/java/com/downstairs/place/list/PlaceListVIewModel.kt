@@ -23,8 +23,8 @@ class PlaceListVIewModel @Inject constructor(private val repository: PlaceReposi
         viewModelScope.launch {
             val places = repository.getAll()
 
-            val placeListItems = places.map {
-                PlaceListItem(it.id, it.name, it.category, it.description)
+            val placeListItems = places.map { place ->
+                PlaceListItem(place.id!!, place.name, place.category, place.description)
             }
 
             _places.postValue(placeListItems)

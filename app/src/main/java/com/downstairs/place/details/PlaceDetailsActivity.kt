@@ -13,7 +13,6 @@ import com.downstairs.databinding.PlaceDetailsActivityBinding
 import com.downstairs.functions.bindLayout
 import com.downstairs.functions.openSoftKeyBoard
 import com.downstairs.functions.setTransitionListener
-import com.downstairs.place.model.Place
 import com.google.android.material.textfield.TextInputLayout
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.place_details_activity.*
@@ -95,10 +94,10 @@ class PlaceDetailsActivity : AppCompatActivity() {
             viewModel.viewToWriteState()
         } else {
             viewModel.savePlace(
-                Place(
-                    name = nameInput.text.toString(),
-                    category = categoryInput.text.toString(),
-                    description = descriptionInput.text.toString()
+                PlaceDetailsData(
+                    _name = nameInput.text.toString(),
+                    _category = categoryInput.text.toString(),
+                    _description = descriptionInput.text.toString()
                 )
             )
         }

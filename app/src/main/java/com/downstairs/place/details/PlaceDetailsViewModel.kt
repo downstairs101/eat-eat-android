@@ -1,6 +1,5 @@
 package com.downstairs.place.details
 
-import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,17 +37,24 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
         _placeDetailsData.postValue(
             PlaceDetailsData(
                 place.id,
-                ObservableField(place.name),
-                ObservableField(place.category),
-                ObservableField(place.description)
+                place.name,
+                place.category,
+                place.description
             )
         )
     }
 
-    fun savePlace(place: Place) {
+    fun savePlace(placeDetailsData: PlaceDetailsData) {
         viewModelScope.launch {
-            repository.insert(place)
 
+            val place = Place(
+                _placeDetailsData.value?.id,
+                placeDetailsData.name,
+                placeDetailsData.category,
+                placeDetailsData.description
+            )
+
+            repository.insert(place)
             toReadOnlyState()
         }
     }
