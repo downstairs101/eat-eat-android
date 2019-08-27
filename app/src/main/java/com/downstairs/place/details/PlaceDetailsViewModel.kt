@@ -1,5 +1,6 @@
 package com.downstairs.place.details
 
+import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,15 +13,10 @@ import javax.inject.Inject
 class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRepository) :
     ViewModel() {
 
-    private val place
-    private val _name = MutableLiveData<String>()
-    private val _category = MutableLiveData<String>()
-    private val _description = MutableLiveData<String>()
+    private val _placeDetailsData = MutableLiveData<PlaceDetailsData>()
     private val _viewState = MutableLiveData<ViewState>()
 
-    val name: LiveData<String> = _name
-    val category: LiveData<String> = _category
-    val description: LiveData<String> = _description
+    val placeDetailsData: LiveData<PlaceDetailsData> = _placeDetailsData
     val viewState: LiveData<ViewState> = _viewState
 
     fun fetchPlace(placeId: Long) {
@@ -39,14 +35,18 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     }
 
     private fun bindPlace(place: Place) {
-        _name.value = place.name
-        _category.value = place.category
-        _description.value = place.description
+        _placeDetailsData.postValue(
+            PlaceDetailsData(
+                place.id,
+                ObservableField(place.name),
+                ObservableField(place.category),
+                ObservableField(place.description)
+            )
+        )
     }
 
     fun savePlace(place: Place) {
         viewModelScope.launch {
-            if
             repository.insert(place)
 
             toReadOnlyState()
