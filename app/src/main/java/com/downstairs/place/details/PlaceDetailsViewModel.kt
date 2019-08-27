@@ -12,6 +12,7 @@ import javax.inject.Inject
 class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRepository) :
     ViewModel() {
 
+    private val place
     private val _name = MutableLiveData<String>()
     private val _category = MutableLiveData<String>()
     private val _description = MutableLiveData<String>()
@@ -37,14 +38,15 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
         }
     }
 
-    private fun bindPlace(it: Place) {
-        _name.value = it.name
-        _category.value = it.category
-        _description.value = it.description
+    private fun bindPlace(place: Place) {
+        _name.value = place.name
+        _category.value = place.category
+        _description.value = place.description
     }
 
     fun savePlace(place: Place) {
         viewModelScope.launch {
+            if
             repository.insert(place)
 
             toReadOnlyState()
