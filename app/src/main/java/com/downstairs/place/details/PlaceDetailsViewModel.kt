@@ -19,7 +19,7 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     val viewState: LiveData<ViewState> = _viewState
 
     fun fetchPlace(placeId: Long) {
-        if (placeId <= 0) {
+        if (placeId < 0) {
             viewToWriteState()
         } else {
             loadPlace(placeId)

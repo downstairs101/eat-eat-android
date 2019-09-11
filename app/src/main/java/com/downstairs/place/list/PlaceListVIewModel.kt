@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.downstairs.place.model.PlaceRepository
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class PlaceListVIewModel @Inject constructor(private val repository: PlaceRepository) :
@@ -21,7 +23,7 @@ class PlaceListVIewModel @Inject constructor(private val repository: PlaceReposi
 
     private fun loadPlaces() {
         viewModelScope.launch {
-            val places = repository.getAll()
+            val places = withContext(coroutineContext) { repository.getAll() }
 
             val placeListItems = places.map { place ->
                 PlaceListItem(place.id!!, place.name, place.category, place.description)
@@ -30,5 +32,4 @@ class PlaceListVIewModel @Inject constructor(private val repository: PlaceReposi
             _places.postValue(placeListItems)
         }
     }
-
 }

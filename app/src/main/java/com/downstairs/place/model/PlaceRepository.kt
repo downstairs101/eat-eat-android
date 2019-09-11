@@ -4,11 +4,11 @@ import javax.inject.Inject
 
 class PlaceRepository @Inject constructor(private val placeDAO: PlaceDAO) {
 
-    suspend fun getPlace(placeId: Long) = placeDAO.findById(placeId)
+    fun getPlace(placeId: Long) = placeDAO.findById(placeId)
 
-    suspend fun getAll() = placeDAO.findAll()
+    fun getAll() = placeDAO.findAll()
 
-    suspend fun insert(place: Place) {
+    fun insert(place: Place) {
         placeDAO.insertPlace(place)
     }
 
