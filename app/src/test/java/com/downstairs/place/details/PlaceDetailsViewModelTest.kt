@@ -36,15 +36,19 @@ class PlaceDetailsViewModelTest {
 
     @Test
     internal fun `set view to write mode when place id is minor than zero`() {
-        val function = mockk<(state: PlaceDetailsViewModel.ViewState) -> Unit>(relaxed = true)
+        val viewStateBlock = mockBlockObserver<PlaceDetailsViewModel.ViewState>()
         viewModel.fetchPlace(-1)
 
-        viewModel.viewState.observeForever(function)
+        viewModel.viewState.observeForever(viewStateBlock)
 
         verify {
-            function.invoke(withArg {
-                assertThat(it.isInWriteMode).isTrue()
-            })
+            viewStateBlock.invoke(
+                withArg {
+                    assertThat(it.isInWriteMode).isTrue()
+                })
         }
     }
+
+    private fun <T> mockBlockObserver() =
+        mockk<(arg: T) -> Unit>(relaxed = true)
 }
