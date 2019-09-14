@@ -2,11 +2,8 @@ package com.downstairs.place.details
 
 import com.downstairs.InstantTaskExtension
 import com.downstairs.place.model.PlaceRepository
-import io.mockk.MockKAnnotations
-import io.mockk.coVerify
+import io.mockk.*
 import io.mockk.impl.annotations.RelaxedMockK
-import io.mockk.mockk
-import io.mockk.verify
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -36,19 +33,20 @@ class PlaceDetailsViewModelTest {
 
     @Test
     internal fun `set view to write mode when place id is minor than zero`() {
-        val viewStateBlock = mockBlockObserver<PlaceDetailsViewModel.ViewState>()
+        val viewStateFunction = mockObserverFunction<PlaceDetailsViewModel.ViewState>()
+
         viewModel.fetchPlace(-1)
 
-        viewModel.viewState.observeForever(viewStateBlock)
+        viewModel.viewState.observeForever(viewStateFunction)
 
         verify {
-            viewStateBlock.invoke(
+            viewStateFunction.invoke(
                 withArg {
                     assertThat(it.isInWriteMode).isTrue()
                 })
         }
     }
 
-    private fun <T> mockBlockObserver() =
+    private fun <T> mockObserverFunction() =
         mockk<(arg: T) -> Unit>(relaxed = true)
 }
