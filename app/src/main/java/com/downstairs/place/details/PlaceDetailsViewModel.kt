@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.downstairs.place.model.Place
 import com.downstairs.place.model.PlaceRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -45,7 +46,7 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     }
 
     fun savePlace(placeDetailsData: PlaceDetailsData) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
 
             val place = Place(
                 _placeDetailsData.value?.id,
