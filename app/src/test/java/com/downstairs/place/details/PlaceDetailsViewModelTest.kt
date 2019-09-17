@@ -89,14 +89,12 @@ class PlaceDetailsViewModelTest {
     }
 
     private fun placeDetailsData() =
-        PlaceDetailsData(
-            0, "Place Test", "Category Test", "Some Description"
-        )
+        PlaceDetailsData(0, "Place Test", "Category Test", "Some Description")
 
     private fun getPlace() =
         Place(name = "Place Test", category = "Category Test", description = "Some Description")
-}
 
-private fun <T> mockObserverFunction() =
-    mockk<(arg: T) -> Unit>(relaxed = true)
+
+    private fun <T> mockObserverFunction() =
+        mockk<(arg: T) -> Unit>(relaxed = true)
 }
