@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class Place(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo var id: Long?,
+    @ColumnInfo var id: Long? = null,
     @ColumnInfo val name: String,
     @ColumnInfo val category: String,
     @ColumnInfo val description: String
