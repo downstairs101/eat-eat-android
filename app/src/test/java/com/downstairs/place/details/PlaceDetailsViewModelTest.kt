@@ -39,6 +39,21 @@ class PlaceDetailsViewModelTest {
         }
 
         @Test
+        internal fun `changes view to read only state on fetch place`() {
+            val viewStateFunction = mockObserverFunction<PlaceDetailsViewModel.ViewState>()
+
+            viewModel.fetchPlace(0)
+
+            viewModel.viewState.observeForever(viewStateFunction)
+
+            verify {
+                viewStateFunction.invoke(
+                    withArg { assertThat(it.isInWriteMode).isFalse() }
+                )
+            }
+        }
+
+        @Test
         internal fun `set view to write mode when place id is minor than zero`() {
             val viewStateFunction = mockObserverFunction<PlaceDetailsViewModel.ViewState>()
 
@@ -48,9 +63,8 @@ class PlaceDetailsViewModelTest {
 
             verify {
                 viewStateFunction.invoke(
-                    withArg {
-                        assertThat(it.isInWriteMode).isTrue()
-                    })
+                    withArg { assertThat(it.isInWriteMode).isTrue() }
+                )
             }
         }
     }
@@ -67,19 +81,22 @@ class PlaceDetailsViewModelTest {
 
             verify {
                 placeRepository.insert(
-                    Place(
-                        name = "Place Test",
-                        category = "Category Test",
-                        description = "Some Description"
-                    )
+                    getPlace()
                 )
             }
         }
 
-        private fun placeDetailsData() =
-            PlaceDetailsData(0, "Place Test", "Category Test", "Some Description")
     }
 
-    private fun <T> mockObserverFunction() =
-        mockk<(arg: T) -> Unit>(relaxed = true)
+    private fun placeDetailsData() =
+        PlaceDetailsData(
+            0, "Place Test", "Category Test", "Some Description"
+        )
+
+    private fun getPlace() =
+        Place(name = "Place Test", category = "Category Test", description = "Some Description")
+}
+
+private fun <T> mockObserverFunction() =
+    mockk<(arg: T) -> Unit>(relaxed = true)
 }

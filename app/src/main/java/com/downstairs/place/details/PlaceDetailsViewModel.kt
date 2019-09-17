@@ -28,7 +28,8 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     }
 
     private fun loadPlace(placeId: Long) {
-        viewModelScope.launch {
+        toReadOnlyState()
+        viewModelScope.launch(Dispatchers.IO) {
             val place = repository.getPlace(placeId)
             place?.also { bindPlace(it) }
         }
