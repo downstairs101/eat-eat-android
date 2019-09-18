@@ -52,6 +52,11 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.24'
     implementation 'com.google.dagger:dagger-android:2.24'
     implementation 'com.google.dagger:dagger-android-support:2.24'
+    def paging_version = "2.1.0"
+
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    testImplementation "androidx.paging:paging-common-ktx:$paging_version"
+
     kapt 'com.google.dagger:dagger-compiler:2.24'
     kapt 'com.google.dagger:dagger-android-processor:2.24'
     kaptTest 'com.google.dagger:dagger-compiler:2.24'
