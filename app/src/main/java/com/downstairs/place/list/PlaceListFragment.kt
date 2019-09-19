@@ -40,12 +40,9 @@ class PlaceListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val placeList = mutableListOf<PlaceListItem>()
-        val placeAdapter = PlaceAdapter(R.layout.place_list_item, placeList)
+        val placeAdapter = PlaceAdapter(R.layout.place_list_item)
 
         viewModel.places().observe(this, Observer {
-            placeList.clear()
-            placeList.addAll(it)
             placeAdapter.notifyDataSetChanged()
         })
 
