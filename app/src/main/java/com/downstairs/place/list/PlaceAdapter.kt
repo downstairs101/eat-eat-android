@@ -4,11 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.downstairs.R
 
 class PlaceAdapter(private val itemLayout: Int, private val places: MutableList<PlaceListItem>) :
-    RecyclerView.Adapter<PlaceAdapter.PlaceListViewHolder>() {
+    ListAdapter<PlaceListItem, PlaceAdapter.PlaceListViewHolder>(DIFF_CALLBACK) {
 
     private var onItemClick: (item: PlaceListItem) -> Unit = {}
 
@@ -45,5 +48,14 @@ class PlaceAdapter(private val itemLayout: Int, private val places: MutableList<
             }
         }
     }
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<PlaceListItem>() {
+            override fun areItemsTheSame(oldItem: PlaceListItem, newItem: PlaceListItem) = true
+
+            override fun areContentsTheSame(oldItem: PlaceListItem, newItem: PlaceListItem) = true
+        }
+    }
+
 }
 
