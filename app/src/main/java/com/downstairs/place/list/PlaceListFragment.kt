@@ -6,9 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.LayoutRes
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +15,7 @@ import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.place_list_fragment.*
 import javax.inject.Inject
 
-class PlaceListFragment : Fragment() {
+class PlaceListFragment : PlaceListBaseFragment() {
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
@@ -36,26 +33,17 @@ class PlaceListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.place_list_fragment, container, false)
-    }
+    ): View = inflater.inflate(R.layout.place_list_fragment, container, false)
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val placeAdapter = prepareListAdapter(R.layout.place_list_item)
+        val placeAdapter = prepareListAdapter(viewModel, R.layout.place_list_item)
 
         placeListRecyclerView.layoutManager = LinearLayoutManager(context)
         placeListRecyclerView.adapter = placeAdapter
     }
 
-    private fun prepareListAdapter(@LayoutRes layoutId: Int) = PlaceAdapter(layoutId).apply {
-        viewModel.places().observe(this@PlaceListFragment,
-            Observer { placeList -> submitList(placeList) }
-        )
-
-        setOnClickListener { editPlace(it.id) }
-    }
-
-    private fun editPlace(placeId: Long) {
+    override fun editPlace(placeId: Long) {
         val intent = Intent(context, PlaceDetailsActivity::class.java)
         intent.putExtra("placeId", placeId)
 
