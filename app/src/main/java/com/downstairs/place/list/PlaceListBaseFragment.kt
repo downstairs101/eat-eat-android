@@ -17,7 +17,9 @@ abstract class PlaceListBaseFragment : Fragment() {
 
     internal fun prepareListAdapter(@LayoutRes layoutId: Int) =
         PlaceAdapter(layoutId).apply {
+
             viewModel.places().observe(this@PlaceListBaseFragment,
+
                 Observer { placeList -> submitList(placeList) }
             )
 
