@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -40,13 +41,13 @@ class PlaceListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val placeAdapter = prepareListAdapter()
+        val placeAdapter = prepareListAdapter(R.layout.place_list_item)
 
         placeListRecyclerView.layoutManager = LinearLayoutManager(context)
         placeListRecyclerView.adapter = placeAdapter
     }
 
-    private fun prepareListAdapter() = PlaceAdapter(R.layout.place_list_item).apply {
+    private fun prepareListAdapter(@LayoutRes layoutId: Int) = PlaceAdapter(layoutId).apply {
         viewModel.places().observe(this@PlaceListFragment,
             Observer { placeList -> submitList(placeList) }
         )
