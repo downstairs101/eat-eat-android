@@ -4,16 +4,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.downstairs.R
 
-class PlaceAdapter(private val itemLayout: Int, private val places: MutableList<PlaceListItem>) :
+class PlaceAdapter(private val itemLayout: Int) :
     ListAdapter<PlaceListItem, PlaceAdapter.PlaceListViewHolder>(DIFF_CALLBACK) {
 
     private var onItemClick: (item: PlaceListItem) -> Unit = {}
+
+    fun setOnClickListener(onItemClick: (item: PlaceListItem) -> Unit) {
+        this.onItemClick = onItemClick
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceListViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -22,14 +25,8 @@ class PlaceAdapter(private val itemLayout: Int, private val places: MutableList<
         return PlaceListViewHolder(view)
     }
 
-    override fun getItemCount() = places.size
-
     override fun onBindViewHolder(viewHolder: PlaceListViewHolder, position: Int) {
-        viewHolder.bind(places[position])
-    }
-
-    fun setOnClickListener(onItemClick: (item: PlaceListItem) -> Unit) {
-        this.onItemClick = onItemClick
+        viewHolder.bind(getItem(position))
     }
 
     inner class PlaceListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -44,7 +41,7 @@ class PlaceAdapter(private val itemLayout: Int, private val places: MutableList<
             placeDescription.text = placeListItem.description
 
             itemView.setOnClickListener {
-                onItemClick(places[adapterPosition])
+                onItemClick(getItem(adapterPosition))
             }
         }
     }
