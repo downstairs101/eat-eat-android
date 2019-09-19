@@ -40,16 +40,18 @@ class PlaceListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val placeAdapter = PlaceAdapter(R.layout.place_list_item)
-
-        viewModel.places().observe(this, Observer {
-            placeAdapter.notifyDataSetChanged()
-        })
-
-        placeAdapter.setOnClickListener { editPlace(it.id) }
+        val placeAdapter = prepareListAdapter()
 
         placeListRecyclerView.layoutManager = LinearLayoutManager(context)
         placeListRecyclerView.adapter = placeAdapter
+    }
+
+    private fun prepareListAdapter() = PlaceAdapter(R.layout.place_list_item).apply {
+        viewModel.places().observe(this@PlaceListFragment,
+            Observer { placeList -> submitList(placeList) }
+        )
+
+        setOnClickListener { editPlace(it.id) }
     }
 
     private fun editPlace(placeId: Long) {
