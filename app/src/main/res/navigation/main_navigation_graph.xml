@@ -14,6 +14,9 @@
             app:destination="@id/placeListFragment"
             app:launchSingleTop="true"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/actionPlaceListToPlaceDetails"
+            app:destination="@id/placeDetailsActivity" />
     </fragment>
     <fragment
         android:id="@+id/placeListFragment"
@@ -29,4 +32,13 @@
             app:popUpTo="@+id/placePageFragment"
             app:popUpToInclusive="false" />
     </fragment>
+    <activity
+        android:id="@+id/placeDetailsActivity"
+        android:name="com.downstairs.place.details.PlaceDetailsActivity"
+        android:label="place_details_activity"
+        tools:layout="@layout/place_details_activity" >
+        <argument
+            android:name="placeId"
+            app:argType="long" />
+    </activity>
 </navigation>
