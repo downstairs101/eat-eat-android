@@ -8,6 +8,7 @@ import androidx.core.view.children
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.navArgs
 import com.downstairs.R
 import com.downstairs.databinding.PlaceDetailsActivityBinding
 import com.downstairs.functions.bindLayout
@@ -26,6 +27,8 @@ class PlaceDetailsActivity : AppCompatActivity() {
     private val viewModel by lazy {
         ViewModelProviders.of(this, factory).get(PlaceDetailsViewModel::class.java)
     }
+
+    private val args: PlaceDetailsActivityArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -46,9 +49,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
-        val placeId = intent.getLongExtra("placeId", -1)
-        fetchPlace(placeId)
+        fetchPlace(args.placeId)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

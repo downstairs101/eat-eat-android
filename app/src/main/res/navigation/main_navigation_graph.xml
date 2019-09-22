@@ -5,12 +5,12 @@
     android:id="@+id/main_navigation_graph"
     app:startDestination="@id/placePageFragment">
     <action
-        android:id="@+id/navigateToPlaceDetails"
+        android:id="@+id/actionOpenPlaceDetails"
         app:destination="@id/placeDetailsActivity"
         app:launchSingleTop="true">
         <argument
             android:name="placeId"
-            app:argType="Long" />
+            android:defaultValue="-1L" />
     </action>
     <fragment
         android:id="@+id/placePageFragment"
@@ -39,7 +39,7 @@
     <activity
         android:id="@+id/placeDetailsActivity"
         android:name="com.downstairs.place.details.PlaceDetailsActivity"
-        android:label="place_details_activity"
+        android:label="Place Details"
         tools:layout="@layout/place_details_activity">
         <argument
             android:name="placeId"

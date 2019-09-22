@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import com.downstairs.place.details.PlaceDetailsActivityDirections
 import javax.inject.Inject
 
 abstract class PlaceListBaseFragment : Fragment() {
@@ -20,12 +22,14 @@ abstract class PlaceListBaseFragment : Fragment() {
         PlaceAdapter(layoutId).apply {
 
             viewModel.places().observe(this@PlaceListBaseFragment,
-
                 Observer { placeList -> submitList(placeList) }
             )
 
             setOnClickListener { editPlace(it.id) }
         }
 
-    internal abstract fun editPlace(placeId: Long)
+    private fun editPlace(placeId: Long) {
+        val direction = PlaceDetailsActivityDirections.actionOpenPlaceDetails(placeId)
+        findNavController().navigate(direction)
+    }
 }

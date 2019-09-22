@@ -45,8 +45,4 @@ class PlacePageFragment : PlaceListBaseFragment() {
         val marginInPixel = context?.dipToPixels(20f) ?: 0
         placeViewPager.setPageTransformer(MarginPageTransformer(marginInPixel))
     }
-
-    override fun editPlace(placeId: Long) {
-        startActivity(Intent(context, PlaceDetailsActivity::class.java))
-    }
 }
