@@ -4,7 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation_graph"
     app:startDestination="@id/placePageFragment">
-
+    <action
+        android:id="@+id/navigateToPlaceDetails"
+        app:destination="@id/placeDetailsActivity"
+        app:launchSingleTop="true">
+        <argument
+            android:name="placeId"
+            app:argType="Long" />
+    </action>
     <fragment
         android:id="@+id/placePageFragment"
         android:name="com.downstairs.place.list.PlacePageFragment"
@@ -14,9 +21,6 @@
             app:destination="@id/placeListFragment"
             app:launchSingleTop="true"
             app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/actionPlaceListToPlaceDetails"
-            app:destination="@id/placeDetailsActivity" />
     </fragment>
     <fragment
         android:id="@+id/placeListFragment"
@@ -36,7 +40,7 @@
         android:id="@+id/placeDetailsActivity"
         android:name="com.downstairs.place.details.PlaceDetailsActivity"
         android:label="place_details_activity"
-        tools:layout="@layout/place_details_activity" >
+        tools:layout="@layout/place_details_activity">
         <argument
             android:name="placeId"
             app:argType="long" />
