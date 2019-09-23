@@ -1,7 +1,6 @@
 package com.downstairs.place.list
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +8,7 @@ import android.view.ViewGroup
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2.ORIENTATION_HORIZONTAL
 import com.downstairs.R
-import com.downstairs.databinding.PlaceDetailsActivityBinding
 import com.downstairs.functions.dipToPixels
-import com.downstairs.place.details.PlaceDetailsActivity
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.place_page_fragment.*
 

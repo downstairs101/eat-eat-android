@@ -28,7 +28,7 @@ class PlaceDetailsViewModelTest {
     }
 
     @Nested
-    @DisplayName(value = "On fetch user")
+    @DisplayName(value = "On fetch place")
     inner class FetchUserTests {
 
         @Test
