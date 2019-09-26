@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val navController = findNavController(R.id.mainFragmentContainer)
+        val navController = getNavController()
 
         placeListToolbar.setOnMenuItemClickListener {
             if (it.isChecked) {
@@ -40,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun getNavController() = findNavController(R.id.mainFragmentContainer)
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.place_list_visualization_menu, menu)
         return super.onCreateOptionsMenu(menu)
@@ -47,7 +49,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setListeners() {
         addPlaceButton.setOnClickListener {
-            startActivity(Intent(this, PlaceDetailsActivity::class.java))
+            getNavController().navigate(
+                MainNavigationGraphDirections.actionOpenPlaceDetails()
+            )
         }
     }
 }
