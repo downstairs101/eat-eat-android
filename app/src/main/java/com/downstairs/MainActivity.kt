@@ -1,12 +1,10 @@
 package com.downstairs
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
-import com.downstairs.place.details.PlaceDetailsActivity
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.main_activity.*
 
