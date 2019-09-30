@@ -130,13 +130,13 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     private fun viewToWriteMode() {
         isViewsEnabled(true)
-        setMenuItemDrawable(R.drawable.ic_save)
+        setupMenuItem(R.drawable.ic_save, false)
         requestFocusToFirstEditText()
     }
 
     private fun viewToReadMode() {
         isViewsEnabled(false)
-        setMenuItemDrawable(R.drawable.ic_edit_pencil)
+        setupMenuItem(R.drawable.ic_edit_pencil, true)
     }
 
     private fun requestFocusToFirstEditText() {
@@ -151,10 +151,11 @@ class PlaceDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun setMenuItemDrawable(drawableId: Int) {
+    private fun setupMenuItem(drawableId: Int, isChecked: Boolean) {
         placeDetailsToolbar.post {
             val menuItem = placeDetailsToolbar.menu.findItem(R.id.placeDetailsMenu)
             menuItem?.icon = getDrawable(drawableId)
+            menuItem?.isChecked = isChecked
         }
     }
 }
