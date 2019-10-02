@@ -48,7 +48,7 @@ class PlaceDetailsViewModelTest {
 
             verify {
                 viewStateFunction.invoke(
-                    withArg { assertThat(it.isInWriteMode).isFalse() }
+                    withArg { assertThat(it).isEqualTo(PlaceDetailsViewModel.ViewState.READONLY_STATE) }
                 )
             }
         }
@@ -63,7 +63,7 @@ class PlaceDetailsViewModelTest {
 
             verify {
                 viewStateFunction.invoke(
-                    withArg { assertThat(it.isInWriteMode).isTrue() }
+                    withArg { assertThat(it).isEqualTo(PlaceDetailsViewModel.ViewState.WRITE_STATE) }
                 )
             }
         }

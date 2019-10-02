@@ -62,14 +62,15 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     }
 
     private fun toReadOnlyState() {
-        _viewState.postValue(ViewState(true))
+        _viewState.postValue(ViewState.READONLY_STATE)
     }
 
     fun viewToWriteState() {
-        _viewState.postValue(ViewState(false))
+        _viewState.postValue(ViewState.WRITE_STATE)
     }
 
-    class ViewState(isReadOnly: Boolean) {
-        val isInWriteMode = !isReadOnly
+    enum class ViewState {
+        WRITE_STATE,
+        READONLY_STATE
     }
 }

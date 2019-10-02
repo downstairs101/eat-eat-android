@@ -117,10 +117,10 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     private fun viewStateChanged(viewState: PlaceDetailsViewModel.ViewState) {
-        if (viewState.isInWriteMode) {
-            viewToWriteMode()
-        } else {
-            viewToReadMode()
+        when (viewState) {
+            PlaceDetailsViewModel.ViewState.WRITE_STATE -> viewToWriteMode()
+
+            PlaceDetailsViewModel.ViewState.READONLY_STATE -> viewToReadMode()
         }
     }
 
