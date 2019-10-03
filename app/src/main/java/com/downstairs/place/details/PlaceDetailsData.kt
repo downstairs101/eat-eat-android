@@ -4,7 +4,7 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 
 class PlaceDetailsData(
-    _id: Long? = -1,
+    _id: String? = "",
     _name: String,
     _category: String,
     _description: String

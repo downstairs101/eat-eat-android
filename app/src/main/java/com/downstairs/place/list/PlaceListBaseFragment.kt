@@ -28,8 +28,8 @@ abstract class PlaceListBaseFragment : Fragment() {
             setOnClickListener { editPlace(it.id) }
         }
 
-    private fun editPlace(placeId: Long) {
-        val direction = PlaceDetailsActivityDirections.actionOpenPlaceDetails(placeId)
+    private fun editPlace(placeId: String) {
+        val direction = PlaceDetailsActivityDirections.navigateToPlaceDetailsActivity(placeId)
         findNavController().navigate(direction)
     }
 }

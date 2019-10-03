@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.downstairs.place.data.Place
+import com.downstairs.place.data.PlaceEntity
 import com.downstairs.place.data.PlaceDAO
 
-@Database(entities = [Place::class], version = 1)
+@Database(entities = [PlaceEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun placeDAO(): PlaceDAO

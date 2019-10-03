@@ -4,10 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.downstairs.place.data.Place
+import com.downstairs.place.data.PlaceEntity
 import com.downstairs.place.data.PlaceRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRepository) :
@@ -19,15 +20,15 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     val placeDetailsData: LiveData<PlaceDetailsData> = _placeDetailsData
     val viewState: LiveData<ViewState> = _viewState
 
-    fun fetchPlace(placeId: Long) {
-        if (placeId < 0) {
+    fun fetchPlace(placeId: String) {
+        if (placeId.isBlank()) {
             viewToWriteState()
         } else {
             loadPlace(placeId)
         }
     }
 
-    private fun loadPlace(placeId: Long) {
+    private fun loadPlace(placeId: String) {
         toReadOnlyState()
         viewModelScope.launch(Dispatchers.IO) {
             val place = repository.getPlace(placeId)
@@ -35,13 +36,13 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
         }
     }
 
-    private fun bindPlace(place: Place) {
+    private fun bindPlace(placeEntity: PlaceEntity) {
         _placeDetailsData.postValue(
             PlaceDetailsData(
-                place.id,
-                place.name,
-                place.category,
-                place.description
+                placeEntity.id,
+                placeEntity.name,
+                placeEntity.category,
+                placeEntity.description
             )
         )
     }
@@ -49,8 +50,8 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     fun savePlace(placeDetailsData: PlaceDetailsData) {
         viewModelScope.launch(Dispatchers.IO) {
 
-            val place = Place(
-                _placeDetailsData.value?.id,
+            val place = PlaceEntity(
+                getPlaceId(),
                 placeDetailsData.name,
                 placeDetailsData.category,
                 placeDetailsData.description
@@ -58,6 +59,16 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
 
             repository.insert(place)
             toReadOnlyState()
+        }
+    }
+
+    private fun getPlaceId(): String {
+        val placeDetailsData = _placeDetailsData.value
+
+        return if (placeDetailsData?.id != null) {
+            placeDetailsData.id!!
+        } else {
+            UUID.randomUUID().toString()
         }
     }
 

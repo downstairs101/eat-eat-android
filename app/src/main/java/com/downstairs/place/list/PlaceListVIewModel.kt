@@ -26,7 +26,7 @@ class PlaceListVIewModel @Inject constructor(private val repository: PlaceReposi
             val places = withContext(coroutineContext) { repository.getAll() }
 
             val placeListItems = places.map { place ->
-                PlaceListItem(place.id!!, place.name, place.category, place.description)
+                PlaceListItem(place.id, place.name, place.category, place.description)
             }
 
             _places.postValue(placeListItems)

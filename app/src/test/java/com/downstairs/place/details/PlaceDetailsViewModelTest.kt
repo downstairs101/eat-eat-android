@@ -1,7 +1,7 @@
 package com.downstairs.place.details
 
 import com.downstairs.InstantTaskExtension
-import com.downstairs.place.data.Place
+import com.downstairs.place.data.PlaceEntity
 import com.downstairs.place.data.PlaceRepository
 import io.mockk.*
 import io.mockk.impl.annotations.RelaxedMockK
@@ -89,10 +89,10 @@ class PlaceDetailsViewModelTest {
     }
 
     private fun placeDetailsData() =
-        PlaceDetailsData(0, "Place Test", "Category Test", "Some Description")
+        PlaceDetailsData(0, "PlaceEntity Test", "Category Test", "Some Description")
 
     private fun getPlace() =
-        Place(name = "Place Test", category = "Category Test", description = "Some Description")
+        PlaceEntity(name = "PlaceEntity Test", category = "Category Test", description = "Some Description")
 
 
     private fun <T> mockObserverFunction() =

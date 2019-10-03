@@ -124,7 +124,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchPlace(placeId: Long) {
+    private fun fetchPlace(placeId: String) {
         viewModel.fetchPlace(placeId)
     }
 
