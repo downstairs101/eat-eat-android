@@ -1,4 +1,4 @@
-package com.downstairs.place.model
+package com.downstairs.place.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

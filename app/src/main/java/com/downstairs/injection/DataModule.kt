@@ -1,7 +1,7 @@
 package com.downstairs.injection
 
 import android.content.Context
-import com.downstairs.place.model.AppDatabase
+import com.downstairs.data.AppDatabase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

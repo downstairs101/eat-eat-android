@@ -1,8 +1,8 @@
 package com.downstairs.place.details
 
 import com.downstairs.InstantTaskExtension
-import com.downstairs.place.model.Place
-import com.downstairs.place.model.PlaceRepository
+import com.downstairs.place.data.Place
+import com.downstairs.place.data.PlaceRepository
 import io.mockk.*
 import io.mockk.impl.annotations.RelaxedMockK
 import org.assertj.core.api.Assertions.assertThat

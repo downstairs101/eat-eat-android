@@ -1,9 +1,11 @@
-package com.downstairs.place.model
+package com.downstairs.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.downstairs.place.data.Place
+import com.downstairs.place.data.PlaceDAO
 
 @Database(entities = [Place::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
@@ -17,7 +19,8 @@ abstract class AppDatabase : RoomDatabase() {
 
         fun getInstance(context: Context): AppDatabase {
             return instance ?: synchronized(this) {
-                instance ?: buildDatabase(context).also { instance = it }
+                instance
+                    ?: buildDatabase(context).also { instance = it }
             }
         }
 
