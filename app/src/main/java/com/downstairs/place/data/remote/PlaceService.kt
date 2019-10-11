@@ -4,6 +4,6 @@ import retrofit2.http.GET
 
 interface PlaceService {
 
-    @GET
+    @GET("/places")
     fun list(): List<PlaceResponse>
 }
