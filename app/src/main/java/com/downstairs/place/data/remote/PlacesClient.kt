@@ -2,8 +2,8 @@ package com.downstairs.place.data.remote
 
 import retrofit2.http.GET
 
-interface PlaceService {
+interface PlacesClient {
 
     @GET("/places")
-    fun list(): List<PlaceResponse>
+    suspend fun list(): List<PlaceResponse>
 }
