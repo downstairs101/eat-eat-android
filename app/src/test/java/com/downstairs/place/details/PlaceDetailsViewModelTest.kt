@@ -33,16 +33,16 @@ class PlaceDetailsViewModelTest {
 
         @Test
         internal fun `fetch place when place id is not null`() {
-            viewModel.fetchPlace(0)
+            viewModel.fetchPlace("123")
 
-            coVerify { placeRepository.getPlace(0) }
+            coVerify { placeRepository.getPlace("123") }
         }
 
         @Test
         internal fun `changes view to read only state on fetch place`() {
             val viewStateFunction = mockObserverFunction<PlaceDetailsViewModel.ViewState>()
 
-            viewModel.fetchPlace(0)
+            viewModel.fetchPlace("123")
 
             viewModel.viewState.observeForever(viewStateFunction)
 
@@ -57,7 +57,7 @@ class PlaceDetailsViewModelTest {
         internal fun `set view to write mode when place id is minor than zero`() {
             val viewStateFunction = mockObserverFunction<PlaceDetailsViewModel.ViewState>()
 
-            viewModel.fetchPlace(-1)
+            viewModel.fetchPlace("")
 
             viewModel.viewState.observeForever(viewStateFunction)
 
@@ -79,20 +79,16 @@ class PlaceDetailsViewModelTest {
 
             viewModel.savePlace(place)
 
-            verify {
-                placeRepository.insert(
-                    getPlace()
-                )
-            }
+            verify { placeRepository.insert(getPlace(place.id)) }
         }
 
     }
 
     private fun placeDetailsData() =
-        PlaceDetailsData(0, "PlaceEntity Test", "Category Test", "Some Description")
+        PlaceDetailsData("123", "PlaceEntity Test", "Category Test", "Some Description")
 
-    private fun getPlace() =
-        PlaceEntity(name = "PlaceEntity Test", category = "Category Test", description = "Some Description")
+    private fun getPlace(id: String?) =
+        PlaceEntity(id!!, "PlaceEntity Test", "Category Test", "Some Description")
 
 
     private fun <T> mockObserverFunction() =
