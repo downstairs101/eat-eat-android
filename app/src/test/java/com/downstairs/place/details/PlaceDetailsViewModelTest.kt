@@ -79,7 +79,11 @@ class PlaceDetailsViewModelTest {
 
             viewModel.savePlace(place)
 
-            verify { placeRepository.insert(getPlace(place.id)) }
+            verify { placeRepository.insert(withArg {
+                assertThat(it.name).isEqualTo("PlaceEntity Test")
+                assertThat(it.category).isEqualTo("Category Test")
+                assertThat(it.description).isEqualTo("Some Description")
+            }) }
         }
 
     }
@@ -87,8 +91,8 @@ class PlaceDetailsViewModelTest {
     private fun placeDetailsData() =
         PlaceDetailsData("123", "PlaceEntity Test", "Category Test", "Some Description")
 
-    private fun getPlace(id: String?) =
-        PlaceEntity(id!!, "PlaceEntity Test", "Category Test", "Some Description")
+    private fun getPlace() =
+        PlaceEntity("123", "PlaceEntity Test", "Category Test", "Some Description")
 
 
     private fun <T> mockObserverFunction() =
