@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: "de.mannodermaus.android-junit5"
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
@@ -20,11 +19,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            buildConfigField( 'String', 'BASE_URL', '"http://localhost.com"')
+            buildConfigField('String', 'BASE_URL', '"http://localhost.com"')
         }
 
-        debug{
-            buildConfigField( 'String', 'BASE_URL', '"http://localhost.com"')
+        debug {
+            buildConfigField('String', 'BASE_URL', '"http://localhost.com"')
         }
     }
 
@@ -76,13 +75,11 @@ dependencies {
     kapt 'com.google.dagger:dagger-android-processor:2.24'
     kaptTest 'com.google.dagger:dagger-compiler:2.24'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.2'
-
     testImplementation 'androidx.test:core:1.2.0'
     testImplementation 'androidx.test.ext:junit:1.1.1'
 
 
+    testImplementation 'junit:junit:4.12'
     testImplementation "io.mockk:mockk:1.9.3"
     testImplementation 'org.assertj:assertj-core:3.11.1'
 

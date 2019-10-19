@@ -6,14 +6,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import org.junit.jupiter.api.extension.AfterAllCallback
-import org.junit.jupiter.api.extension.BeforeEachCallback
-import org.junit.jupiter.api.extension.ExtensionContext
+import org.junit.rules.ExternalResource
 
-class InstantTaskExtension : BeforeEachCallback, AfterAllCallback {
+class InstantTaskRule: ExternalResource() {
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
 
-    override fun beforeEach(context: ExtensionContext?) {
+    override fun before() {
         Dispatchers.setMain(mainThreadSurrogate)
 
         ArchTaskExecutor.getInstance().setDelegate(object : TaskExecutor() {
@@ -24,14 +22,12 @@ class InstantTaskExtension : BeforeEachCallback, AfterAllCallback {
             override fun postToMainThread(runnable: Runnable) = runnable.run()
 
         })
-
     }
 
-    override fun afterAll(context: ExtensionContext?) {
+    override fun after() {
         Dispatchers.resetMain()
         mainThreadSurrogate.close()
 
         ArchTaskExecutor.getInstance().setDelegate(null)
     }
-
 }
