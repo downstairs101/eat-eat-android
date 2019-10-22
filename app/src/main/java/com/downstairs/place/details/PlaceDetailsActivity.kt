@@ -6,7 +6,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.navArgs
 import com.downstairs.R
@@ -14,6 +13,7 @@ import com.downstairs.databinding.PlaceDetailsActivityBinding
 import com.downstairs.functions.bindLayout
 import com.downstairs.functions.openSoftKeyBoard
 import com.downstairs.functions.setTransitionListener
+import com.downstairs.injection.ViewModelFactory
 import com.google.android.material.textfield.TextInputLayout
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.place_details_activity.*
@@ -22,7 +22,7 @@ import javax.inject.Inject
 class PlaceDetailsActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var factory: ViewModelProvider.Factory
+    lateinit var factory: ViewModelFactory
 
     private val viewModel by lazy {
         ViewModelProviders.of(this, factory).get(PlaceDetailsViewModel::class.java)
