@@ -1,7 +1,10 @@
-package com.downstairs.injection
+package com.downstairs.androidxtest.injection
 
 import android.content.Context
 import com.downstairs.TestApplication
+import com.downstairs.injection.AndroidModule
+import com.downstairs.injection.ViewModelModule
+import com.downstairs.place.data.PlaceDAO
 import com.downstairs.place.details.PlaceDetailsActivityTest
 import dagger.BindsInstance
 import dagger.Component
@@ -13,7 +16,7 @@ import io.mockk.mockk
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AndroidInjectionModule::class, AndroidModule::class, TestModule::class])
+@Component(modules = [AndroidInjectionModule::class, AndroidModule::class, TestViewModelFactoryModule::class, ViewModelModule::class, TestMock::class])
 interface TestAppComponent : AndroidInjector<TestApplication> {
 
     @Component.Factory
@@ -22,13 +25,17 @@ interface TestAppComponent : AndroidInjector<TestApplication> {
         fun create(@BindsInstance context: Context): TestAppComponent
     }
 
-    fun inject(test:PlaceDetailsActivityTest)
+    fun inject(test: PlaceDetailsActivityTest)
 }
 
 @Module
-class TestModule {
+class TestMock {
 
     @Provides
     @Singleton
-    fun providesViewModelFactory()= mockk<ViewModelFactory>(relaxed = true)
+    fun providePlaceDAO(): PlaceDAO {
+        return mockk()
+    }
 }
+
+

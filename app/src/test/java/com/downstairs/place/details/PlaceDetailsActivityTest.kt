@@ -1,10 +1,10 @@
 package com.downstairs.place.details
 
 
-import androidx.test.ext.junit.rules.activityScenarioRule
+import androidx.lifecycle.ViewModelProvider
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
+import androidx.test.ext.junit.rules.activityScenarioRule
 import com.downstairs.TestApplication
-import com.downstairs.injection.ViewModelFactory
 import org.junit.Before
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -18,7 +18,7 @@ class PlaceDetailsActivityTest {
     val testApplication = getApplicationContext<TestApplication>()
 
 //    @Inject
-//    private lateinit var viewModelFactory: ViewModelFactory
+//    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val scenario = activityScenarioRule<PlaceDetailsActivity>().scenario
 
@@ -28,6 +28,7 @@ class PlaceDetailsActivityTest {
         scenario.onActivity {
             print(it)
         }
+
 
     }
 }

@@ -12,7 +12,7 @@ import javax.inject.Inject
 abstract class PlaceListBaseFragment : Fragment() {
 
     @Inject
-    lateinit var factory: ViewModelProvider
+    lateinit var factory: ViewModelProvider.Factory
 
     internal val viewModel by lazy {
         ViewModelProviders.of(this, factory).get(PlaceListVIewModel::class.java)
