@@ -34,7 +34,7 @@ class TestMock {
     @Provides
     @Singleton
     fun providePlaceDAO(): PlaceDAO {
-        return mockk()
+        return mockk(relaxed = true)
     }
 }
 
