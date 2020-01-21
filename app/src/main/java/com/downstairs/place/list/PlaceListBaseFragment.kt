@@ -1,11 +1,13 @@
 package com.downstairs.place.list
 
+import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.downstairs.R
 import com.downstairs.place.details.PlaceDetailsActivityDirections
 import javax.inject.Inject
 
@@ -29,7 +31,7 @@ abstract class PlaceListBaseFragment : Fragment() {
         }
 
     private fun editPlace(placeId: String) {
-        val direction = PlaceDetailsActivityDirections.navigateToPlaceDetailsActivity(placeId)
-        findNavController().navigate(direction)
+        val args = Bundle().apply { putString("placeId", placeId) }
+        findNavController().navigate(R.id.navigateToPlaceDetailsActivity, args)
     }
 }

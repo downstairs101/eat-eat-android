@@ -47,9 +47,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setListeners() {
         addPlaceButton.setOnClickListener {
-            getNavController().navigate(
-                MainNavigationGraphDirections.navigateToPlaceDetailsActivity("")
-            )
+            getNavController().navigate(R.id.navigateToPlaceDetailsActivity)
         }
     }
 }

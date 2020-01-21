@@ -14,7 +14,6 @@ interface AppComponent : AndroidInjector<EatEatApplication> {
 
     @Component.Factory
     interface Factory {
-
         fun create(@BindsInstance context: Context): AppComponent
     }
 }

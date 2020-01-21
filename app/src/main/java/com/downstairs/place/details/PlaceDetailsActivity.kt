@@ -28,8 +28,6 @@ class PlaceDetailsActivity : AppCompatActivity() {
         ViewModelProviders.of(this, factory).get(PlaceDetailsViewModel::class.java)
     }
 
-    private val args: PlaceDetailsActivityArgs by navArgs()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -49,7 +47,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        fetchPlace(args.placeId)
+        fetchPlace(intent.getStringExtra("placeId") ?: "")
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

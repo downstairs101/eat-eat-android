@@ -8,7 +8,6 @@
     <action
         android:id="@+id/navigateToPlaceDetailsActivity"
         app:destination="@id/placeDetailsActivity">
-        <argument android:name="placeId" />
     </action>
 
     <fragment
@@ -42,8 +41,5 @@
         android:name="com.downstairs.place.details.PlaceDetailsActivity"
         android:label="Place Details"
         tools:layout="@layout/place_details_activity">
-        <argument
-            android:name="placeId"
-            app:argType="string" />
     </activity>
 </navigation>
