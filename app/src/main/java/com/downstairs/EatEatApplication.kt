@@ -1,21 +1,13 @@
 package com.downstairs
 
 import android.app.Application
-import com.downstairs.injection.DaggerAppComponent
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-import javax.inject.Inject
+import com.downstairs.injection.ApplicationComponent
+import com.downstairs.injection.CoreInjector
+import com.downstairs.injection.DaggerApplicationComponent
 
-open class EatEatApplication : Application(), HasAndroidInjector {
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any>
+open class EatEatApplication : Application(), CoreInjector {
 
-    override fun onCreate() {
-        super.onCreate()
-        DaggerAppComponent.factory().create(applicationContext).inject(this)
+    override val applicationComponent: ApplicationComponent by lazy {
+        DaggerApplicationComponent.factory().create(applicationContext)
     }
-
-    override fun androidInjector(): AndroidInjector<Any> = androidInjector
-
 }

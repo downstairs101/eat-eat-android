@@ -8,18 +8,22 @@ import androidx.core.view.children
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.navArgs
 import com.downstairs.R
 import com.downstairs.databinding.PlaceDetailsActivityBinding
 import com.downstairs.functions.bindLayout
 import com.downstairs.functions.openSoftKeyBoard
 import com.downstairs.functions.setTransitionListener
+import com.downstairs.injection.getApplicationComponent
+import com.downstairs.place.injection.DaggerPlaceComponent
+import com.downstairs.place.injection.PlaceModule
 import com.google.android.material.textfield.TextInputLayout
-import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.place_details_activity.*
 import javax.inject.Inject
 
 class PlaceDetailsActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var str: String
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
@@ -29,10 +33,15 @@ class PlaceDetailsActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
+        DaggerPlaceComponent
+            .factory()
+            .create(getApplicationComponent(), PlaceModule())
+            .inject(this)
+
         super.onCreate(savedInstanceState)
         bind()
 
+        print(str)
         setupActionBar()
         animateViewEntry()
         setDataObservers()

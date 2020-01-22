@@ -9,7 +9,9 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2.ORIENTATION_HORIZONTAL
 import com.downstairs.R
 import com.downstairs.functions.dipToPixels
-import dagger.android.support.AndroidSupportInjection
+import com.downstairs.injection.getApplicationComponent
+import com.downstairs.place.injection.DaggerPlaceComponent
+import com.downstairs.place.injection.PlaceModule
 import kotlinx.android.synthetic.main.place_page_fragment.*
 
 class PlacePageFragment : PlaceListBaseFragment() {
@@ -22,7 +24,10 @@ class PlacePageFragment : PlaceListBaseFragment() {
     }
 
     override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
+        DaggerPlaceComponent.factory()
+            .create(context.getApplicationComponent(), PlaceModule())
+            .inject(this)
+
         super.onAttach(context)
     }
 
