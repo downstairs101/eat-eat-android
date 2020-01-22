@@ -1,6 +1,5 @@
 package com.downstairs.place.injection
 
-import androidx.lifecycle.ViewModel
 import com.downstairs.injection.ApplicationComponent
 import com.downstairs.injection.FeatureScope
 import com.downstairs.place.details.PlaceDetailsActivity

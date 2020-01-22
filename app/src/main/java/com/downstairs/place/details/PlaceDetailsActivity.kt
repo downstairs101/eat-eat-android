@@ -23,9 +23,6 @@ import javax.inject.Inject
 class PlaceDetailsActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var str: String
-
-    @Inject
     lateinit var factory: ViewModelProvider.Factory
 
     private val viewModel by lazy {
@@ -40,8 +37,6 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         bind()
-
-        print(str)
         setupActionBar()
         animateViewEntry()
         setDataObservers()
