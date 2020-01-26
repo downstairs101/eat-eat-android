@@ -1,96 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/placeDetailsContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/place_details_motion_scene"
     tools:context=".place.details.PlaceDetailsActivity">
 
-    <data>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/placeDetailsToolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/place_details_menu"
+        app:title="@string/place_details_view_title" />
 
-        <import type="androidx.lifecycle.LiveData" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameTextInputLayout"
+        style="@style/TextInputTheme.Outlined"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/placeDetailsToolbar">
 
-        <variable
-            name="viewModel"
-            type="com.downstairs.place.details.PlaceDetailsViewModel" />
-    </data>
-
-    <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/placeDetailsContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layoutDescription="@xml/place_details_motion_scene">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/placeDetailsToolbar"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameInput"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/place_details_menu"
-            app:title="@string/place_details_view_title" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/nameTextInputLayout"
-            style="@style/TextInputTheme.Outlined"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="15dp"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:hint="Name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/placeDetailsToolbar">
+            android:textColor="@color/secondary" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nameInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:text="@{viewModel.placeDetailsData.name}"
-                android:textColor="@color/secondary" />
-        </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/categoryInputLayout"
+        style="@style/TextInputTheme.Outlined"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Category"
+        app:layout_constraintEnd_toEndOf="@+id/nameTextInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/nameTextInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextInputLayout">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/categoryInputLayout"
-            style="@style/TextInputTheme.Outlined"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/categoryInput"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Category"
-            app:layout_constraintEnd_toEndOf="@+id/nameTextInputLayout"
-            app:layout_constraintStart_toStartOf="@+id/nameTextInputLayout"
-            app:layout_constraintTop_toBottomOf="@+id/nameTextInputLayout">
+            android:textColor="@color/secondary" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/categoryInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.placeDetailsData.category}"
-                android:textColor="@color/secondary" />
-        </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/descriptionInputLayout"
+        style="@style/TextInputTheme.Outlined"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/categoryInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/categoryInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/categoryInputLayout">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/descriptionInputLayout"
-            style="@style/TextInputTheme.Outlined"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/descriptionInput"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/categoryInputLayout"
-            app:layout_constraintStart_toStartOf="@+id/categoryInputLayout"
-            app:layout_constraintTop_toBottomOf="@+id/categoryInputLayout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/descriptionInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Description"
-                android:text="@{viewModel.placeDetailsData.description}"
-                android:textColor="@color/secondary" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </androidx.constraintlayout.motion.widget.MotionLayout>
-</layout>
+            android:hint="Description"
+            android:textColor="@color/secondary" />
+    </com.google.android.material.textfield.TextInputLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

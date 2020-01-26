@@ -8,10 +8,9 @@ import androidx.core.view.children
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.downstairs.R
-import com.downstairs.databinding.PlaceDetailsActivityBinding
-import com.downstairs.functions.bindLayout
 import com.downstairs.functions.openSoftKeyBoard
 import com.downstairs.functions.setTransitionListener
+import com.downstairs.functions.stringText
 import com.downstairs.injection.getApplicationComponent
 import com.downstairs.place.injection.DaggerPlaceComponent
 import com.downstairs.place.injection.PlaceModule
@@ -35,17 +34,12 @@ class PlaceDetailsActivity : AppCompatActivity() {
             .inject(this)
 
         super.onCreate(savedInstanceState)
-        bind()
+        setContentView(R.layout.place_details_activity)
+
         setupActionBar()
         animateViewEntry()
         setDataObservers()
         setViewListeners()
-    }
-
-    private fun bind() {
-        val binding = bindLayout<PlaceDetailsActivityBinding>(this, R.layout.place_details_activity)
-        binding.lifecycleOwner = this
-        binding.viewModel = viewModel
     }
 
     override fun onStart() {
@@ -97,9 +91,9 @@ class PlaceDetailsActivity : AppCompatActivity() {
         } else {
             viewModel.savePlace(
                 PlaceDetailsData(
-                    _name = nameInput.text.toString(),
-                    _category = categoryInput.text.toString(),
-                    _description = descriptionInput.text.toString()
+                    name = nameInput.stringText(),
+                    category = categoryInput.stringText(),
+                    description = descriptionInput.stringText()
                 )
             )
         }
@@ -115,6 +109,14 @@ class PlaceDetailsActivity : AppCompatActivity() {
 
     private fun setDataObservers() {
         viewModel.viewState.observe(this, Observer { viewStateChanged(it) })
+        viewModel.placeDetailsData.observe(this, Observer { bindPlace(it) })
+    }
+
+    private fun bindPlace(placeDetails: PlaceDetailsData) {
+        nameInput.setText(placeDetails.name)
+        categoryInput.setText(placeDetails.category)
+        descriptionInput.setText(placeDetails.description)
+
     }
 
     private fun viewStateChanged(viewState: PlaceDetailsViewModel.ViewState) {

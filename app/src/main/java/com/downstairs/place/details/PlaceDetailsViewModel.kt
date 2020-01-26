@@ -14,10 +14,10 @@ import javax.inject.Inject
 class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRepository) :
     ViewModel() {
 
-    private val _placeDetailsData = MutableLiveData<PlaceDetailsData>()
-    private val _viewState = MutableLiveData<ViewState>()
+    private val mutablePlaceDetailsData = MutableLiveData<PlaceDetailsData>()
+    val placeDetailsData: LiveData<PlaceDetailsData> = mutablePlaceDetailsData
 
-    val placeDetailsData: LiveData<PlaceDetailsData> = _placeDetailsData
+    private val _viewState = MutableLiveData<ViewState>()
     val viewState: LiveData<ViewState> = _viewState
 
     fun fetchPlace(placeId: String) {
@@ -37,7 +37,7 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     }
 
     private fun bindPlace(placeEntity: PlaceEntity) {
-        _placeDetailsData.postValue(
+        mutablePlaceDetailsData.postValue(
             PlaceDetailsData(
                 placeEntity.id,
                 placeEntity.name,
@@ -63,10 +63,10 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     }
 
     private fun getPlaceId(): String {
-        val placeDetailsData = _placeDetailsData.value
+        val placeDetailsData = mutablePlaceDetailsData.value
 
         return if (placeDetailsData?.id != null) {
-            placeDetailsData.id!!
+            placeDetailsData.id
         } else {
             UUID.randomUUID().toString()
         }
