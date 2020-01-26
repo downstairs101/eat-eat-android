@@ -10,12 +10,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class PlaceListVIewModel @Inject constructor(private val repository: PlaceRepository) :
-    ViewModel() {
+class PlaceListViewModel
+@Inject constructor(private val repository: PlaceRepository) : ViewModel() {
 
-    private val _places by lazy { MutableLiveData<List<PlaceListItem>>().also { loadPlaces() } }
+    private val mutablePlaces by lazy { MutableLiveData<List<PlaceListItem>>().also { loadPlaces() } }
 
-    fun places(): LiveData<List<PlaceListItem>> = _places
+    val places: LiveData<List<PlaceListItem>> = mutablePlaces
 
     fun updatePlaceList() {
         loadPlaces()
@@ -29,7 +29,7 @@ class PlaceListVIewModel @Inject constructor(private val repository: PlaceReposi
                 PlaceListItem(place.id, place.name, place.category, place.description)
             }
 
-            _places.postValue(placeListItems)
+            mutablePlaces.postValue(placeListItems)
         }
     }
 }

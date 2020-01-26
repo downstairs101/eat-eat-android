@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.downstairs.R
 import com.downstairs.databinding.PlaceDetailsActivityBinding
 import com.downstairs.functions.bindLayout
@@ -26,7 +25,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
     lateinit var factory: ViewModelProvider.Factory
 
     private val viewModel by lazy {
-        ViewModelProviders.of(this, factory).get(PlaceDetailsViewModel::class.java)
+        ViewModelProvider(this, factory).get(PlaceDetailsViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

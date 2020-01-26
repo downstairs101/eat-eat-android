@@ -7,7 +7,7 @@ import com.downstairs.injection.ViewModelFactory
 import com.downstairs.injection.ViewModelKey
 import com.downstairs.place.data.PlaceRepository
 import com.downstairs.place.details.PlaceDetailsViewModel
-import com.downstairs.place.list.PlaceListVIewModel
+import com.downstairs.place.list.PlaceListViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
@@ -29,9 +29,9 @@ class PlaceModule {
 
     @Provides
     @IntoMap
-    @ViewModelKey(PlaceListVIewModel::class)
+    @ViewModelKey(PlaceListViewModel::class)
     internal fun placeListViewModel(placeRepository: PlaceRepository): ViewModel {
-        return PlaceListVIewModel(placeRepository)
+        return PlaceListViewModel(placeRepository)
     }
 
     @Provides
