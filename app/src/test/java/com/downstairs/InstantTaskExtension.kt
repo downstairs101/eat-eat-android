@@ -9,13 +9,10 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.rules.ExternalResource
 
-
 class InstantTaskRule : ExternalResource() {
 
-    @ExperimentalCoroutinesApi
     private val testDispatcher = TestCoroutineDispatcher()
 
-    @ExperimentalCoroutinesApi
     override fun before() {
 
         Dispatchers.setMain(testDispatcher)
