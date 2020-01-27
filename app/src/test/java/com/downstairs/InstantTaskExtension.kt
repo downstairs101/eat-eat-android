@@ -3,16 +3,22 @@ package com.downstairs
 import androidx.arch.core.executor.ArchTaskExecutor
 import androidx.arch.core.executor.TaskExecutor
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.rules.ExternalResource
 
-class InstantTaskRule: ExternalResource() {
-    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
 
+class InstantTaskRule : ExternalResource() {
+
+    @ExperimentalCoroutinesApi
+    private val testDispatcher = TestCoroutineDispatcher()
+
+    @ExperimentalCoroutinesApi
     override fun before() {
-        Dispatchers.setMain(mainThreadSurrogate)
+
+        Dispatchers.setMain(testDispatcher)
 
         ArchTaskExecutor.getInstance().setDelegate(object : TaskExecutor() {
             override fun executeOnDiskIO(runnable: Runnable) = runnable.run()
@@ -26,7 +32,6 @@ class InstantTaskRule: ExternalResource() {
 
     override fun after() {
         Dispatchers.resetMain()
-        mainThreadSurrogate.close()
 
         ArchTaskExecutor.getInstance().setDelegate(null)
     }

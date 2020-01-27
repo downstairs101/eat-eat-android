@@ -50,7 +50,7 @@ class PlaceDetailsViewModelTest {
 
         verify {
             viewStateFunction.invoke(
-                withArg { assertThat(it).isEqualTo(PlaceDetailsViewModel.ViewState.READONLY_STATE) }
+                withArg { assertThat(it).isEqualTo(PlaceDetailsViewModel.ViewState.READ_ONLY_STATE) }
             )
         }
     }

@@ -17,8 +17,8 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     private val mutablePlaceDetailsData = MutableLiveData<PlaceDetailsData>()
     val placeDetailsData: LiveData<PlaceDetailsData> = mutablePlaceDetailsData
 
-    private val _viewState = MutableLiveData<ViewState>()
-    val viewState: LiveData<ViewState> = _viewState
+    private val mutableViewState = MutableLiveData<ViewState>()
+    val viewState: LiveData<ViewState> = mutableViewState
 
     fun fetchPlace(placeId: String) {
         if (placeId.isBlank()) {
@@ -73,15 +73,15 @@ class PlaceDetailsViewModel @Inject constructor(private val repository: PlaceRep
     }
 
     private fun toReadOnlyState() {
-        _viewState.postValue(ViewState.READONLY_STATE)
+        mutableViewState.postValue(ViewState.READ_ONLY_STATE)
     }
 
     fun viewToWriteState() {
-        _viewState.postValue(ViewState.WRITE_STATE)
+        mutableViewState.postValue(ViewState.WRITE_STATE)
     }
 
     enum class ViewState {
         WRITE_STATE,
-        READONLY_STATE
+        READ_ONLY_STATE
     }
 }

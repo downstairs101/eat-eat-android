@@ -123,7 +123,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
         when (viewState) {
             PlaceDetailsViewModel.ViewState.WRITE_STATE -> viewToWriteMode()
 
-            PlaceDetailsViewModel.ViewState.READONLY_STATE -> viewToReadMode()
+            PlaceDetailsViewModel.ViewState.READ_ONLY_STATE -> viewToReadMode()
         }
     }
 
