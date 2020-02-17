@@ -3,9 +3,9 @@ package com.downstairs
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
-import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(placeListToolbar)
         setListeners()
+
+        delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
     }
 
     override fun onStart() {
