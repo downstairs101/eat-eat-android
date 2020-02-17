@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_primary">@color/blue_500</color>
-    <color name="color_primary_variant">@color/blue_900</color>
-    <color name="color_secondary">@color/yellow_600</color>
-    <color name="color_secondary_variant">@color/yellow_900</color>
-
-    <color name="color_background">@color/white_400</color>
-    <color name="color_surface">@color/white_200</color>
-    <color name="color_error">@color/red_600</color>
-
-    <color name="color_on_primary">@color/white</color>
-    <color name="color_on_secondary">@color/black</color>
-    <color name="color_on_background">@color/white</color>
-    <color name="color_on_surface">@color/white</color>
-    <color name="color_on_error">@color/white</color>
-
-
     <color name="blue_50">#E8E9FE</color>
     <color name="blue_100">#C5C8FB</color>
     <color name="blue_300">#6F80F7</color>
@@ -45,7 +29,7 @@
     <color name="grey_500">#7B7B7B</color>
     <color name="grey_600">#555555</color>
     <color name="grey_700">#434343</color>
-    <color name="grey_800">#262626</color>
+    <color name="grey_800">#202020</color>
     <color name="grey_900">#121212</color>
 
     <color name="black">#000000</color>

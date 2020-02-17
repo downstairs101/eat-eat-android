@@ -5,13 +5,13 @@
     <color name="color_secondary">@color/yellow_500</color>
     <color name="color_secondary_variant">@color/yellow_600</color>
 
-    <color name="color_background">@color/black</color>
-    <color name="color_surface">@color/grey_900</color>
+    <color name="color_background">@color/grey_900</color>
+    <color name="color_surface">@color/grey_800</color>
     <color name="color_error">@color/red_200</color>
 
-    <color name="color_on_primary">#000000</color>
-    <color name="color_on_secondary">#000000</color>
-    <color name="color_on_background">#ffffff</color>
-    <color name="color_on_surface">#ffffff</color>
-    <color name="color_on_error">#000000</color>
+    <color name="color_on_primary">@color/black</color>
+    <color name="color_on_secondary">@color/black</color>
+    <color name="color_on_background">@color/white_200</color>
+    <color name="color_on_surface">@color/white_200</color>
+    <color name="color_on_error">@color/black</color>
 </resources>
