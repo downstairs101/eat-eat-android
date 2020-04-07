@@ -3,8 +3,7 @@ package com.downstairs.functions
 import android.content.Context
 import android.content.ContextWrapper
 import android.util.TypedValue
-import com.downstairs.injection.ApplicationComponent
-import com.downstairs.injection.CoreInjector
+import com.downstairs.injection.PlaceComponent
 import kotlin.math.roundToInt
 
 fun Context.dipToPixels(dipValue: Float): Int {
@@ -13,10 +12,10 @@ fun Context.dipToPixels(dipValue: Float): Int {
     return pixels.roundToInt()
 }
 
-fun ContextWrapper.getApplicationComponent(): ApplicationComponent {
+fun ContextWrapper.getApplicationComponent(): PlaceComponent {
     return (applicationContext as CoreInjector).applicationComponent
 }
 
-fun Context.getApplicationComponent(): ApplicationComponent {
+fun Context.getApplicationComponent(): PlaceComponent {
     return (applicationContext as CoreInjector).applicationComponent
 }

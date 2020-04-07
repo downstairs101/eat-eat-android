@@ -2,7 +2,6 @@ package com.downstairs.place.injection
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.downstairs.injection.FeatureScope
 import com.downstairs.injection.ViewModelFactory
 import com.downstairs.injection.ViewModelKey
 import com.downstairs.place.data.PlaceRepository

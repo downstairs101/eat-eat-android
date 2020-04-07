@@ -1,13 +1,12 @@
 package com.downstairs
 
 import android.app.Application
-import com.downstairs.injection.ApplicationComponent
-import com.downstairs.injection.CoreInjector
-import com.downstairs.injection.DaggerApplicationComponent
+import com.downstairs.eatat.core.injection.CoreComponent
+import com.downstairs.eatat.core.injection.CoreInjector
+import com.downstairs.eatat.core.injection.DaggerCoreComponent
 
 open class EatEatApplication : Application(), CoreInjector {
 
-    override val applicationComponent: ApplicationComponent by lazy {
-        DaggerApplicationComponent.factory().create(applicationContext)
-    }
+    override val coreComponent: CoreComponent
+        get() = DaggerCoreComponent.factory().create(applicationContext)
 }
