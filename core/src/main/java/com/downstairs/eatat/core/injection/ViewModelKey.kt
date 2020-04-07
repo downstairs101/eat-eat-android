@@ -1,4 +1,4 @@
-package com.downstairs.injection
+package com.downstairs.eatat.core.injection
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
@@ -7,4 +7,4 @@ import kotlin.reflect.KClass
 @Target(AnnotationTarget.FUNCTION)
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
 @MapKey
-internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
+annotation class ViewModelKey(val value: KClass<out ViewModel>)

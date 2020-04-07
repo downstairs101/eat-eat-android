@@ -1,4 +1,4 @@
-package com.downstairs.injection
+package com.downstairs.eatat.core.injection
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

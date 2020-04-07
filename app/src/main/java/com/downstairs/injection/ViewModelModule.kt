@@ -1,9 +1,10 @@
-package com.downstairs.place.injection
+package com.downstairs.injection
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.downstairs.injection.ViewModelFactory
-import com.downstairs.injection.ViewModelKey
+import com.downstairs.eatat.core.injection.FeatureScope
+import com.downstairs.eatat.core.injection.ViewModelFactory
+import com.downstairs.eatat.core.injection.ViewModelKey
 import com.downstairs.place.data.PlaceRepository
 import com.downstairs.place.details.PlaceDetailsViewModel
 import com.downstairs.place.list.PlaceListViewModel
@@ -13,12 +14,7 @@ import dagger.multibindings.IntoMap
 import javax.inject.Provider
 
 @Module
-class PlaceModule {
-
-    @Provides
-    fun providesString(): String {
-        return "bosta"
-    }
+class ViewModelModule {
 
     @Provides
     @FeatureScope

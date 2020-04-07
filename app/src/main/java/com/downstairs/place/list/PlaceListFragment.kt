@@ -7,16 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
-import com.downstairs.injection.getApplicationComponent
-import com.downstairs.place.injection.DaggerPlaceComponent
-import com.downstairs.place.injection.PlaceModule
+import com.downstairs.eatat.core.extensions.getCoreComponent
+import com.downstairs.injection.DaggerPlaceComponent
 import kotlinx.android.synthetic.main.place_list_fragment.*
 
 class PlaceListFragment : PlaceListBaseFragment() {
 
     override fun onAttach(context: Context) {
         DaggerPlaceComponent.factory()
-            .create(context.getApplicationComponent(), PlaceModule())
+            .create(context.getCoreComponent())
             .inject(this)
 
         super.onAttach(context)

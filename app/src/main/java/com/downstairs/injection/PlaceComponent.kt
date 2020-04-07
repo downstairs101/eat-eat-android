@@ -1,12 +1,14 @@
 package com.downstairs.injection
 
 import com.downstairs.eatat.core.injection.CoreComponent
-import com.downstairs.place.data.PlaceDAO
+import com.downstairs.eatat.core.injection.FeatureScope
+import com.downstairs.place.details.PlaceDetailsActivity
+import com.downstairs.place.list.PlaceListFragment
+import com.downstairs.place.list.PlacePageFragment
 import dagger.Component
-import javax.inject.Singleton
 
-@Singleton
-@Component(modules = [DataModule::class], dependencies = [CoreComponent::class])
+@FeatureScope
+@Component(modules = [ViewModelModule::class, DataModule::class], dependencies = [CoreComponent::class])
 interface PlaceComponent {
 
     @Component.Factory
@@ -14,5 +16,7 @@ interface PlaceComponent {
         fun create(coreComponent: CoreComponent): PlaceComponent
     }
 
-    fun getPlaceDAO(): PlaceDAO
+    fun inject(activity: PlaceDetailsActivity)
+    fun inject(fragment: PlaceListFragment)
+    fun inject(fragment: PlacePageFragment)
 }
