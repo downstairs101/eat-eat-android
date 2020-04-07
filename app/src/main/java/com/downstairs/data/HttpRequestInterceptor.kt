@@ -11,6 +11,4 @@ class HttpRequestInterceptor @Inject constructor() : Interceptor {
 
         return chain.proceed(request)
     }
-
-
 }
