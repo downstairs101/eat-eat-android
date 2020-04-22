@@ -17,7 +17,7 @@ import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.place_details_activity.*
 import javax.inject.Inject
 
-class PlaceDetailsActivity : AppCompatActivity() {
+class PlaceDetailsActivity : AppCompatActivity(R.layout.place_details_activity) {
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
@@ -33,7 +33,6 @@ class PlaceDetailsActivity : AppCompatActivity() {
             .inject(this)
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.place_details_activity)
 
         setupActionBar()
         animateViewEntry()

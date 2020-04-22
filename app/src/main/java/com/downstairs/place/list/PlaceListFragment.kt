@@ -2,9 +2,7 @@ package com.downstairs.place.list
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
 import com.downstairs.eatat.core.extensions.getCoreComponent
@@ -20,13 +18,6 @@ class PlaceListFragment : PlaceListBaseFragment() {
 
         super.onAttach(context)
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.place_list_fragment, container, false)
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val placeAdapter = prepareListAdapter(R.layout.place_list_item)
