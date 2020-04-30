@@ -1,11 +1,14 @@
 package com.downstairs.eatat.core.injection
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.downstairs.eatat.core.http.HttpClient
 import com.downstairs.eatat.core.http.HttpManager
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Provider
 import javax.inject.Singleton
 
 @Module
