@@ -57,3 +57,14 @@ object Dependencies {
         const val espresso = "androidx.test.espresso:espresso-core:3.2.0"
     }
 }
+
+object Plugins {
+
+    object Kotlin {
+        const val android = "kotlin-android"
+        const val androidExtensions = "kotlin-android-extensions"
+        const val kapt: String = "kotlin-kapt"
+    }
+
+    const val androidApplication = "com.android.application"
+}
