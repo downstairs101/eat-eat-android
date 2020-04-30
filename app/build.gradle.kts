@@ -3,7 +3,6 @@ plugins {
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("kotlin-kapt")
-
 }
 
 android {
@@ -49,59 +48,50 @@ android {
 
 dependencies {
 
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
+    implementation(Dependencies.Kotlin.stdlib)
+    implementation(Dependencies.Kotlin.coroutinesAndroid)
 
-    implementation("androidx.core:core-ktx:1.2.0")
-    implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation(Dependencies.Androidx.core)
+    implementation(Dependencies.Androidx.appCompat)
+    implementation(Dependencies.materialDesign)
 
-    implementation("com.google.android.material:material:1.1.0")
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.0-beta4")
+    implementation(Dependencies.Androidx.constraintLayout)
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3")
+    implementation(Dependencies.Androidx.activity)
+    implementation(Dependencies.Androidx.fragment)
 
-    implementation("androidx.activity:activity-ktx:1.1.0")
-    implementation("androidx.fragment:fragment-ktx:1.2.4")
+    implementation(Dependencies.Androidx.navigationFragment)
+    implementation(Dependencies.Androidx.navigationUI)
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.2.2")
-    implementation("androidx.navigation:navigation-ui-ktx:2.2.2")
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.3.0-alpha05")
+    implementation(Dependencies.Androidx.lifecycleExtensions)
+    implementation(Dependencies.Androidx.lifecycleViewModel)
 
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.retrofitMoshi)
 
-    implementation("androidx.room:room-runtime:2.2.3")
-    kapt("androidx.room:room-compiler:2.2.3")
+    implementation(Dependencies.dagger)
+    implementation(Dependencies.daggerAndroid)
+    implementation(Dependencies.daggerSupport)
+    kapt(Dependencies.daggerCompiler)
+    kapt(Dependencies.daggerProcessor)
+    kaptTest(Dependencies.daggerCompiler)
 
-    implementation("com.squareup.retrofit2:retrofit:2.6.1")
-    implementation("com.squareup.retrofit2:converter-moshi:2.6.1")
+    testImplementation(Dependencies.Test.jUnit)
+    testImplementation(Dependencies.Test.mockito)
+    testImplementation(Dependencies.Test.mockitoKotlin)
+    testImplementation(Dependencies.Test.assertJ)
 
-    implementation("com.google.dagger:dagger:2.25.3")
-    implementation("com.google.dagger:dagger-android:2.25.3")
-    implementation("com.google.dagger:dagger-android-support:2.25.3")
-    kapt("com.google.dagger:dagger-compiler:2.25.3")
-    kapt("com.google.dagger:dagger-android-processor:2.25.3")
-    kaptTest("com.google.dagger:dagger-compiler:2.25.3")
+    testImplementation(Dependencies.Test.androidxCore)
+    testImplementation(Dependencies.Test.androidxJunit)
 
-    implementation("androidx.paging:paging-runtime-ktx:2.1.1")
-    testImplementation("androidx.paging:paging-common-ktx:2.1.1")
+    testImplementation(Dependencies.Test.robolectric)
 
-    testImplementation("androidx.test:core-ktx:1.2.0")
-    testImplementation("androidx.test.ext:junit-ktx:1.1.1")
+    testImplementation(Dependencies.Test.archCore)
+    testImplementation(Dependencies.Test.coroutines)
+    testImplementation(Dependencies.Test.fragment)
 
-    testImplementation("junit:junit:4.13")
-    testImplementation("org.mockito:mockito-inline:2.28.2")
-    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
-    testImplementation("org.robolectric:robolectric:4.3")
-    testImplementation("org.assertj:assertj-core:3.13.2")
-
-    testImplementation("android.arch.core:core-testing:1.1.1")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.3")
-    testImplementation("androidx.fragment:fragment-testing:1.2.4")
-
-    androidTestImplementation("androidx.test:runner:1.2.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    androidTestImplementation(Dependencies.Test.runner)
+    androidTestImplementation(Dependencies.Test.espresso)
 
     implementation(project(":core"))
 }
