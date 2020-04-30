@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Inject
 
-class RetrofitClient @Inject constructor(private val interceptor: HttpRequestInterceptor) {
+class HttpManager @Inject constructor(private val interceptor: HttpRequestInterceptor) {
 
     init {
         val moshi = Moshi.Builder().add(UUIDAdapter()).build()
