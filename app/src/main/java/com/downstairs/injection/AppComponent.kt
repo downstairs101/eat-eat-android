@@ -1,5 +1,6 @@
 package com.downstairs.injection
 
+import com.downstairs.MainActivity
 import com.downstairs.eatat.core.injection.CoreComponent
 import com.downstairs.eatat.core.injection.FeatureScope
 import dagger.Component
@@ -13,4 +14,6 @@ interface AppComponent {
 
         fun create(coreComponent: CoreComponent): AppComponent
     }
+
+    fun inject(activity: MainActivity)
 }

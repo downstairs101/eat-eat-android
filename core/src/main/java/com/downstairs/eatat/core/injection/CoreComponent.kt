@@ -1,6 +1,7 @@
 package com.downstairs.eatat.core.injection
 
 import android.content.Context
+import com.downstairs.eatat.core.http.HttpManager
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -11,8 +12,11 @@ interface CoreComponent {
 
     @Component.Factory
     interface Factory {
+
         fun create(@BindsInstance context: Context): CoreComponent
     }
 
-    fun getContext():Context
+    fun getContext(): Context
+
+    fun getHttpManager(): HttpManager
 }

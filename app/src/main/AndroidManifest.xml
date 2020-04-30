@@ -25,10 +25,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".place.details.PlaceDetailsActivity" />
-
-        <activity android:name=".profile.ProfileActivity" />
-
     </application>
 
 

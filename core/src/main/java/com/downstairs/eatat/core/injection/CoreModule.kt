@@ -25,5 +25,4 @@ class CoreModule {
     @Provides
     @Singleton
     internal fun providesMoshiConverter() = MoshiConverterFactory.create()
-
 }

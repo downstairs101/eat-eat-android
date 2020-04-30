@@ -7,7 +7,6 @@ class HttpClient @Inject
 constructor() {
 
     fun instantiate(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .build()
+        return OkHttpClient.Builder().build()
     }
 }

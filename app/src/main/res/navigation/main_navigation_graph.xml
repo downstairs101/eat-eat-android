@@ -2,44 +2,4 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_navigation_graph"
-    app:startDestination="@id/placePageFragment">
-
-    <action
-        android:id="@+id/toPlaceDetailsActivity"
-        app:destination="@id/placeDetailsActivity">
-    </action>
-
-    <fragment
-        android:id="@+id/placePageFragment"
-        android:name="com.downstairs.place.list.PlacePageFragment"
-        android:label="place_page_fragment">
-        <action
-            android:id="@+id/actionPlacePageToPlaceListFragment"
-            app:destination="@id/placeListFragment"
-            app:launchSingleTop="true"
-            app:popUpToInclusive="false" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/placeListFragment"
-        android:name="com.downstairs.place.list.PlaceListFragment"
-        android:label="PlaceListFragment"
-        tools:layout="@layout/place_list_fragment">
-        <action
-            android:id="@+id/actionPlaceListToPlacePageFragment"
-            app:destination="@id/placePageFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/placePageFragment"
-            app:popUpToInclusive="false" />
-    </fragment>
-
-    <activity
-        android:id="@+id/placeDetailsActivity"
-        android:name="com.downstairs.place.details.PlaceDetailsActivity"
-        android:label="Place Details"
-        tools:layout="@layout/place_details_activity">
-    </activity>
-</navigation>
+    android:id="@+id/main_navigation_graph"/>
