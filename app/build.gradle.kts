@@ -74,7 +74,8 @@ dependencies {
     implementation(Dependencies.daggerSupport)
     kapt(Dependencies.daggerCompiler)
     kapt(Dependencies.daggerProcessor)
-    kaptTest(Dependencies.daggerCompiler)
+
+    implementation(project(":core"))
 
     testImplementation(Dependencies.Test.jUnit)
     testImplementation(Dependencies.Test.mockito)
@@ -93,5 +94,5 @@ dependencies {
     androidTestImplementation(Dependencies.Test.runner)
     androidTestImplementation(Dependencies.Test.espresso)
 
-    implementation(project(":core"))
+    kaptTest(Dependencies.daggerCompiler)
 }

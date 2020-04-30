@@ -1,7 +1,7 @@
 object Versions {
     const val kotlin = "1.3.72"
     const val navigation = "2.2.2"
-    const val lifecycle = "2.2.2"
+    const val lifecycle = "2.2.0"
     const val retrofit = "2.6.1"
     const val dagger = "2.25.3"
 }
