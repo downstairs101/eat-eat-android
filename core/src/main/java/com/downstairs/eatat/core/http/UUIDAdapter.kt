@@ -1,4 +1,4 @@
-package com.downstairs.data
+package com.downstairs.eatat.core.http
 
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson

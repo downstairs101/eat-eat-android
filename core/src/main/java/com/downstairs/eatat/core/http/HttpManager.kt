@@ -10,8 +10,9 @@ class HttpManager @Inject constructor(
     private val converterFactory: Converter.Factory
 ) {
 
-    fun <T> instantiate(serverClass: Class<T>): T {
+    fun <T> instantiate(serverClass: Class<T>, baseUrl: String): T {
         return Retrofit.Builder()
+            .baseUrl(baseUrl)
             .client(httpClient)
             .addConverterFactory(converterFactory)
             .build()
