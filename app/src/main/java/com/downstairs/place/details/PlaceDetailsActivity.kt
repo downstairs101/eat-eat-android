@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.downstairs.R
 import com.downstairs.eatat.core.extensions.getCoreComponent
 import com.downstairs.functions.openSoftKeyBoard

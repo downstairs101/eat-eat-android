@@ -29,6 +29,7 @@
         app:srcCompat="@drawable/ic_add" />
 
     <Button
+        style="@style/RoundSecondaryButton"
         android:id="@+id/button2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

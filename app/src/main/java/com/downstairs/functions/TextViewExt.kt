@@ -2,6 +2,5 @@ package com.downstairs.functions
 
 import android.widget.TextView
 
-fun TextView.stringText(): String {
-    return this.text.toString()
-}
+val TextView.value: String
+    get() = this.text.toString()

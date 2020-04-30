@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setListeners() {
         addPlaceButton.setOnClickListener {
-            getNavController().navigate(R.id.navigateToPlaceDetailsActivity)
+            getNavController().navigate(R.id.toPlaceDetailsActivity)
         }
     }
 }

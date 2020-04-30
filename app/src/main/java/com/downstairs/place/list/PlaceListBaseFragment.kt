@@ -30,6 +30,6 @@ abstract class PlaceListBaseFragment : Fragment() {
 
     private fun editPlace(placeId: String) {
         val args = Bundle().apply { putString("placeId", placeId) }
-        findNavController().navigate(R.id.navigateToPlaceDetailsActivity, args)
+        findNavController().navigate(R.id.toPlaceDetailsActivity, args)
     }
 }
