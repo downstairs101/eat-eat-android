@@ -1,0 +1,1 @@
+/Users/roubertedgar/Projects/personal/eat-eat-android/buildSrc/build/classes/kotlin/main/Dependencies.class:/Users/roubertedgar/Projects/personal/eat-eat-android/buildSrc/build/classes/kotlin/main/Version.class
