@@ -6,6 +6,6 @@
     app:startDestination="@id/userSplitsFragment">
     <fragment
         android:id="@+id/userSplitsFragment"
-        android:name="com.downstairs.UserSplitsFragment"
+        android:name="com.downstairs.split.SplitsFragment"
         android:label="UserSplitsFragment" />
 </navigation>
