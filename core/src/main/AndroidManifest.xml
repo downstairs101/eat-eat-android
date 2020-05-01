@@ -2,4 +2,6 @@
     package="com.downstairs.eatat.core">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <application android:theme="@style/AppTheme.DayNight" />
 </manifest>

@@ -23,6 +23,8 @@ dependencies {
     implementation(Dependencies.Kotlin.stdlib)
     implementation(Dependencies.Androidx.core)
     implementation(Dependencies.Androidx.appCompat)
+    implementation(Dependencies.materialDesign)
+    implementation(Dependencies.Androidx.constraintLayout)
 
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitMoshi)
