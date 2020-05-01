@@ -25,6 +25,7 @@
 
     <style name="Style.CardView.Surface.Color" parent="Style.Background.Tint.Surface">
         <item name="shapeAppearance">?shapeAppearanceMediumComponent</item>
+        <item name="cardElevation">1dp</item>
     </style>
 
 </resources>
