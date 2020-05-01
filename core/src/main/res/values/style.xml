@@ -16,8 +16,14 @@
         <item name="strokeColor">?colorPrimary</item>
     </style>
 
-    <style name="Style.CardView.SurfaceColor" parent="AppTheme.DayNight">
-        <item name="android:backgroundTint">?colorSurface</item>
+    <style name="Style.Background.Tint.Surface" parent="AppTheme.DayNight">
+        <item name="backgroundTint">?colorSurface</item>
+        <item name="cardBackgroundColor">?colorSurface</item>
+    </style>
+
+    <style name="Style.Bottom.Bar.Surface.Color" parent="Style.Background.Tint.Surface" />
+
+    <style name="Style.CardView.Surface.Color" parent="Style.Background.Tint.Surface">
         <item name="shapeAppearance">?shapeAppearanceMediumComponent</item>
     </style>
 

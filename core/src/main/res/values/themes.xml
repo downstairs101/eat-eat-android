@@ -19,8 +19,10 @@
         <item name="colorOnError">@color/color_on_error</item>
 
         <item name="android:statusBarColor">?colorPrimaryVariant</item>
+
         <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.PrimarySurface</item>
-        <item name="materialCardViewStyle">@style/Style.CardView.SurfaceColor</item>
+        <item name="materialCardViewStyle">@style/Style.CardView.Surface.Color</item>
+        <item name="bottomNavigationStyle">@style/Style.Bottom.Bar.Surface.Color</item>
 
         <item name="shapeAppearanceSmallComponent">@style/Shape.RoundCorners16</item>
         <item name="shapeAppearanceMediumComponent">@style/Shape.RoundCorners4</item>
