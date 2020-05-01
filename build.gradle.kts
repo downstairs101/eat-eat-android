@@ -1,4 +1,4 @@
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import com.android.build.gradle.TestedExtension
 
 buildscript {
 
@@ -22,18 +22,26 @@ allprojects {
 
 subprojects {
     plugins.withId(Plugins.androidApplication) {
-
         project.extensions
-            .findByType<BaseAppModuleExtension>()
+            .findByType<TestedExtension>()
+            ?.applyCommonConfigs()
+    }
+
+    plugins.withId(Plugins.androidLibrary) {
+        project.extensions
+            .findByType<TestedExtension>()
             ?.applyCommonConfigs()
     }
 }
 
 
-fun BaseAppModuleExtension.applyCommonConfigs() {
+fun TestedExtension.applyCommonConfigs() {
+    compileSdkVersion(29)
+    buildToolsVersion("29.0.3")
 
     defaultConfig {
         minSdkVersion(23)
+        targetSdkVersion(29)
         println("configurando o projeto")
         println(project.projectDir.name)
     }
