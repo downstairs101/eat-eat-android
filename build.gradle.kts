@@ -1,5 +1,5 @@
 typealias AndroidBasePlugin = com.android.build.gradle.BasePlugin
-typealias AndroidExtension = com.android.build.gradle.BaseExtension
+typealias AndroidExtension = com.android.build.gradle.TestedExtension
 
 buildscript {
 
