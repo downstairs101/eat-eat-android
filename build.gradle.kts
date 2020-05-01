@@ -1,4 +1,7 @@
+import Build_gradle.AndroidBasePlugin
 import com.android.build.gradle.TestedExtension
+
+typealias AndroidBasePlugin = com.android.build.gradle.BasePlugin
 
 buildscript {
 
@@ -21,28 +24,39 @@ allprojects {
 }
 
 subprojects {
-    plugins.withId(Plugins.androidApplication) {
-        project.extensions
-            .findByType<TestedExtension>()
-            ?.applyCommonConfigs()
-    }
-
-    plugins.withId(Plugins.androidLibrary) {
-        project.extensions
-            .findByType<TestedExtension>()
-            ?.applyCommonConfigs()
+    plugins.whenPluginAdded {
+        if (this is AndroidBasePlugin) {
+            project.extensions
+                .findByType<TestedExtension>()
+                ?.applyCommonConfigs()
+        }
     }
 }
 
 
 fun TestedExtension.applyCommonConfigs() {
+    println("Applying common configs to android modules")
+
     compileSdkVersion(29)
     buildToolsVersion("29.0.3")
 
     defaultConfig {
         minSdkVersion(23)
         targetSdkVersion(29)
-        println("configurando o projeto")
-        println(project.projectDir.name)
+
+        versionCode = 1
+        versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    compileOptions {
+        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
     }
 }

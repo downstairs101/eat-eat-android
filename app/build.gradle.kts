@@ -6,15 +6,6 @@ plugins {
 }
 
 android {
-    compileSdkVersion(29)
-    defaultConfig {
-        applicationId = "com.downstairs"
-        targetSdkVersion(29)
-        versionCode = 1
-        versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
     buildTypes {
 
         getByName("release") {
@@ -27,19 +18,6 @@ android {
         getByName("debug") {
             buildConfigField("String", "BASE_URL", "\"http://localhost.com\"")
         }
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    compileOptions {
-        targetCompatibility = JavaVersion.VERSION_1_8
-        sourceCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    testOptions {
-        unitTests.isIncludeAndroidResources = true
     }
 }
 
