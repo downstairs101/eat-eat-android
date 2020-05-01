@@ -9,7 +9,6 @@ android {
     compileSdkVersion(29)
     defaultConfig {
         applicationId = "com.downstairs"
-        minSdkVersion(23)
         targetSdkVersion(29)
         versionCode = 1
         versionName = "1.0"

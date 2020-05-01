@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+
 buildscript {
 
     repositories {
@@ -18,6 +20,21 @@ allprojects {
     }
 }
 
-tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
+subprojects {
+    plugins.withId(Plugins.androidApplication) {
+
+        project.extensions
+            .findByType<BaseAppModuleExtension>()
+            ?.applyCommonConfigs()
+    }
+}
+
+
+fun BaseAppModuleExtension.applyCommonConfigs() {
+
+    defaultConfig {
+        minSdkVersion(23)
+        println("configurando o projeto")
+        println(project.projectDir.name)
+    }
 }
