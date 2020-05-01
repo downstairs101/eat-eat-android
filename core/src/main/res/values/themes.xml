@@ -20,8 +20,10 @@
 
         <item name="android:statusBarColor">?colorPrimaryVariant</item>
         <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.PrimarySurface</item>
+        <item name="materialCardViewStyle">@style/Style.CardView.SurfaceColor</item>
 
-        <item name="shapeAppearanceSmallComponent">@style/RoundCorners16</item>
+        <item name="shapeAppearanceSmallComponent">@style/Shape.RoundCorners16</item>
+        <item name="shapeAppearanceMediumComponent">@style/Shape.RoundCorners4</item>
     </style>
 
     <style name="BaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">

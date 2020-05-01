@@ -15,12 +15,12 @@
     <color name="color_on_surface">@color/white</color>
     <color name="color_on_error">@color/white</color>
 
-    <color name="blue_50">#E8E9FE</color>
-    <color name="blue_100">#C5C8FB</color>
-    <color name="blue_300">#6F80F7</color>
-    <color name="blue_500">#0040F0</color>
-    <color name="blue_700">#002FD8</color>
-    <color name="blue_900">#0000BF</color>
+    <color name="blue_50">#E1F2F8</color>
+    <color name="blue_100">#B5DFEE</color>
+    <color name="blue_300">#63B5D6</color>
+    <color name="blue_500">#3699CA</color>
+    <color name="blue_700">#287AAA</color>
+    <color name="blue_900">#0E4B78</color>
 
     <color name="yellow_50">#FDF7E1</color>
     <color name="yellow_100">#FAE9B2</color>
@@ -37,11 +37,12 @@
 
     <color name="white">#FFFFFF</color>
     <color name="grey_50">#F5F5F5</color>
+    <color name="grey_100">#E6E6E6</color>
     <color name="grey_200">#DADADA</color>
     <color name="grey_400">#9F9F9F</color>
-    <color name="grey_600">#606060</color>
-    <color name="grey_700">#454545</color>
-    <color name="grey_800">#282828</color>
-    <color name="grey_900">#121212</color>
+    <color name="grey_500">#606060</color>
+    <color name="grey_600">#454545</color>
+    <color name="grey_800">#232323</color>
+    <color name="grey_900">#191919</color>
     <color name="black">#000000</color>
 </resources>

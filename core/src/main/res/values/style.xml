@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="RoundSecondaryButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="strokeColor">?colorPrimary</item>
-    </style>
-
-    <style name="RoundCorners16" parent="Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="Shape.RoundCorners16" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
+
+    <style name="Shape.RoundCorners4" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+
+
+    <style name="Style.Button.Secondary.Round" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">?colorPrimary</item>
+    </style>
+
+    <style name="Style.CardView.SurfaceColor" parent="AppTheme.DayNight">
+        <item name="android:backgroundTint">?colorSurface</item>
+        <item name="shapeAppearance">?shapeAppearanceMediumComponent</item>
+    </style>
+
 </resources>
