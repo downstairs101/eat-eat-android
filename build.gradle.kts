@@ -24,9 +24,7 @@ allprojects {
 subprojects {
     plugins.whenPluginAdded {
         if (this is AndroidBasePlugin) {
-            project.extensions
-                .findByType<AndroidExtension>()
-                ?.applyCommonConfigs()
+            project.extensions.findByType<AndroidExtension>()?.applyCommonConfigs()
         }
     }
 }
