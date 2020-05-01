@@ -20,9 +20,9 @@
 
         <item name="android:statusBarColor">?colorPrimaryVariant</item>
 
-        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.PrimarySurface</item>
-        <item name="materialCardViewStyle">@style/Style.CardView.Surface.Color</item>
-        <item name="bottomNavigationStyle">@style/Style.Bottom.Bar.Surface.Color</item>
+        <item name="toolbarStyle">@style/Style.Toolbar.Surface</item>
+        <item name="materialCardViewStyle">@style/Style.CardView.Surface</item>
+        <item name="bottomNavigationStyle">@style/Style.Bottom.Bar.Surface</item>
 
         <item name="shapeAppearanceSmallComponent">@style/Shape.RoundCorners16</item>
         <item name="shapeAppearanceMediumComponent">@style/Shape.RoundCorners4</item>

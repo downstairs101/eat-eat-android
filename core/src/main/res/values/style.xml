@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--Shapes -->
     <style name="Shape.RoundCorners16" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
@@ -11,19 +12,25 @@
         <item name="cornerSize">4dp</item>
     </style>
 
+    <!-- Colors -->
+    <style name="Style.Background.Tint.Surface" parent="AppTheme.DayNight">
+        <item name="backgroundTint">?colorSurface</item>
+        <item name="backgroundColor">?colorSurface</item>
+        <item name="cardBackgroundColor">?colorSurface</item>
+    </style>
 
+    <!--Application Bars -->
+    <style name="Style.Bottom.Bar.Surface" parent="Style.Background.Tint.Surface" />
+
+    <style name="Style.Toolbar.Surface" parent="Widget.MaterialComponents.Toolbar.Surface" />
+
+    <!--Small components -->
     <style name="Style.Button.Secondary.Round" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="strokeColor">?colorPrimary</item>
     </style>
 
-    <style name="Style.Background.Tint.Surface" parent="AppTheme.DayNight">
-        <item name="backgroundTint">?colorSurface</item>
-        <item name="cardBackgroundColor">?colorSurface</item>
-    </style>
-
-    <style name="Style.Bottom.Bar.Surface.Color" parent="Style.Background.Tint.Surface" />
-
-    <style name="Style.CardView.Surface.Color" parent="Style.Background.Tint.Surface">
+    <!--Medium components -->
+    <style name="Style.CardView.Surface" parent="Style.Background.Tint.Surface">
         <item name="shapeAppearance">?shapeAppearanceMediumComponent</item>
         <item name="cardElevation">1dp</item>
     </style>
