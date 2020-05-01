@@ -37,7 +37,7 @@ fun AndroidExtension.applyCommonConfigs() {
     buildToolsVersion("29.0.3")
 
     defaultConfig {
-        minSdkVersion(23)
+        minSdkVersion(21)
         targetSdkVersion(29)
 
         versionCode = 1
