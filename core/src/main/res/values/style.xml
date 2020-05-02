@@ -2,14 +2,21 @@
 <resources>
 
     <!--Shapes -->
-    <style name="Shape.RoundCorners16" parent="Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="Shape.Rounded16" parent="AppTheme.DayNight">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
 
-    <style name="Shape.RoundCorners4" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">4dp</item>
+    <style name="Shape.Rounded8" parent="AppTheme.DayNight">
+        <item name="cornerFamily">rounded</item>¬
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="Shape.Rounded4.Top" parent="AppTheme.DayNight">
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerFamilyTopRight">rounded</item>¬
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerFamilyTopLeft">rounded</item>
     </style>
 
     <!-- Colors -->

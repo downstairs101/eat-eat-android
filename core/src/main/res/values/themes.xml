@@ -24,8 +24,8 @@
         <item name="bottomNavigationStyle">@style/Style.Bottom.Bar.Surface</item>
         <item name="materialCardViewStyle">@style/Style.CardView.Surface</item>
 
-        <item name="shapeAppearanceSmallComponent">@style/Shape.RoundCorners16</item>
-        <item name="shapeAppearanceMediumComponent">@style/Shape.RoundCorners4</item>
+        <item name="shapeAppearanceSmallComponent">@style/Shape.Rounded16</item>
+        <item name="shapeAppearanceMediumComponent">@style/Shape.Rounded8</item>
     </style>
 
     <style name="BaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
