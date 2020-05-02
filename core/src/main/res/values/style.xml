@@ -12,7 +12,7 @@
         <item name="cornerSize">8dp</item>
     </style>
 
-    <style name="Shape.Rounded4.Top" parent="AppTheme.DayNight">
+    <style name="Shape.Rounded8.Top" parent="AppTheme.DayNight">
         <item name="cornerSizeTopRight">8dp</item>
         <item name="cornerFamilyTopRight">rounded</item>¬
         <item name="cornerSizeTopLeft">8dp</item>
@@ -37,9 +37,13 @@
     </style>
 
     <!--Medium components -->
-    <style name="Style.CardView.Surface" parent="Style.Background.Tint.Surface">
+    <style name="Style.CardView.Surface.Rounded" parent="Style.Background.Tint.Surface">
         <item name="shapeAppearance">?shapeAppearanceMediumComponent</item>
         <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="Style.CardView.Surface.Rounded.Top" parent="Style.CardView.Surface.Rounded">
+        <item name="shapeAppearanceOverlay">@style/Shape.Rounded8.Top</item>
     </style>
 
 </resources>

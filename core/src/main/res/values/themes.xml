@@ -22,7 +22,7 @@
 
         <item name="toolbarStyle">@style/Style.Toolbar.Surface</item>
         <item name="bottomNavigationStyle">@style/Style.Bottom.Bar.Surface</item>
-        <item name="materialCardViewStyle">@style/Style.CardView.Surface</item>
+        <item name="materialCardViewStyle">@style/Style.CardView.Surface.Rounded</item>
 
         <item name="shapeAppearanceSmallComponent">@style/Shape.Rounded16</item>
         <item name="shapeAppearanceMediumComponent">@style/Shape.Rounded8</item>
