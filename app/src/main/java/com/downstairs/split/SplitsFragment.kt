@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.downstairs.R
 import com.downstairs.eatat.core.extensions.getCoreComponent
 import com.downstairs.injection.DaggerAppComponent
-import kotlinx.android.synthetic.main.spit_list_item.view.*
+import kotlinx.android.synthetic.main.split_list_item.view.*
 import kotlinx.android.synthetic.main.splits_fragment.*
 import javax.inject.Inject
 
