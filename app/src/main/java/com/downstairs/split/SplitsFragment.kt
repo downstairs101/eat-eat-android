@@ -44,10 +44,12 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
     }
 
     private fun setupObservers() {
-        viewModel.splits.observe(viewLifecycleOwner, Observer() {
-
+        viewModel.splits.observe(viewLifecycleOwner, Observer {
+            getSplitsAdapter()?.submitList(it)
         })
     }
+
+    private fun getSplitsAdapter(): SplitsAdapter? = splitsRecyclerView.adapter as? SplitsAdapter
 }
 
 class SplitsAdapter : ListAdapter<SplitUiModel, SplitsAdapter.SplitsViewHolder>(DIFF_CALLBACK) {

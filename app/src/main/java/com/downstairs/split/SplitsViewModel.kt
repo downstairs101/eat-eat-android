@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class SplitsViewModel @Inject constructor() : ViewModel() {
 
-    private val mutableSplits = MutableLiveData<SplitUiModel>()
-    val splits: LiveData<SplitUiModel> = mutableSplits
+    private val mutableSplits = MutableLiveData<List<SplitUiModel>>()
+    val splits: LiveData<List<SplitUiModel>> = mutableSplits
 }
