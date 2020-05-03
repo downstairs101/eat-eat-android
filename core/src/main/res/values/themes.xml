@@ -26,10 +26,8 @@
 
         <item name="shapeAppearanceSmallComponent">@style/Shape.Rounded16</item>
         <item name="shapeAppearanceMediumComponent">@style/Shape.Rounded8</item>
-        <item name="shapeAppearanceLargeComponent">@style/Shape.Rounded16.Top</item>
 
-        <item name="bottomSheetDialogTheme">@style/Theme.BottomSheet.Rounded.Top</item>
-        <item name="bottomSheetStyle">@style/Style.BottomSheet.Surface.Rounded.Top</item>
+        <item name="bottomSheetDialogTheme">@style/Theme.BottomSheet.Rounded</item>
     </style>
 
     <style name="BaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -38,7 +36,7 @@
     </style>
 
     <!--Single themes-->
-    <style name="Theme.BottomSheet.Rounded.Top" parent="Theme.MaterialComponents.BottomSheetDialog">
-        <item name="shapeAppearance">@style/Style.BottomSheet.Surface.Rounded.Top</item>
+    <style name="Theme.BottomSheet.Rounded" parent="Theme.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Style.BottomSheet.Surface.Rounded.Top</item>
     </style>
 </resources>

@@ -14,7 +14,7 @@
 
     <style name="Shape.Rounded16.Top" parent="AppTheme.DayNight">
         <item name="cornerSizeTopRight">16dp</item>
-        <item name="cornerFamilyTopRight">rounded</item>¬
+        <item name="cornerFamilyTopRight">rounded</item>
         <item name="cornerSizeTopLeft">16dp</item>
         <item name="cornerFamilyTopLeft">rounded</item>
     </style>
@@ -45,7 +45,6 @@
     <!--Large components -->
     <style name="Style.BottomSheet.Surface.Rounded.Top" parent="Widget.Design.BottomSheet.Modal">
         <item name="shapeAppearance">@style/Shape.Rounded16.Top</item>
-        <item name="backgroundTint">?colorSurface</item>
     </style>
 
 </resources>
