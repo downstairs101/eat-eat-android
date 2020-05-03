@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,11 +35,18 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupSplitsView()
+        setupObservers()
     }
 
     private fun setupSplitsView() {
         splitsRecyclerView.adapter = SplitsAdapter()
         splitsRecyclerView.layoutManager = LinearLayoutManager(context)
+    }
+
+    private fun setupObservers() {
+        viewModel.splits.observe(viewLifecycleOwner, Observer() {
+
+        })
     }
 }
 
