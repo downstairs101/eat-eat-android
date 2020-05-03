@@ -3,6 +3,7 @@ package com.downstairs.injection
 import com.downstairs.MainActivity
 import com.downstairs.eatat.core.injection.CoreComponent
 import com.downstairs.eatat.core.injection.FeatureScope
+import com.downstairs.split.SplitsFragment
 import dagger.Component
 
 @FeatureScope
@@ -16,4 +17,6 @@ interface AppComponent {
     }
 
     fun inject(activity: MainActivity)
+
+    fun inject(fragment: SplitsFragment)
 }

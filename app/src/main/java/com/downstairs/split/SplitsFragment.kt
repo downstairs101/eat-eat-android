@@ -1,5 +1,6 @@
 package com.downstairs.split
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.downstairs.R
+import com.downstairs.eatat.core.extensions.getCoreComponent
+import com.downstairs.injection.DaggerAppComponent
 import kotlinx.android.synthetic.main.spit_list_item.view.*
 import kotlinx.android.synthetic.main.splits_fragment.*
 
 class SplitsFragment : Fragment(R.layout.splits_fragment) {
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        DaggerAppComponent.factory().create(context.getCoreComponent()).inject(this)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupSplitsView()
