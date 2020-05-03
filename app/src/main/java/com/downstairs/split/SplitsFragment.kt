@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.downstairs.R
+import kotlinx.android.synthetic.main.spit_list_item.view.*
 import kotlinx.android.synthetic.main.splits_fragment.*
 
 class SplitsFragment : Fragment(R.layout.splits_fragment) {
@@ -30,7 +31,7 @@ class SplitsAdapter : ListAdapter<SplitUiModel, SplitsAdapter.SplitsViewHolder>(
     }
 
     override fun onBindViewHolder(holder: SplitsViewHolder, position: Int) {
-
+        holder.bindItem(getItem(position))
     }
 
     companion object {
@@ -47,5 +48,9 @@ class SplitsAdapter : ListAdapter<SplitUiModel, SplitsAdapter.SplitsViewHolder>(
 
     inner class SplitsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        fun bindItem(split: SplitUiModel) {
+            itemView.payerNameText.text = split.payerName
+            itemView.payedValueText.text = split.value
+        }
     }
 }

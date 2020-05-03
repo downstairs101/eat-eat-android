@@ -1,3 +1,3 @@
 package com.downstairs.split
 
-class SplitUiModel
+data class SplitUiModel(val payerName: String, val value: String)
