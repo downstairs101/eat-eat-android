@@ -15,13 +15,6 @@ class MainActivity : AppCompatActivity(R.layout.main_activity) {
     @Inject
     lateinit var httpManager: HttpManager
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
-    private val viewModel by lazy {
-        ViewModelProvider(this, viewModelFactory).get(SplitsViewModel::class.java)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerAppComponent.factory()
             .create(getCoreComponent())

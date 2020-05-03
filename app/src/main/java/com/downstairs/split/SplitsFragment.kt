@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
 import com.downstairs.eatat.core.extensions.getCoreComponent
-import com.downstairs.injection.DaggerAppComponent
+import com.downstairs.split.injection.DaggerSplitComponent
 import kotlinx.android.synthetic.main.splits_fragment.*
 import javax.inject.Inject
 
@@ -24,7 +24,7 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        DaggerAppComponent.factory().create(context.getCoreComponent()).inject(this)
+        DaggerSplitComponent.factory().create(context.getCoreComponent()).inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
