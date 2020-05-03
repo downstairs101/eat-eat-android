@@ -19,6 +19,15 @@ class SplitsViewModel @Inject constructor() : ViewModel() {
             SplitUiModel("Edgar", "R$ 350,00"),
             SplitUiModel("Allan Moreira", "R$ 150,00"),
             SplitUiModel("Zezinho da esquina", "R$ 550,00"),
+            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
+            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
+            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
+            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
+            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
+            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
+            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
+            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
+            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
             SplitUiModel("Seu João", "R$ 330,00")
         )
 
