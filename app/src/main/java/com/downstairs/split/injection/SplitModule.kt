@@ -12,7 +12,7 @@ class SplitModule {
 
     @FeatureScope
     @Provides
-    fun providesSplitService(httpManager: HttpManager) {
-        httpManager.instantiate(SplitServiceApi::class.java, BuildConfig.BASE_URL)
+    fun providesSplitService(httpManager: HttpManager): SplitServiceApi {
+        return httpManager.instantiate(SplitServiceApi::class.java, BuildConfig.BASE_URL)
     }
 }
