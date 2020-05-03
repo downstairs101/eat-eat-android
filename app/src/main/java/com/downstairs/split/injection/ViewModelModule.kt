@@ -13,7 +13,6 @@ import dagger.multibindings.IntoMap
 import javax.inject.Provider
 
 @Module(includes = [ViewModelModule.SplitViewModule::class])
-
 class ViewModelModule {
 
     @Provides
