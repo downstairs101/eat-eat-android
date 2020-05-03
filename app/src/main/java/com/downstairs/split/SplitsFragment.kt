@@ -10,4 +10,6 @@ class SplitsFragment : BottomSheetFragment(R.layout.splits_fragment) {
     override fun onCreateBehavior(behavior: BottomSheetBehavior<FrameLayout>) {
         behavior.isFitToContents = false
     }
+
+    override fun getFragmentTag() = "SplitsFragment"
 }

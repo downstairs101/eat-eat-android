@@ -10,9 +10,9 @@
     <color name="color_error">@color/red_600</color>
 
     <color name="color_on_primary">@color/white</color>
-    <color name="color_on_secondary">@color/black</color>
-    <color name="color_on_background">@color/white</color>
-    <color name="color_on_surface">@color/white</color>
+    <color name="color_on_secondary">@color/grey_900</color>
+    <color name="color_on_background">@color/grey_800</color>
+    <color name="color_on_surface">@color/grey_900</color>
     <color name="color_on_error">@color/white</color>
 
     <color name="blue_50">#E1F2F8</color>
