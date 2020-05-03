@@ -31,5 +31,4 @@ open class BottomSheetFragment(@LayoutRes private val layout: Int?) : BottomShee
     }
 
     fun onCreateBehavior(behavior: BottomSheetBehavior<FrameLayout>) {}
-
 }
