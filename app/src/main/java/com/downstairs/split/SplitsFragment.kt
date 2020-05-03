@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
@@ -15,8 +16,16 @@ import com.downstairs.eatat.core.extensions.getCoreComponent
 import com.downstairs.injection.DaggerAppComponent
 import kotlinx.android.synthetic.main.spit_list_item.view.*
 import kotlinx.android.synthetic.main.splits_fragment.*
+import javax.inject.Inject
 
 class SplitsFragment : Fragment(R.layout.splits_fragment) {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(SplitsViewModel::class.java)
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
