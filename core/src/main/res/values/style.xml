@@ -45,6 +45,7 @@
     <!--Large components -->
     <style name="Style.BottomSheet.Surface.Rounded.Top" parent="Widget.Design.BottomSheet.Modal">
         <item name="shapeAppearance">@style/Shape.Rounded16.Top</item>
+        <item name="backgroundTint">@color/color_surface</item>
     </style>
 
 </resources>
