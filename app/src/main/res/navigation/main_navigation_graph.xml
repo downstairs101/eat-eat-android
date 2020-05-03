@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/splitsFragment">
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.downstairs.home.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/home_fragment" />
+        android:id="@+id/splitsFragment"
+        android:name="com.downstairs.split.SplitsFragment"
+        android:label="SplitsFragment"
+        tools:layout="@layout/splits_fragment" />
 </navigation>

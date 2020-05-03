@@ -55,7 +55,7 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
 class SplitsAdapter : ListAdapter<SplitUiModel, SplitsAdapter.SplitsViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SplitsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.spit_list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.split_list_item, parent, false)
         return SplitsViewHolder(view)
     }
 
