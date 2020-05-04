@@ -3,10 +3,12 @@ package com.downstairs.split
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.downstairs.eatat.core.extensions.launchIO
 import com.downstairs.split.data.SplitUiModel
 import javax.inject.Inject
 
-class SplitsViewModel @Inject constructor() : ViewModel() {
+class SplitsViewModel @Inject constructor(private val splitInteractor: SplitInteractor) : ViewModel() {
 
     private val mutableSplits = MutableLiveData<List<SplitUiModel>>()
     val splits: LiveData<List<SplitUiModel>> = mutableSplits
@@ -16,22 +18,19 @@ class SplitsViewModel @Inject constructor() : ViewModel() {
     }
 
     private fun loadSplits() {
-        val splits = listOf(
-            SplitUiModel("Edgar", "R$ 350,00"),
-            SplitUiModel("Allan Moreira", "R$ 150,00"),
-            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
-            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
-            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
-            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
-            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
-            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
-            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
-            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
-            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
-            SplitUiModel("Zezinho da esquina", "R$ 550,00"),
-            SplitUiModel("Seu João", "R$ 330,00")
-        )
+        viewModelScope.launchIO {
+            val result = splitInteractor.fetchSpits(1)
+            result.onSuccess { splitList ->
+                onSplitResult(splitList)
+            }
+        }
+    }
 
-        mutableSplits.postValue(splits)
+    private fun onSplitResult(splitList: List<Split>) {
+        val uiSplits = splitList.map {
+            SplitUiModel.fromDomain(it)
+        }
+
+        mutableSplits.postValue(uiSplits)
     }
 }

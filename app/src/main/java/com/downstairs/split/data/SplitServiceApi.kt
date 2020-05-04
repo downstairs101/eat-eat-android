@@ -5,6 +5,6 @@ import retrofit2.http.Path
 
 interface SplitServiceApi {
 
-    @GET("/splits/{id}")
-    suspend fun fetchSplits(@Path("id") userId: Int): SplitRemote
+    @GET("split/{id}")
+    suspend fun fetchSplits(@Path("id") userId: Int): List<SplitRemote>
 }
