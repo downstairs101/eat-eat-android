@@ -29,7 +29,8 @@ class SplitsAdapter : ListAdapter<SplitUiModel, SplitsAdapter.SplitsViewHolder>(
             }
 
             override fun areContentsTheSame(oldItem: SplitUiModel, newItem: SplitUiModel): Boolean {
-                return newItem.equals(oldItem)
+                return newItem.value == oldItem.value
+                        && newItem.payerName == oldItem.payerName
             }
         }
     }
