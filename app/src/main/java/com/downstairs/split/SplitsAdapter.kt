@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.downstairs.R
+import com.downstairs.split.data.SplitUiModel
 import kotlinx.android.synthetic.main.split_list_item.view.*
 
 class SplitsAdapter : ListAdapter<SplitUiModel, SplitsAdapter.SplitsViewHolder>(DIFF_CALLBACK) {

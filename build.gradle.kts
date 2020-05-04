@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 typealias AndroidBasePlugin = com.android.build.gradle.BasePlugin
 typealias AndroidExtension = com.android.build.gradle.TestedExtension
 
@@ -26,6 +28,10 @@ subprojects {
         if (this is AndroidBasePlugin) {
             extensions.findByType<AndroidExtension>()?.applyCommonConfigs()
         }
+    }
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
+        kotlinOptions.freeCompilerArgs += "-Xallow-result-return-type"
     }
 }
 

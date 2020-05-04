@@ -21,8 +21,6 @@ android {
     }
 }
 
-
-
 dependencies {
 
     implementation(Dependencies.Kotlin.stdlib)

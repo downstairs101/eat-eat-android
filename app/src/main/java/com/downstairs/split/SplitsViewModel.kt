@@ -3,6 +3,7 @@ package com.downstairs.split
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.downstairs.split.data.SplitUiModel
 import javax.inject.Inject
 
 class SplitsViewModel @Inject constructor() : ViewModel() {
