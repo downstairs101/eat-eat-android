@@ -9,6 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
 import com.downstairs.eatat.core.extensions.getCoreComponent
+import com.downstairs.eatat.core.tools.Action
+import com.downstairs.eatat.core.tools.Navigation
+import com.downstairs.eatat.core.tools.State
 import com.downstairs.split.injection.DaggerSplitComponent
 import kotlinx.android.synthetic.main.splits_fragment.*
 import javax.inject.Inject
@@ -41,6 +44,19 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
         viewModel.splits.observe(viewLifecycleOwner, Observer {
             getSplitsAdapter()?.submitList(it)
         })
+
+        viewModel.viewState.observe(viewLifecycleOwner, Observer() {
+            onStateChange(it)
+        })
+    }
+
+    private fun onStateChange(action: Action) {
+        when (action) {
+            is State.Success -> print("success")
+            is State.Loading -> print("loading")
+            is State.Failure -> print("error")
+            is Navigation -> print("navigating") //findNavController().navigate(action.destination, action.param)
+        }
     }
 
     private fun getSplitsAdapter(): SplitsAdapter? = splitsRecyclerView.adapter as? SplitsAdapter
