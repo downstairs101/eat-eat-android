@@ -6,9 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.downstairs.eatat.core.extensions.launchIO
 import com.downstairs.eatat.core.tools.Action
-import com.downstairs.eatat.core.tools.Error
 import com.downstairs.eatat.core.tools.State
-import com.downstairs.eatat.core.tools.ViewAction
 import com.downstairs.split.data.SplitUiModel
 import javax.inject.Inject
 
@@ -21,18 +19,16 @@ class SplitsViewModel @Inject constructor(private val splitInteractor: SplitInte
     val splits: LiveData<List<SplitUiModel>> = mutableSplits
 
     init {
-        viewModelScope.launchIO {
-            loadSplits()
-        }
+        viewModelScope.launchIO { loadSplits() }
     }
 
     private suspend fun loadSplits() {
         val result = splitInteractor.fetchSpits(1)
-        result.onSuccess { onSplitResult(it) }
+        result.onSuccess { onSplitLoaded(it) }
         result.onFailure { onSplitError(it) }
     }
 
-    private fun onSplitResult(splitList: List<Split>) {
+    private fun onSplitLoaded(splitList: List<Split>) {
         val uiSplits = splitList.map {
             SplitUiModel.fromDomain(it)
         }
@@ -43,5 +39,4 @@ class SplitsViewModel @Inject constructor(private val splitInteractor: SplitInte
 
     private fun onSplitError(throwable: Throwable) {
     }
-
 }

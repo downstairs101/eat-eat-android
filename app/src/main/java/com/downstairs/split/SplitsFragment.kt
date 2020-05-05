@@ -41,12 +41,12 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
     }
 
     private fun setupObservers() {
-        viewModel.splits.observe(viewLifecycleOwner, Observer {
-            getSplitsAdapter()?.submitList(it)
-        })
-
         viewModel.viewState.observe(viewLifecycleOwner, Observer() {
             onStateChange(it)
+        })
+
+        viewModel.splits.observe(viewLifecycleOwner, Observer {
+            getSplitsAdapter()?.submitList(it)
         })
     }
 
