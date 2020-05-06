@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.downstairs.eatat.core.extensions.launchIO
 import com.downstairs.eatat.core.tools.Instruction
-import com.downstairs.eatat.core.tools.ViewInstruction
 import com.downstairs.split.data.SplitUiModel
 import javax.inject.Inject
 
@@ -41,5 +40,3 @@ class SplitsViewModel @Inject constructor(
         mutableViewState.postValue(viewInstruction.failure())
     }
 }
-
-class SplitViewInstruction @Inject constructor() : ViewInstruction()
