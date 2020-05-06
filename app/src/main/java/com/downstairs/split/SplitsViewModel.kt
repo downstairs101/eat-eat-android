@@ -10,7 +10,7 @@ import com.downstairs.split.data.SplitUiModel
 import javax.inject.Inject
 
 class SplitsViewModel @Inject constructor(
-    private val viewInstruction: SplitViewInstruction,
+    private val viewInstruction: SplitsViewInstruction,
     private val splitsInteractor: SplitsInteractor
 ) : ViewModel() {
 

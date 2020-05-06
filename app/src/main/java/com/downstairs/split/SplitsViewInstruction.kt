@@ -5,6 +5,6 @@ import com.downstairs.eatat.core.tools.Navigation
 import com.downstairs.eatat.core.tools.ViewInstruction
 import javax.inject.Inject
 
-class SplitViewInstruction @Inject constructor() : ViewInstruction() {
+class SplitsViewInstruction @Inject constructor() : ViewInstruction() {
     fun navigateToSplitDetails() = Navigation(R.id.payerNameText)
 }
