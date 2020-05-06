@@ -36,7 +36,7 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
     }
 
     private fun setupSplitsView() {
-        splitsRecyclerView.adapter = SplitsAdapter()
+        splitsRecyclerView.adapter = SplitAdapter()
         splitsRecyclerView.layoutManager = LinearLayoutManager(context)
     }
 
@@ -59,6 +59,6 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
         }
     }
 
-    private fun getSplitsAdapter(): SplitsAdapter? = splitsRecyclerView.adapter as? SplitsAdapter
+    private fun getSplitsAdapter(): SplitAdapter? = splitsRecyclerView.adapter as? SplitAdapter
 }
 

@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class SplitsViewModel @Inject constructor(
     private val viewInstruction: SplitViewInstruction,
-    private val splitInteractor: SplitInteractor
+    private val splitsInteractor: SplitsInteractor
 ) : ViewModel() {
 
     private val mutableViewState = MutableLiveData<Instruction>()
@@ -25,7 +25,7 @@ class SplitsViewModel @Inject constructor(
     }
 
     private suspend fun loadSplits() {
-        val result = splitInteractor.fetchSpits(1)
+        val result = splitsInteractor.fetchSpits(1)
         result.onSuccess { onSplitLoaded(it) }
         result.onFailure { onSplitError(it) }
     }

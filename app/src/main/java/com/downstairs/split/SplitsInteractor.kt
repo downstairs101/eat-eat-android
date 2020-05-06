@@ -3,7 +3,7 @@ package com.downstairs.split
 import com.downstairs.split.data.SplitServiceApi
 import javax.inject.Inject
 
-class SplitInteractor @Inject constructor(private val splitService: SplitServiceApi) {
+class SplitsInteractor @Inject constructor(private val splitService: SplitServiceApi) {
 
     suspend fun fetchSpits(userId: Int): Result<List<Split>> {
         return try {
