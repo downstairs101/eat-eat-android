@@ -1,4 +1,4 @@
-package com.downstairs.split
+package com.downstairs.split.list
 
 import android.content.Context
 import android.os.Bundle

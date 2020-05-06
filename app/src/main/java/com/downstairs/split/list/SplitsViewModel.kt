@@ -1,4 +1,4 @@
-package com.downstairs.split
+package com.downstairs.split.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.downstairs.eatat.core.extensions.launchIO
 import com.downstairs.eatat.core.tools.Instruction
+import com.downstairs.split.Split
 import com.downstairs.split.data.SplitUiModel
 import javax.inject.Inject
 

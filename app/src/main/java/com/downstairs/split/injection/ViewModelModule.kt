@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.downstairs.eatat.core.injection.FeatureScope
 import com.downstairs.eatat.core.injection.ViewModelFactory
 import com.downstairs.eatat.core.injection.ViewModelKey
-import com.downstairs.split.SplitsViewModel
+import com.downstairs.split.list.SplitsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

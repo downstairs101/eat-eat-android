@@ -1,5 +1,6 @@
-package com.downstairs.split
+package com.downstairs.split.list
 
+import com.downstairs.split.Split
 import com.downstairs.split.data.SplitServiceApi
 import javax.inject.Inject
 

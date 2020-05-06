@@ -6,7 +6,7 @@
     app:startDestination="@id/splitsFragment">
     <fragment
         android:id="@+id/splitsFragment"
-        android:name="com.downstairs.split.SplitsFragment"
+        android:name="com.downstairs.split.list.SplitsFragment"
         android:label="SplitsFragment"
         tools:layout="@layout/splits_fragment" />
 </navigation>

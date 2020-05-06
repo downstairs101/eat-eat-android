@@ -1,4 +1,4 @@
-package com.downstairs.split
+package com.downstairs.split.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +10,9 @@ import com.downstairs.R
 import com.downstairs.split.data.SplitUiModel
 import kotlinx.android.synthetic.main.split_list_item.view.*
 
-class SplitAdapter : ListAdapter<SplitUiModel, SplitAdapter.SplitsViewHolder>(DIFF_CALLBACK) {
+class SplitAdapter : ListAdapter<SplitUiModel, SplitAdapter.SplitsViewHolder>(
+    DIFF_CALLBACK
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SplitsViewHolder {
         val view = LayoutInflater.from(parent.context)

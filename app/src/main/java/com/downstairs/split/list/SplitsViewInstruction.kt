@@ -1,4 +1,4 @@
-package com.downstairs.split
+package com.downstairs.split.list
 
 import com.downstairs.R
 import com.downstairs.eatat.core.tools.Navigation
