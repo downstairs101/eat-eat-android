@@ -54,7 +54,7 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
         when (action) {
             is State.Success -> print("success")
             is State.Loading -> print("loading")
-            is State.Failure -> print("error")
+            is State.Failed -> print("error")
             is Navigation -> print("navigating") //findNavController().navigate(action.destination, action.param)
         }
     }
