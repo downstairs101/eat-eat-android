@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
 import com.downstairs.eatat.core.extensions.getCoreComponent
-import com.downstairs.eatat.core.tools.Action
+import com.downstairs.eatat.core.tools.Instruction
 import com.downstairs.eatat.core.tools.Navigation
 import com.downstairs.eatat.core.tools.State
 import com.downstairs.split.injection.DaggerSplitComponent
@@ -50,8 +50,8 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
         })
     }
 
-    private fun onStateChange(action: Action) {
-        when (action) {
+    private fun onStateChange(instruction: Instruction) {
+        when (instruction) {
             is State.Success -> print("success")
             is State.Loading -> print("loading")
             is State.Failed -> print("error")
