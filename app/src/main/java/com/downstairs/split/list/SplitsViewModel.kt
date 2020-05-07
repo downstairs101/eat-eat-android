@@ -26,6 +26,8 @@ class SplitsViewModel @Inject constructor(
     }
 
     private suspend fun loadSplits() {
+        mutableViewState.postValue(viewInstruction.loading())
+
         val result = splitsInteractor.fetchSpits(1)
         result.onSuccess { onSplitLoaded(it) }
         result.onFailure { onSplitError(it) }
@@ -33,6 +35,7 @@ class SplitsViewModel @Inject constructor(
 
     private fun onSplitLoaded(splitList: List<Split>) {
         val uiSplits = splitList.map { SplitUiModel.fromDomain(it) }
+
         mutableSplits.postValue(uiSplits)
         mutableViewState.postValue(viewInstruction.success())
     }
