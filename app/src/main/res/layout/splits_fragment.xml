@@ -3,8 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".split.list.SplitsFragment">
 
+    <ProgressBar
+        android:id="@+id/splitsProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/splitsRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/splitsRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/splitsRecyclerView"
+        app:layout_constraintTop_toTopOf="@+id/splitsRecyclerView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/splitsRecyclerView"
@@ -15,4 +27,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/split_list_item" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.downstairs.split.list
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -42,7 +43,7 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
 
     private fun setupObservers() {
         viewModel.viewState.observe(viewLifecycleOwner, Observer() {
-            onStateChange(it)
+            onReceiveInstruction(it)
         })
 
         viewModel.splits.observe(viewLifecycleOwner, Observer {
@@ -50,11 +51,14 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
         })
     }
 
-    private fun onStateChange(instruction: Instruction) {
+    private fun onReceiveInstruction(instruction: Instruction) {
         when (instruction) {
-            is State -> print("Some state")
+            is State.Loading -> toLoadingState()
             is Navigation -> print("Some destination") //findNavController().navigate(action.destination, action.param)
         }
+    }
+
+    private fun toLoadingState() {
     }
 
     private fun getSplitsAdapter(): SplitAdapter? = splitsRecyclerView.adapter as? SplitAdapter
