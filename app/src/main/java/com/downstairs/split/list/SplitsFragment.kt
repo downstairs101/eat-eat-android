@@ -3,7 +3,6 @@ package com.downstairs.split.list
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.view.animation.Animation
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
