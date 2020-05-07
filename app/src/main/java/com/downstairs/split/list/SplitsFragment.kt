@@ -53,9 +53,14 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
 
     private fun onReceiveInstruction(instruction: Instruction) {
         when (instruction) {
+            is State.Success -> toSuccessState()
             is State.Loading -> toLoadingState()
             is Navigation -> print("Some destination") //findNavController().navigate(action.destination, action.param)
         }
+    }
+
+    private fun toSuccessState() {
+        splitsProgressBar.isGone = true
     }
 
     private fun toLoadingState() {
