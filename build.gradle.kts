@@ -1,3 +1,5 @@
+import Build_gradle.AndroidBasePlugin
+import Build_gradle.AndroidExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 typealias AndroidBasePlugin = com.android.build.gradle.BasePlugin
@@ -32,6 +34,7 @@ subprojects {
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
         kotlinOptions.freeCompilerArgs += "-Xallow-result-return-type"
+        kotlinOptions.jvmTarget = "1.8"
     }
 }
 

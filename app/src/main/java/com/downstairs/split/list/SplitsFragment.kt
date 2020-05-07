@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -59,6 +60,7 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
     }
 
     private fun toLoadingState() {
+        splitsProgressBar.isGone = false
     }
 
     private fun getSplitsAdapter(): SplitAdapter? = splitsRecyclerView.adapter as? SplitAdapter
