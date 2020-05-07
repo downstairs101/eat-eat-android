@@ -7,6 +7,7 @@ import com.downstairs.eatat.core.injection.DaggerCoreComponent
 
 open class ToSplitApplication : Application(), CoreInjector {
 
-    override val coreComponent: CoreComponent
-        get() = DaggerCoreComponent.factory().create(applicationContext)
+    override val coreComponent: CoreComponent by lazy {
+        DaggerCoreComponent.factory().create(applicationContext)
+    }
 }
