@@ -30,6 +30,7 @@ dependencies {
 
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitMoshi)
+    implementation(Dependencies.httpLogging)
 
     implementation(Dependencies.dagger)
     implementation(Dependencies.daggerAndroid)
