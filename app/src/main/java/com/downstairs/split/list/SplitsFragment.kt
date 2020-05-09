@@ -55,16 +55,25 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
         when (instruction) {
             is State.Success -> toSuccessState()
             is State.Loading -> toLoadingState()
+            is State.Failed -> toFailedState()
             is Navigation -> print("Some destination") //findNavController().navigate(action.destination, action.param)
         }
     }
 
     private fun toSuccessState() {
-        splitsProgressBar.isGone = true
+        freeViews()
+    }
+
+    private fun toFailedState() {
+        freeViews()
     }
 
     private fun toLoadingState() {
         splitsProgressBar.isGone = false
+    }
+
+    private fun freeViews() {
+        splitsProgressBar.isGone = true
     }
 
     private fun getSplitsAdapter(): SplitAdapter? = splitsRecyclerView.adapter as? SplitAdapter
