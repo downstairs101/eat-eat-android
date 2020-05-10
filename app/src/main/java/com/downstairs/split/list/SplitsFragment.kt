@@ -32,11 +32,12 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setupSplitsView()
+        setupSplitsList()
         setupObservers()
+        setupListeners()
     }
 
-    private fun setupSplitsView() {
+    private fun setupSplitsList() {
         splitsRecyclerView.adapter = SplitAdapter()
         splitsRecyclerView.layoutManager = LinearLayoutManager(context)
     }
@@ -49,6 +50,12 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
         viewModel.splits.observe(viewLifecycleOwner, Observer {
             getSplitsAdapter()?.submitList(it)
         })
+    }
+
+    private fun setupListeners() {
+        getSplitsAdapter()?.setOItemClickListener {
+            viewModel.onItemClick(it)
+        }
     }
 
     private fun onReceiveInstruction(instruction: Instruction) {

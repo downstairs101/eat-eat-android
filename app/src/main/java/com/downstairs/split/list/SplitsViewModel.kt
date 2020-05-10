@@ -43,4 +43,8 @@ class SplitsViewModel @Inject constructor(
     private fun onSplitError(throwable: Throwable) {
         mutableViewState.postValue(viewInstruction.failure())
     }
+
+    fun onItemClick(splitUiModel: SplitUiModel) {
+        viewInstruction.navigateToSplitDetails(splitUiModel)
+    }
 }
