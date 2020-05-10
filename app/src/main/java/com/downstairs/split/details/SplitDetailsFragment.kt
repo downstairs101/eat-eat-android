@@ -10,6 +10,4 @@ class SplitDetailsFragment : Fragment(R.layout.split_details_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
     }
-
-
 }
