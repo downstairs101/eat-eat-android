@@ -7,6 +7,7 @@ import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
 import com.downstairs.eatat.core.extensions.getCoreComponent
@@ -63,7 +64,7 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
             is State.Success -> toSuccessState()
             is State.Loading -> toLoadingState()
             is State.Failed -> toFailedState()
-            is Navigation -> print("Some destination") //findNavController().navigate(action.destination, action.param)
+            is Navigation -> navigate(instruction)
         }
     }
 
@@ -77,6 +78,10 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
 
     private fun toLoadingState() {
         splitsProgressBar.isGone = false
+    }
+
+    private fun navigate(navigation: Navigation) {
+        findNavController().navigate(navigation.destination, navigation.arguments)
     }
 
     private fun freeViews() {
