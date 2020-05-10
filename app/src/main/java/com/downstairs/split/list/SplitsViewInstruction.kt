@@ -11,7 +11,7 @@ class SplitsViewInstruction @Inject constructor() : ViewInstruction() {
 
     fun navigateToSplitDetails(splitUiModel: SplitUiModel): Navigation {
         return Navigation(R.id.fromSplitsToSplitDetails, Bundle().apply {
-            putString("", splitUiModel.payerName)
+            putInt("splitID", splitUiModel.id)
         })
     }
 }
