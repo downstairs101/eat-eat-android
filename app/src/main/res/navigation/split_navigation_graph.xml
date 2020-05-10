@@ -16,7 +16,7 @@
         android:label="splits_fragment"
         tools:layout="@layout/splits_fragment" >
         <action
-            android:id="@+id/action_splitsFragment_to_splitDetailsFragment"
+            android:id="@+id/fromSplitsToSplitDetails"
             app:destination="@id/splitDetailsFragment" />
     </fragment>
 </navigation>
