@@ -15,8 +15,8 @@ class SplitsViewModel @Inject constructor(
     private val splitsInteractor: SplitsInteractor
 ) : ViewModel() {
 
-    private val mutableViewState = MutableLiveData<Instruction>()
-    val viewState: LiveData<Instruction> = mutableViewState
+    private val _viewInstruction = MutableLiveData<Instruction>()
+    val viewState: LiveData<Instruction> = _viewInstruction
 
     private val mutableSplits = MutableLiveData<List<SplitUiModel>>()
     val splits: LiveData<List<SplitUiModel>> = mutableSplits
@@ -26,7 +26,7 @@ class SplitsViewModel @Inject constructor(
     }
 
     private suspend fun loadSplits() {
-        mutableViewState.postValue(viewInstruction.loading())
+        _viewInstruction.postValue(viewInstruction.loading())
 
         val result = splitsInteractor.fetchSpits(1)
         result.onSuccess { onSplitLoaded(it) }
@@ -37,14 +37,15 @@ class SplitsViewModel @Inject constructor(
         val uiSplits = splitList.map { SplitUiModel.fromDomain(it) }
 
         mutableSplits.postValue(uiSplits)
-        mutableViewState.postValue(viewInstruction.success())
+        _viewInstruction.postValue(viewInstruction.success())
     }
 
     private fun onSplitError(throwable: Throwable) {
-        mutableViewState.postValue(viewInstruction.failure())
+        _viewInstruction.postValue(viewInstruction.failure())
     }
 
     fun onItemClick(splitUiModel: SplitUiModel) {
-        viewInstruction.navigateToSplitDetails(splitUiModel)
+        val navigation = viewInstruction.navigateToSplitDetails(splitUiModel)
+        _viewInstruction.postValue(navigation)
     }
 }
