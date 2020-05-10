@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.downstairs.eatat.core.extensions.launchIO
 import com.downstairs.eatat.core.tools.Instruction
+import com.downstairs.eatat.core.tools.SingleLiveEvent
 import com.downstairs.split.Split
 import com.downstairs.split.data.SplitUiModel
 import javax.inject.Inject
@@ -15,7 +16,7 @@ class SplitsViewModel @Inject constructor(
     private val splitsInteractor: SplitsInteractor
 ) : ViewModel() {
 
-    private val _viewInstruction = MutableLiveData<Instruction>()
+    private val _viewInstruction = SingleLiveEvent<Instruction>()
     val viewState: LiveData<Instruction> = _viewInstruction
 
     private val mutableSplits = MutableLiveData<List<SplitUiModel>>()
@@ -33,6 +34,11 @@ class SplitsViewModel @Inject constructor(
         result.onFailure { onSplitError(it) }
     }
 
+    fun onItemClick(splitUiModel: SplitUiModel) {
+        val navigation = viewInstruction.navigateToSplitDetails(splitUiModel)
+        _viewInstruction.postValue(navigation)
+    }
+
     private fun onSplitLoaded(splitList: List<Split>) {
         val uiSplits = splitList.map { SplitUiModel.fromDomain(it) }
 
@@ -42,10 +48,5 @@ class SplitsViewModel @Inject constructor(
 
     private fun onSplitError(throwable: Throwable) {
         _viewInstruction.postValue(viewInstruction.failure())
-    }
-
-    fun onItemClick(splitUiModel: SplitUiModel) {
-        val navigation = viewInstruction.navigateToSplitDetails(splitUiModel)
-        _viewInstruction.postValue(navigation)
     }
 }
