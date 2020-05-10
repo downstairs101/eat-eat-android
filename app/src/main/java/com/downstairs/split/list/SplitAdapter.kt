@@ -10,9 +10,13 @@ import com.downstairs.R
 import com.downstairs.split.data.SplitUiModel
 import kotlinx.android.synthetic.main.split_list_item.view.*
 
-class SplitAdapter : ListAdapter<SplitUiModel, SplitAdapter.SplitsViewHolder>(
-    DIFF_CALLBACK
-) {
+class SplitAdapter : ListAdapter<SplitUiModel, SplitAdapter.SplitsViewHolder>(DIFF_CALLBACK) {
+
+    private var itemClickListener: (SplitUiModel) -> Unit = {}
+
+    fun setOItemClickListener(itemClickListener: (SplitUiModel) -> Unit) {
+        this.itemClickListener = itemClickListener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SplitsViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -38,6 +42,12 @@ class SplitAdapter : ListAdapter<SplitUiModel, SplitAdapter.SplitsViewHolder>(
     }
 
     inner class SplitsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        init {
+            itemView.setOnClickListener {
+                itemClickListener(getItem(adapterPosition))
+            }
+        }
 
         fun bindItem(split: SplitUiModel) {
             itemView.payerNameText.text = split.payerName
