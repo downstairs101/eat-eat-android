@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/split_navigation_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/split_navigation_graph"
     app:startDestination="@id/splitDetailsFragment">
 
     <fragment
         android:id="@+id/splitDetailsFragment"
         android:name="com.downstairs.split.details.SplitDetailsFragment"
-        android:label="SplitDetailsFragment" />
+        android:label="SplitDetailsFragment"
+        tools:layout="@layout/split_details_fragment" />
 </navigation>
