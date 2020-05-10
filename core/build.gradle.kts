@@ -28,6 +28,8 @@ dependencies {
     implementation(Dependencies.materialDesign)
     implementation(Dependencies.Androidx.constraintLayout)
 
+    implementation(Dependencies.Androidx.navigationUI)
+
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitMoshi)
     implementation(Dependencies.httpLogging)
