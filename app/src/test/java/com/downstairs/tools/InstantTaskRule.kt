@@ -6,27 +6,26 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import org.junit.rules.ExternalResource
+import org.junit.rules.TestWatcher
+import org.junit.runner.Description
 
-class InstantTaskRule : ExternalResource() {
+class InstantTaskRule : TestWatcher() {
 
-    private val testDispatcher = TestCoroutineDispatcher()
+    override fun starting(description: Description?) {
+        super.starting(description)
 
-    override fun before() {
-
-        Dispatchers.setMain(testDispatcher)
+        Dispatchers.setMain(TestCoroutineDispatcher())
 
         ArchTaskExecutor.getInstance().setDelegate(object : TaskExecutor() {
             override fun executeOnDiskIO(runnable: Runnable) = runnable.run()
 
-            override fun isMainThread() = true
-
             override fun postToMainThread(runnable: Runnable) = runnable.run()
 
+            override fun isMainThread() = true
         })
     }
 
-    override fun after() {
+    override fun finished(description: Description?) {
         Dispatchers.resetMain()
 
         ArchTaskExecutor.getInstance().setDelegate(null)

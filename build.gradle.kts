@@ -1,3 +1,5 @@
+import Build_gradle.AndroidBasePlugin
+import Build_gradle.AndroidExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 typealias AndroidBasePlugin = com.android.build.gradle.BasePlugin

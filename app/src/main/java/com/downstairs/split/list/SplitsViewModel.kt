@@ -23,15 +23,17 @@ class SplitsViewModel @Inject constructor(
     val splits: LiveData<List<SplitUiModel>> = mutableSplits
 
     init {
-        viewModelScope.launchIO { loadSplits() }
+        loadSplits()
     }
 
-    private suspend fun loadSplits() {
+    private fun loadSplits() {
         _viewInstruction.postValue(viewInstruction.loading())
 
-        val result = splitsInteractor.fetchSpits(1)
-        result.onSuccess { onSplitLoaded(it) }
-        result.onFailure { onSplitError(it) }
+        viewModelScope.launchIO {
+            val result = splitsInteractor.fetchSpits(1)
+            result.onSuccess { onSplitLoaded(it) }
+            result.onFailure { onSplitError(it) }
+        }
     }
 
     fun onItemClick(splitUiModel: SplitUiModel) {
