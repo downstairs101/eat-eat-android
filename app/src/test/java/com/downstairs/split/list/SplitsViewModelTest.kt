@@ -1,6 +1,5 @@
 package com.downstairs.split.list
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.downstairs.split.Split
 import com.downstairs.split.data.SplitUiModel
@@ -25,19 +24,23 @@ class SplitsViewModelTest {
     @Test
     fun `emits split list on success fetch result`() = runBlocking {
         val observer = mock<Observer<List<SplitUiModel>>>()
-
         val interactor = mock<SplitsInteractor> {
-            whenever(it.fetchSpits(1))
-                .thenReturn(Result.success(listOf(Split(1, "Car rent", User("Some Payer"), 230.00))))
+            whenever(it.fetchSpits(1)).thenReturn(getSuccessSplitResult())
         }
         val viewModel = getViewModel(interactor)
 
         viewModel.splits.observeForever(observer)
 
-        verify(observer).onChanged(argThat { true })
+        verify(observer).onChanged(argThat {
+            first().payerName == "Some Payer"
+        })
     }
 
     private fun getViewModel(splitsInteractor: SplitsInteractor): SplitsViewModel {
         return SplitsViewModel(SplitsViewInstruction(), splitsInteractor)
     }
+
+    private fun getSuccessSplitResult() =
+        Result.success(listOf(Split(1, "Car rent", User("Some Payer"), 230.00)))
+
 }
