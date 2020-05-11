@@ -1,4 +1,4 @@
-package com.downstairs.eatat.core
+package com.downstairs.tools
 
 import androidx.arch.core.executor.ArchTaskExecutor
 import androidx.arch.core.executor.TaskExecutor
