@@ -26,7 +26,7 @@ class SplitsViewModelTest {
     @Test
     fun `emits split list on success fetch result`() = runBlocking {
         val observer = mock<Observer<List<SplitUiModel>>>()
-        val interactor = successResultInteractor(1, getSplit(id = 1))
+        val interactor = successResultInteractor()
         val viewModel = getViewModel(interactor)
 
         viewModel.splits.observeForever(observer)
@@ -39,7 +39,7 @@ class SplitsViewModelTest {
     @Test
     fun `emits success instruction to view on success split fetch`() = runBlocking {
         val observer = mock<Observer<Instruction>>()
-        val interactor = successResultInteractor(1, getSplit(id = 1))
+        val interactor = successResultInteractor()
         val viewModel = getViewModel(interactor)
 
         viewModel.viewState.observeForever(observer)
@@ -49,13 +49,10 @@ class SplitsViewModelTest {
         )
     }
 
-    private suspend fun successResultInteractor(
-        splitId: Int = 1,
-        vararg split: Split = emptyArray()
-    ): SplitsInteractor {
+    private suspend fun successResultInteractor(vararg split: Split = arrayOf(getSplit())): SplitsInteractor {
         return mock {
             val result = Result.success(split.toList())
-            whenever(it.fetchSpits(splitId)).thenReturn(result)
+            whenever(it.fetchSpits()).thenReturn(result)
         }
     }
 

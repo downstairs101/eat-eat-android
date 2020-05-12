@@ -30,7 +30,7 @@ class SplitsViewModel @Inject constructor(
         _viewInstruction.postValue(viewInstruction.loading())
 
         viewModelScope.launchIO {
-            val result = splitsInteractor.fetchSpits(1)
+            val result = splitsInteractor.fetchSpits()
             result.onSuccess { onSplitLoaded(it) }
             result.onFailure { onSplitError(it) }
         }
