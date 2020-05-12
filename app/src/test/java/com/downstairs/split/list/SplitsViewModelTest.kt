@@ -24,23 +24,32 @@ class SplitsViewModelTest {
     @Test
     fun `emits split list on success fetch result`() = runBlocking {
         val observer = mock<Observer<List<SplitUiModel>>>()
-        val interactor = mock<SplitsInteractor> {
-            whenever(it.fetchSpits(1)).thenReturn(getSuccessSplitResult())
-        }
+        val interactor = successResultInteractor(1, getSplit(id = 1))
         val viewModel = getViewModel(interactor)
 
         viewModel.splits.observeForever(observer)
 
-        verify(observer).onChanged(argThat {
-            first().payerName == "Some Payer"
-        })
+        verify(observer).onChanged(
+            argThat { first().payerName == "Some Payer" }
+        )
+    }
+
+    private suspend fun successResultInteractor(splitId: Int, vararg split: Split): SplitsInteractor {
+        return mock {
+            val result = Result.success(split.toList())
+            whenever(it.fetchSpits(splitId)).thenReturn(result)
+        }
     }
 
     private fun getViewModel(splitsInteractor: SplitsInteractor): SplitsViewModel {
         return SplitsViewModel(SplitsViewInstruction(), splitsInteractor)
     }
 
-    private fun getSuccessSplitResult() =
-        Result.success(listOf(Split(1, "Car rent", User("Some Payer"), 230.00)))
+    private fun getSplit(
+        id: Int = 1,
+        name: String = "Car rent",
+        user: User = User("Some Payer"),
+        value: Double = 230.00
+    ) = Split(id, name, user, value)
 
 }
