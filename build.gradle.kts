@@ -1,5 +1,3 @@
-import Build_gradle.AndroidBasePlugin
-import Build_gradle.AndroidExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 typealias AndroidBasePlugin = com.android.build.gradle.BasePlugin
@@ -13,7 +11,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:4.0.0-beta03")
+        classpath("com.android.tools.build:gradle:4.0.0-rc01")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}")
     }
 }
