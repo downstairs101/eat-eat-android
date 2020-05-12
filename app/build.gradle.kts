@@ -38,8 +38,9 @@ dependencies {
     implementation(Dependencies.Androidx.navigationFragment)
     implementation(Dependencies.Androidx.navigationUI)
 
-    implementation(Dependencies.Androidx.lifecycleExtensions)
+    implementation(Dependencies.Androidx.lifecycleLiveData)
     implementation(Dependencies.Androidx.lifecycleViewModel)
+    implementation(Dependencies.Androidx.lifecycleExtensions)
 
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitMoshi)

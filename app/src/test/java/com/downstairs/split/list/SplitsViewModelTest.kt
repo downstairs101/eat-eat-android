@@ -1,6 +1,8 @@
 package com.downstairs.split.list
 
 import androidx.lifecycle.Observer
+import com.downstairs.eatat.core.tools.Instruction
+import com.downstairs.eatat.core.tools.State
 import com.downstairs.split.Split
 import com.downstairs.split.data.SplitUiModel
 import com.downstairs.split.data.User
@@ -30,11 +32,27 @@ class SplitsViewModelTest {
         viewModel.splits.observeForever(observer)
 
         verify(observer).onChanged(
-            argThat { first().payerName == "Some Payer" }
+            argThat { first().id == 1 }
         )
     }
 
-    private suspend fun successResultInteractor(splitId: Int, vararg split: Split): SplitsInteractor {
+    @Test
+    fun `emits success instruction to view on success split fetch`() = runBlocking {
+        val observer = mock<Observer<Instruction>>()
+        val interactor = successResultInteractor()
+        val viewModel = getViewModel(interactor)
+
+        viewModel.viewState.observeForever(observer)
+
+        verify(observer).onChanged(
+            argThat { this is State.Success }
+        )
+    }
+
+    private suspend fun successResultInteractor(
+        splitId: Int = 1,
+        vararg split: Split = emptyArray()
+    ): SplitsInteractor {
         return mock {
             val result = Result.success(split.toList())
             whenever(it.fetchSpits(splitId)).thenReturn(result)

@@ -13,6 +13,7 @@ object Dependencies {
         const val activity = "androidx.activity:activity-ktx:1.1.0"
         const val fragment = "androidx.fragment:fragment-ktx:1.2.4"
 
+        const val lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
         const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
         const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
 
@@ -33,7 +34,7 @@ object Dependencies {
     const val retrofitMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
     const val httpLogging = "com.squareup.okhttp3:logging-interceptor:3.8.0"
 
-   const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
+    const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     const val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger}"
     const val daggerSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
