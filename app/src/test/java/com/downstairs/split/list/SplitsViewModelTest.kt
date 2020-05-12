@@ -32,7 +32,7 @@ class SplitsViewModelTest {
         viewModel.splits.observeForever(observer)
 
         verify(observer).onChanged(
-            argThat { first().id == 1 }
+            argThat { first().payerName == "Some Payer" }
         )
     }
 
