@@ -39,7 +39,7 @@ class SplitsViewModelTest {
     @Test
     fun `emits success instruction to view on success split fetch`() = runBlocking {
         val observer = mock<Observer<Instruction>>()
-        val interactor = successResultInteractor()
+        val interactor = successResultInteractor(1, getSplit(id = 1))
         val viewModel = getViewModel(interactor)
 
         viewModel.viewState.observeForever(observer)

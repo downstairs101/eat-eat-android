@@ -27,7 +27,6 @@ class InstantTaskRule : TestWatcher() {
 
     override fun finished(description: Description?) {
         Dispatchers.resetMain()
-
         ArchTaskExecutor.getInstance().setDelegate(null)
     }
 }
