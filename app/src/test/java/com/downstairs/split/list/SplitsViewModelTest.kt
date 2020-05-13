@@ -1,17 +1,15 @@
 package com.downstairs.split.list
 
 import androidx.lifecycle.Observer
-import com.downstairs.eatat.core.tools.Instruction
+import com.downstairs.eatat.core.tools.Failure
 import com.downstairs.eatat.core.tools.State
 import com.downstairs.split.Split
 import com.downstairs.split.data.SplitUiModel
 import com.downstairs.split.data.User
 import com.downstairs.tools.InstantTaskRule
-import com.nhaarman.mockitokotlin2.argThat
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.whenever
+import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.runBlocking
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -37,24 +35,32 @@ class SplitsViewModelTest {
     }
 
     @Test
-    fun `emits success instruction to view on success split fetch`() = runBlocking {
-        val observer = mock<Observer<Instruction>>()
+    fun `emits success instruction to view on success split fetch`() {
         val interactor = successResultInteractor()
+
         val viewModel = getViewModel(interactor)
 
-        viewModel.viewState.observeForever(observer)
-
-        verify(observer).onChanged(
-            argThat { this is State.Success }
-        )
+        assertThat(viewModel.viewState.value).isEqualTo(State.Success)
     }
 
-    private suspend fun successResultInteractor(vararg split: Split = arrayOf(getSplit())): SplitsInteractor {
-        return mock {
-            val result = Result.success(split.toList())
-            whenever(it.fetchSpits()).thenReturn(result)
+    @Test
+    fun `emits failure instruction to view on failed split fetch`() {
+        val interactor = failureResultInteractor()
+
+        val viewModel = getViewModel(interactor)
+
+        assertThat(viewModel.viewState.value).isEqualTo(State.Failed(Failure.Undefined))
+    }
+
+    private fun successResultInteractor(vararg split: Split = arrayOf(getSplit())) =
+        mock<SplitsInteractor> {
+            onBlocking { fetchSpits() } doReturn Result.success(split.toList())
         }
-    }
+
+    private fun failureResultInteractor() =
+        mock<SplitsInteractor> {
+            onBlocking { fetchSpits() } doReturn Result.failure(Throwable("Error on load splits"))
+        }
 
     private fun getViewModel(splitsInteractor: SplitsInteractor): SplitsViewModel {
         return SplitsViewModel(SplitsViewInstruction(), splitsInteractor)
@@ -67,4 +73,5 @@ class SplitsViewModelTest {
         value: Double = 230.00
     ) = Split(id, name, user, value)
 
+    private fun <T> mockObserverFunction() = mock<(T) -> Unit>()
 }

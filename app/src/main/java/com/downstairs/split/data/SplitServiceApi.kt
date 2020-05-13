@@ -4,6 +4,6 @@ import retrofit2.http.GET
 
 interface SplitServiceApi {
 
-    @GET("split")
+    @GET("split/1")
     suspend fun fetchSplits(): List<SplitRemote>
 }

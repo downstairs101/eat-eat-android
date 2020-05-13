@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.downstairs.eatat.core.extensions.launchIO
 import com.downstairs.eatat.core.tools.Instruction
 import com.downstairs.eatat.core.tools.SingleLiveEvent
 import com.downstairs.split.Split
 import com.downstairs.split.data.SplitUiModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SplitsViewModel @Inject constructor(
@@ -29,7 +29,7 @@ class SplitsViewModel @Inject constructor(
     private fun loadSplits() {
         _viewInstruction.postValue(viewInstruction.loading())
 
-        viewModelScope.launchIO {
+        viewModelScope.launch {
             val result = splitsInteractor.fetchSpits()
             result.onSuccess { onSplitLoaded(it) }
             result.onFailure { onSplitError(it) }
