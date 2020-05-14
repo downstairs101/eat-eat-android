@@ -1,6 +1,8 @@
 package com.downstairs.eatat.core.tools
 
+import android.os.Bundle
 import androidx.annotation.IdRes
+import androidx.core.os.bundleOf
 
 sealed class Instruction
 
@@ -24,6 +26,9 @@ class Navigation constructor(@IdRes val destination: Int) : Instruction() {
         this.arguments = arguments
     }
 }
+
+val Navigation.bundledArgs: Bundle
+    get() = bundleOf(*arguments)
 
 abstract class ViewInstruction {
     open fun success(): Instruction = State.Success
