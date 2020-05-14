@@ -17,18 +17,18 @@ sealed class Failure {
     object Undefined : Failure()
 }
 
-class Navigation constructor(@IdRes val destination: Int) : Instruction() {
+class Navigation(@IdRes val destination: Int) : Instruction() {
 
     var arguments: Array<out Pair<String, Any?>> = arrayOf(Pair("", ""))
         private set
+
+    val bundledArgs: Bundle
+        get() = bundleOf(*arguments)
 
     fun putArguments(vararg arguments: Pair<String, Any?>) {
         this.arguments = arguments
     }
 }
-
-val Navigation.bundledArgs: Bundle
-    get() = bundleOf(*arguments)
 
 abstract class ViewInstruction {
     open fun success(): Instruction = State.Success

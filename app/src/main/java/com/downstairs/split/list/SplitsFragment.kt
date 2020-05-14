@@ -14,7 +14,6 @@ import com.downstairs.eatat.core.extensions.getCoreComponent
 import com.downstairs.eatat.core.tools.Instruction
 import com.downstairs.eatat.core.tools.Navigation
 import com.downstairs.eatat.core.tools.State
-import com.downstairs.eatat.core.tools.bundledArgs
 import com.downstairs.split.injection.DaggerSplitComponent
 import kotlinx.android.synthetic.main.splits_fragment.*
 import javax.inject.Inject

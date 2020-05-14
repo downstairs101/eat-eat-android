@@ -85,7 +85,6 @@ class SplitsViewModelTest {
     @Test
     fun `emits navigation with split details destination on split item click`() {
         val observer = mock<Observer<Instruction>>()
-        stubLoadSplitsFailedResult()
 
         viewModel.viewState.observeForever(observer)
         viewModel.onItemClick(SplitUiModel(1,"Some Payer", "100.00"))
