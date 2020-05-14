@@ -22,11 +22,7 @@ class SplitsViewModel @Inject constructor(
     private val mutableSplits = MutableLiveData<List<SplitUiModel>>()
     val splits: LiveData<List<SplitUiModel>> = mutableSplits
 
-    init {
-        loadSplits()
-    }
-
-    private fun loadSplits() {
+    fun loadSplits() {
         _viewInstruction.postValue(viewInstruction.loading())
 
         viewModelScope.launch {

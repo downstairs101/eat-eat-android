@@ -32,6 +32,11 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
         DaggerSplitComponent.factory().create(context.getCoreComponent()).inject(this)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.loadSplits()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupSplitsList()
         setupObservers()
