@@ -3,7 +3,6 @@ package com.downstairs.split.list
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,6 +14,7 @@ import com.downstairs.eatat.core.extensions.getCoreComponent
 import com.downstairs.eatat.core.tools.Instruction
 import com.downstairs.eatat.core.tools.Navigation
 import com.downstairs.eatat.core.tools.State
+import com.downstairs.eatat.core.tools.bundledArgs
 import com.downstairs.split.injection.DaggerSplitComponent
 import kotlinx.android.synthetic.main.splits_fragment.*
 import javax.inject.Inject
@@ -87,7 +87,7 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
     }
 
     private fun navigate(navigation: Navigation) {
-        findNavController().navigate(navigation.destination, bundleOf(*navigation.arguments))
+        findNavController().navigate(navigation.destination, navigation.bundledArgs)
     }
 
     private fun freeViews() {
