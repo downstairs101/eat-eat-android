@@ -1,6 +1,5 @@
 package com.downstairs.eatat.core.tools
 
-import android.os.Bundle
 import androidx.annotation.IdRes
 
 sealed class Instruction
@@ -16,7 +15,15 @@ sealed class Failure {
     object Undefined : Failure()
 }
 
-class Navigation(@IdRes val destination: Int, val arguments: Bundle? = null) : Instruction()
+class Navigation constructor(@IdRes val destination: Int) : Instruction() {
+
+    var arguments: Array<out Pair<String, Any?>> = arrayOf(Pair("", ""))
+        private set
+
+    fun putArguments(vararg arguments: Pair<String, Any?>) {
+        this.arguments = arguments
+    }
+}
 
 abstract class ViewInstruction {
     open fun success(): Instruction = State.Success

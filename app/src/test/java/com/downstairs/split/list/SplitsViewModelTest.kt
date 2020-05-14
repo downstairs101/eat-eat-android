@@ -2,6 +2,7 @@ package com.downstairs.split.list
 
 import androidx.lifecycle.Observer
 import com.downstairs.eatat.core.tools.Instruction
+import com.downstairs.eatat.core.tools.Navigation
 import com.downstairs.eatat.core.tools.State
 import com.downstairs.split.Split
 import com.downstairs.split.data.SplitUiModel
@@ -80,6 +81,18 @@ class SplitsViewModelTest {
 
         verify(observer).onChanged(isA<State.Failed>())
     }
+
+    @Test
+    fun `emits navigation with split details destination on split item click`() {
+        val observer = mock<Observer<Instruction>>()
+        stubLoadSplitsFailedResult()
+
+        viewModel.viewState.observeForever(observer)
+        viewModel.onItemClick(SplitUiModel(1,"Some Payer", "100.00"))
+
+        verify(observer).onChanged(isA<Navigation>())
+    }
+
 
     private fun stubLoadSplitsSuccessResult(vararg split: Split = arrayOf(getSplit())) = runBlocking {
         whenever(interactor.fetchSpits()) doReturn Result.success(split.toList())

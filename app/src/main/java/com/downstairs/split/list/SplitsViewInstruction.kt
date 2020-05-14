@@ -1,6 +1,5 @@
 package com.downstairs.split.list
 
-import android.os.Bundle
 import com.downstairs.R
 import com.downstairs.eatat.core.tools.Navigation
 import com.downstairs.eatat.core.tools.ViewInstruction
@@ -10,8 +9,8 @@ import javax.inject.Inject
 class SplitsViewInstruction @Inject constructor() : ViewInstruction() {
 
     fun navigateToSplitDetails(splitUiModel: SplitUiModel): Navigation {
-        return Navigation(R.id.fromSplitsToSplitDetails, Bundle().apply {
-            putInt("splitID", splitUiModel.id)
-        })
+        return Navigation(R.id.fromSplitsToSplitDetails).apply {
+            putArguments(Pair("splitID", splitUiModel.id))
+        }
     }
 }

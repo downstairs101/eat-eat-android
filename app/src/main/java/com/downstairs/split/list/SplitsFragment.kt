@@ -3,6 +3,7 @@ package com.downstairs.split.list
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -86,7 +87,7 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
     }
 
     private fun navigate(navigation: Navigation) {
-        findNavController().navigate(navigation.destination, navigation.arguments)
+        findNavController().navigate(navigation.destination, bundleOf(*navigation.arguments))
     }
 
     private fun freeViews() {
