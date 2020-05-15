@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
 import com.downstairs.eatat.core.extensions.getCoreComponent
+import com.downstairs.eatat.core.extensions.navigate
 import com.downstairs.eatat.core.tools.Instruction
 import com.downstairs.eatat.core.tools.Navigation
 import com.downstairs.eatat.core.tools.State
@@ -69,7 +70,7 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
             is State.Success -> toSuccessState()
             is State.Loading -> toLoadingState()
             is State.Failed -> toFailedState()
-            is Navigation -> navigate(instruction)
+            is Navigation -> findNavController().navigate(instruction)
         }
     }
 
@@ -83,10 +84,6 @@ class SplitsFragment : Fragment(R.layout.splits_fragment) {
 
     private fun toLoadingState() {
         splitsProgressBar.isGone = false
-    }
-
-    private fun navigate(navigation: Navigation) {
-        findNavController().navigate(navigation.destination, navigation.bundledArgs)
     }
 
     private fun freeViews() {
