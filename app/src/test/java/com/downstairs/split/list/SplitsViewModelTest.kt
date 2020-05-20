@@ -6,7 +6,7 @@ import com.downstairs.eatat.core.tools.Navigation
 import com.downstairs.eatat.core.tools.State
 import com.downstairs.split.Split
 import com.downstairs.split.data.SplitUiModel
-import com.downstairs.split.data.User
+import com.downstairs.split.data.UserRemote
 import com.downstairs.tools.InstantTaskRule
 import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.runBlocking
@@ -104,7 +104,7 @@ class SplitsViewModelTest {
     private fun getSplit(
         id: Int = 1,
         name: String = "Car rent",
-        user: User = User("Some Payer"),
+        user: UserRemote = UserRemote("Some Payer"),
         value: Double = 230.00
     ) = Split(id, name, user, value)
 }

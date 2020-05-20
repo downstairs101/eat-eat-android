@@ -7,17 +7,16 @@ data class SplitRemote(
     @Json(name = "id") val id: Int,
     @Json(name = "name") val name: String,
     @Json(name = "value") val value: Double,
-    @Json(name = "splitters") val splitters: List<User>
+    @Json(name = "splitters") val splitters: List<UserRemote>
 ) {
 
     fun toDomain(): Split {
         return Split(
             id = id,
             name = name,
-            payer = User("Edgar"),
+            payer = UserRemote("Edgar"),
             value = value
         )
     }
 }
 
-data class User(@Json(name = "name") val name: String)

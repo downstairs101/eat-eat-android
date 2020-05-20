@@ -1,10 +1,10 @@
 package com.downstairs.split
 
-import com.downstairs.split.data.User
+import com.downstairs.split.data.UserRemote
 
 data class Split(
     val id: Int,
     val name: String,
-    val payer: User,
+    val payer: UserRemote,
     val value: Double
 )
