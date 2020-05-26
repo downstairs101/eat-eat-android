@@ -42,7 +42,7 @@ object Dependencies {
 
     object Test {
         const val jUnit = "junit:junit:4.13"
-        const val mockito = "org.mockito:mockito-inline:2.28.2"
+        const val mockitoInline = "org.mockito:mockito-inline:2.28.2"
         const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
         const val assertJ = "org.assertj:assertj-core:3.13.2"
 

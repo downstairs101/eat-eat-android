@@ -41,7 +41,7 @@ dependencies {
     kapt(Dependencies.daggerProcessor)
 
     testImplementation(Dependencies.Test.jUnit)
-    testImplementation(Dependencies.Test.mockito)
+    testImplementation(Dependencies.Test.mockitoInline)
     testImplementation(Dependencies.Test.mockitoKotlin)
     testImplementation(Dependencies.Test.assertJ)
 
