@@ -3,6 +3,7 @@ plugins {
     id(Plugins.Kotlin.android)
     id(Plugins.Kotlin.androidExtensions)
     id(Plugins.Kotlin.kapt)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -41,6 +42,8 @@ dependencies {
     implementation(Dependencies.Androidx.lifecycleLiveData)
     implementation(Dependencies.Androidx.lifecycleViewModel)
     implementation(Dependencies.Androidx.lifecycleExtensions)
+
+    implementation("com.google.firebase:firebase-analytics:17.4.3")
 
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitMoshi)

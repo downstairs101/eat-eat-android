@@ -10,7 +10,7 @@ class SplitsViewInstruction @Inject constructor() : ViewInstruction() {
 
     fun navigateToSplitDetails(splitUiModel: SplitUiModel): Navigation {
         return Navigation(R.id.fromSplitsToSplitDetails).apply {
-            putArguments(Pair("splitID", splitUiModel.id))
+            putArguments("splitID" to splitUiModel.id)
         }
     }
 }
