@@ -3,7 +3,7 @@ plugins {
     id(Plugins.Kotlin.android)
     id(Plugins.Kotlin.androidExtensions)
     id(Plugins.Kotlin.kapt)
-    id("com.google.gms.google-services")
+    id(Plugins.Kotlin.googleServices)
 }
 
 android {
