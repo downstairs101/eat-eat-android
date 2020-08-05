@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/splitDetailsFragment"
-        android:name="com.downstairs.split.details.SplitDetailsFragment"
+        android:name="com.downstairs.split.detail.SplitDetailFragment"
         android:label="SplitDetailsFragment"
-        tools:layout="@layout/split_details_fragment" />
+        tools:layout="@layout/split_detail_fragment" />
     <fragment
         android:id="@+id/splitsFragment"
-        android:name="com.downstairs.split.list.SplitsFragment"
+        android:name="com.downstairs.split.list.SplitListFragment"
         android:label="splits_fragment"
-        tools:layout="@layout/splits_fragment" >
+        tools:layout="@layout/split_list_fragment" >
         <action
             android:id="@+id/fromSplitsToSplitDetails"
             app:destination="@id/splitDetailsFragment" />

@@ -16,10 +16,10 @@ import com.downstairs.eatat.core.tools.Instruction
 import com.downstairs.eatat.core.tools.Navigation
 import com.downstairs.eatat.core.tools.State
 import com.downstairs.split.injection.DaggerSplitComponent
-import kotlinx.android.synthetic.main.splits_fragment.*
+import kotlinx.android.synthetic.main.split_list_fragment.*
 import javax.inject.Inject
 
-class SplitsFragment : Fragment(R.layout.splits_fragment) {
+class SplitListFragment : Fragment(R.layout.split_list_fragment) {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

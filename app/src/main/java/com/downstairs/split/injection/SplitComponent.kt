@@ -2,7 +2,7 @@ package com.downstairs.split.injection
 
 import com.downstairs.eatat.core.injection.CoreComponent
 import com.downstairs.eatat.core.injection.FeatureScope
-import com.downstairs.split.list.SplitsFragment
+import com.downstairs.split.list.SplitListFragment
 import dagger.Component
 
 @FeatureScope
@@ -15,6 +15,6 @@ interface SplitComponent {
         fun create(coreComponent: CoreComponent): SplitComponent
     }
 
-    fun inject(fragment: SplitsFragment)
+    fun inject(fragment: SplitListFragment)
 
 }
