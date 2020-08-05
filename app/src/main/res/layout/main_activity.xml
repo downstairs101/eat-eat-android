@@ -19,15 +19,4 @@
         app:layout_constraintTop_toBottomOf="@+id/placeListToolbar"
         app:layout_constraintVertical_bias="1.0"
         app:navGraph="@navigation/main_navigation_graph" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addPlaceButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="25dp"
-        android:src="@drawable/ic_add"
-        app:layout_constraintBottom_toBottomOf="@+id/mainFragmentContainer"
-        app:layout_constraintEnd_toEndOf="parent" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
