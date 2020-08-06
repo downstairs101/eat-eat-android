@@ -1,4 +1,4 @@
-package com.downstairs.eatat.core.http
+package com.downstairs.core.http
 
 import okhttp3.OkHttpClient
 import retrofit2.Converter

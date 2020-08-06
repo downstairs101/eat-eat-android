@@ -1,7 +1,7 @@
-package com.downstairs.eatat.core.injection
+package com.downstairs.core.injection
 
 import android.content.Context
-import com.downstairs.eatat.core.http.HttpManager
+import com.downstairs.core.http.HttpManager
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

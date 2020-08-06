@@ -1,10 +1,10 @@
-package com.downstairs.eatat.core.extensions
+package com.downstairs.core.extensions
 
 import android.content.Context
 import android.content.ContextWrapper
 import android.util.TypedValue
-import com.downstairs.eatat.core.injection.CoreComponent
-import com.downstairs.eatat.core.injection.CoreInjector
+import com.downstairs.core.injection.CoreComponent
+import com.downstairs.core.injection.CoreInjector
 import kotlin.math.roundToInt
 
 fun Context.dipToPixels(dipValue: Float): Int {

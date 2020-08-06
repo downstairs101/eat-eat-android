@@ -1,8 +1,8 @@
 package com.downstairs.split.list
 
 import com.downstairs.R
-import com.downstairs.eatat.core.tools.Navigation
-import com.downstairs.eatat.core.tools.ViewInstruction
+import com.downstairs.core.tools.Navigation
+import com.downstairs.core.tools.ViewInstruction
 import com.downstairs.split.data.SplitUiModel
 import javax.inject.Inject
 

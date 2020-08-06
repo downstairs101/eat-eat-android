@@ -1,4 +1,4 @@
-package com.downstairs.eatat.core.components
+package com.downstairs.core.components
 
 import android.app.Dialog
 import android.os.Bundle

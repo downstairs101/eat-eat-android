@@ -2,9 +2,9 @@ package com.downstairs.split.injection
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.downstairs.eatat.core.injection.FeatureScope
-import com.downstairs.eatat.core.injection.ViewModelFactory
-import com.downstairs.eatat.core.injection.ViewModelKey
+import com.downstairs.core.injection.FeatureScope
+import com.downstairs.core.injection.ViewModelFactory
+import com.downstairs.core.injection.ViewModelKey
 import com.downstairs.split.list.SplitsViewModel
 import dagger.Binds
 import dagger.Module

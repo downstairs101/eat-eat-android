@@ -10,11 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.R
-import com.downstairs.eatat.core.extensions.getCoreComponent
-import com.downstairs.eatat.core.extensions.navigate
-import com.downstairs.eatat.core.tools.Instruction
-import com.downstairs.eatat.core.tools.Navigation
-import com.downstairs.eatat.core.tools.State
+import com.downstairs.core.extensions.getCoreComponent
+import com.downstairs.core.extensions.navigate
+import com.downstairs.core.tools.Instruction
+import com.downstairs.core.tools.Navigation
+import com.downstairs.core.tools.State
 import com.downstairs.split.injection.DaggerSplitComponent
 import kotlinx.android.synthetic.main.split_list_fragment.*
 import javax.inject.Inject

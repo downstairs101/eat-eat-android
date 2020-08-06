@@ -1,4 +1,4 @@
-package com.downstairs.eatat.core.tools
+package com.downstairs.core.tools
 
 import androidx.annotation.MainThread
 import androidx.collection.ArraySet

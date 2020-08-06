@@ -1,8 +1,8 @@
-package com.downstairs.eatat.core.extensions
+package com.downstairs.core.extensions
 
 import android.app.Activity
 import androidx.navigation.NavController
-import com.downstairs.eatat.core.tools.Navigation
+import com.downstairs.core.tools.Navigation
 
 fun NavController.navigateUp(activity: Activity) {
     if (!navigateUp()) {

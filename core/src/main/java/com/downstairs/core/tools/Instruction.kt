@@ -1,4 +1,4 @@
-package com.downstairs.eatat.core.tools
+package com.downstairs.core.tools
 
 import android.os.Bundle
 import androidx.annotation.IdRes

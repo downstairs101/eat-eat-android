@@ -1,7 +1,7 @@
 package com.downstairs.split.injection
 
-import com.downstairs.eatat.core.injection.CoreComponent
-import com.downstairs.eatat.core.injection.FeatureScope
+import com.downstairs.core.injection.CoreComponent
+import com.downstairs.core.injection.FeatureScope
 import com.downstairs.split.list.SplitListFragment
 import dagger.Component
 

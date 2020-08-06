@@ -1,8 +1,8 @@
 package com.downstairs.injection
 
 import com.downstairs.MainActivity
-import com.downstairs.eatat.core.injection.CoreComponent
-import com.downstairs.eatat.core.injection.FeatureScope
+import com.downstairs.core.injection.CoreComponent
+import com.downstairs.core.injection.FeatureScope
 import dagger.Component
 
 @FeatureScope

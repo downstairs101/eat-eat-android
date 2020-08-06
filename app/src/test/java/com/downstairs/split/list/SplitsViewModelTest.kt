@@ -1,9 +1,9 @@
 package com.downstairs.split.list
 
 import androidx.lifecycle.Observer
-import com.downstairs.eatat.core.tools.Instruction
-import com.downstairs.eatat.core.tools.Navigation
-import com.downstairs.eatat.core.tools.State
+import com.downstairs.core.tools.Instruction
+import com.downstairs.core.tools.Navigation
+import com.downstairs.core.tools.State
 import com.downstairs.split.Split
 import com.downstairs.split.data.SplitUiModel
 import com.downstairs.split.data.UserRemote

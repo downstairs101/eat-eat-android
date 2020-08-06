@@ -1,4 +1,4 @@
-package com.downstairs.eatat.core.extensions
+package com.downstairs.core.extensions
 
 import android.widget.TextView
 

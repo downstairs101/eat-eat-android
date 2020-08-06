@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.downstairs.eatat.core.tools.Instruction
-import com.downstairs.eatat.core.tools.SingleLiveEvent
+import com.downstairs.core.tools.Instruction
+import com.downstairs.core.tools.SingleLiveEvent
 import com.downstairs.split.Split
 import com.downstairs.split.data.SplitUiModel
 import kotlinx.coroutines.launch

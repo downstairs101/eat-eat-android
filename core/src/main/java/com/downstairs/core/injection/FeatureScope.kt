@@ -1,4 +1,4 @@
-package com.downstairs.eatat.core.injection
+package com.downstairs.core.injection
 
 import javax.inject.Scope
 

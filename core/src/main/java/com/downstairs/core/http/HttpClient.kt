@@ -1,6 +1,6 @@
-package com.downstairs.eatat.core.http
+package com.downstairs.core.http
 
-import com.downstairs.eatat.core.BuildConfig
+import com.downstairs.core.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Inject
