@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlin.coroutines.Continuation
@@ -41,8 +42,19 @@ class GoogleAuth(private val fragment: Fragment) : AuthMethod {
         continuation?.resumeWith(Result.success(credential))
     }
 
-    private fun onAuthFailure(error: Exception) {
-        continuation?.resumeWithException(error)
+    private fun onAuthFailure(throwable: Throwable) {
+        if (throwable is ApiException) {
+            continuation?.resumeWithException(parseError(throwable))
+        } else {
+            continuation?.resumeWithException(throwable)
+        }
+    }
+
+    private fun parseError(apiException: ApiException): Throwable {
+        return when (apiException.statusCode) {
+            10 -> AuthClientPackageException()
+            else -> Throwable("Google auth sign in failure")
+        }
     }
 
     private fun getSignInOptions() =
@@ -51,3 +63,5 @@ class GoogleAuth(private val fragment: Fragment) : AuthMethod {
             .requestEmail()
             .build()
 }
+
+class AuthClientPackageException : Throwable("The client id may be wrong")
