@@ -7,10 +7,22 @@ plugins {
 }
 
 android {
-    buildTypes {
 
+    signingConfigs {
+        create("release") {
+            keyAlias = "to_split_release_key"
+            keyPassword = "D.SY82w3x4:3"
+            storePassword = "VSsF}JxM{64}"
+            storeFile = file("${project.rootDir}/to_split_keystore")
+        }
+    }
+
+    buildTypes {
         getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
+
             isMinifyEnabled = false
+            isDebuggable = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
 
             buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:8080/\"")

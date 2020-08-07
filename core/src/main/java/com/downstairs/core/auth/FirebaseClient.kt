@@ -3,11 +3,12 @@ package com.downstairs.core.auth
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class FirebaseClient {
+class FirebaseClient @Inject constructor() {
 
     private var authMethod: AuthMethod? = null
 
