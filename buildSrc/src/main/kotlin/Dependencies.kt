@@ -32,6 +32,11 @@ object Dependencies {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     }
 
+    object Auth{
+        const val firebaseAuth= "com.google.firebase:firebase-auth-ktx:19.3.2"
+        const val playServicesAuth =  "com.google.android.gms:play-services-auth:18.1.0"
+    }
+
     const val materialDesign = "com.google.android.material:material:1.1.0"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"

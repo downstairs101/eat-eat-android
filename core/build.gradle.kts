@@ -30,6 +30,9 @@ dependencies {
 
     implementation(Dependencies.Androidx.navigationUI)
 
+    implementation(Dependencies.Auth.firebaseAuth)
+    implementation(Dependencies.Auth.playServicesAuth)
+
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitMoshi)
     implementation(Dependencies.httpLogging)
