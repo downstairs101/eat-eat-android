@@ -1,11 +1,11 @@
-package com.downstairs.split.injection
+package com.downstairs.tosplit.injection
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.downstairs.core.injection.FeatureScope
 import com.downstairs.core.injection.ViewModelFactory
 import com.downstairs.core.injection.ViewModelKey
-import com.downstairs.split.list.SplitsViewModel
+import com.downstairs.tosplit.split.list.SplitsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

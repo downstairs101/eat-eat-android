@@ -1,6 +1,6 @@
-package com.downstairs.injection
+package com.downstairs.tosplit.injection
 
-import com.downstairs.MainActivity
+import com.downstairs.tosplit.MainActivity
 import com.downstairs.core.injection.CoreComponent
 import com.downstairs.core.injection.FeatureScope
 import dagger.Component

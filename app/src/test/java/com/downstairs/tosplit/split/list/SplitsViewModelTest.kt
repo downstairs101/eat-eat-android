@@ -1,12 +1,12 @@
-package com.downstairs.split.list
+package com.downstairs.tosplit.split.list
 
 import androidx.lifecycle.Observer
 import com.downstairs.core.tools.Instruction
 import com.downstairs.core.tools.Navigation
 import com.downstairs.core.tools.State
-import com.downstairs.split.Split
-import com.downstairs.split.data.SplitUiModel
-import com.downstairs.split.data.UserRemote
+import com.downstairs.tosplit.split.Split
+import com.downstairs.tosplit.split.data.SplitUiModel
+import com.downstairs.tosplit.split.data.UserRemote
 import com.downstairs.tools.InstantTaskRule
 import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.runBlocking

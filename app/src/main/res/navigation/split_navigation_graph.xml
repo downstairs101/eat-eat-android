@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/splitDetailsFragment"
-        android:name="com.downstairs.split.detail.SplitDetailFragment"
+        android:name="com.downstairs.tosplit.split.detail.SplitDetailFragment"
         android:label="SplitDetailsFragment"
         tools:layout="@layout/split_detail_fragment" />
     <fragment
         android:id="@+id/splitsFragment"
-        android:name="com.downstairs.split.list.SplitListFragment"
+        android:name="com.downstairs.tosplit.split.list.SplitListFragment"
         android:label="splits_fragment"
         tools:layout="@layout/split_list_fragment" >
         <action

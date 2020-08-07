@@ -1,4 +1,4 @@
-package com.downstairs
+package com.downstairs.tosplit
 
 import android.app.Application
 import com.downstairs.core.injection.CoreComponent

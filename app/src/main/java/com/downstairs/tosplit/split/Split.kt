@@ -1,6 +1,6 @@
-package com.downstairs.split
+package com.downstairs.tosplit.split
 
-import com.downstairs.split.data.UserRemote
+import com.downstairs.tosplit.split.data.UserRemote
 
 data class Split(
     val id: Int,

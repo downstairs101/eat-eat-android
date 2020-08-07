@@ -1,6 +1,6 @@
 package com.downstairs.core.auth
 
-import android.app.Activity
+import androidx.fragment.app.Fragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -10,7 +10,7 @@ import kotlin.coroutines.Continuation
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class GoogleAuth(private val activity: Activity) : AuthMethod {
+class GoogleAuth(private val fragment: Fragment) : AuthMethod {
 
     private var continuation: Continuation<AuthCredential>? = null
 
@@ -24,9 +24,9 @@ class GoogleAuth(private val activity: Activity) : AuthMethod {
     }
 
     private fun performGoogleSignIn() {
-        val signInClient = GoogleSignIn.getClient(activity, getSignInOptions())
+        val signInClient = GoogleSignIn.getClient(fragment.requireContext(), getSignInOptions())
         val signInIntent = signInClient.signInIntent
-        activity.startActivityForResult(signInIntent, GOOGLE_AUTH_REQUEST_CODE)
+        fragment.startActivityForResult(signInIntent, GOOGLE_AUTH_REQUEST_CODE)
     }
 
     override fun onResult(authResultData: AuthResultData) {

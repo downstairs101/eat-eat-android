@@ -1,6 +1,6 @@
-package com.downstairs.split.data
+package com.downstairs.tosplit.split.data
 
-import com.downstairs.split.Split
+import com.downstairs.tosplit.split.Split
 import com.squareup.moshi.Json
 
 data class SplitRemote(

@@ -1,9 +1,9 @@
-package com.downstairs.split.injection
+package com.downstairs.tosplit.injection
 
-import com.downstairs.BuildConfig
 import com.downstairs.core.http.HttpManager
 import com.downstairs.core.injection.FeatureScope
-import com.downstairs.split.data.SplitServiceApi
+import com.downstairs.tosplit.BuildConfig
+import com.downstairs.tosplit.split.data.SplitServiceApi
 import dagger.Module
 import dagger.Provides
 

@@ -1,7 +1,7 @@
-package com.downstairs.split.list
+package com.downstairs.tosplit.split.list
 
-import com.downstairs.split.Split
-import com.downstairs.split.data.SplitServiceApi
+import com.downstairs.tosplit.split.Split
+import com.downstairs.tosplit.split.data.SplitServiceApi
 import javax.inject.Inject
 
 class SplitsInteractor @Inject constructor(private val splitService: SplitServiceApi) {

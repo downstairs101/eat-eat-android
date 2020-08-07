@@ -1,4 +1,4 @@
-package com.downstairs.split.data
+package com.downstairs.tosplit.split.data
 
 import retrofit2.http.GET
 

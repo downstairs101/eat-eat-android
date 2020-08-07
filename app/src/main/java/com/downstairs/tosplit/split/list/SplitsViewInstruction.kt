@@ -1,9 +1,9 @@
-package com.downstairs.split.list
+package com.downstairs.tosplit.split.list
 
-import com.downstairs.R
 import com.downstairs.core.tools.Navigation
 import com.downstairs.core.tools.ViewInstruction
-import com.downstairs.split.data.SplitUiModel
+import com.downstairs.tosplit.R
+import com.downstairs.tosplit.split.data.SplitUiModel
 import javax.inject.Inject
 
 class SplitsViewInstruction @Inject constructor() : ViewInstruction() {

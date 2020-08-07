@@ -1,6 +1,6 @@
-package com.downstairs.split.data
+package com.downstairs.tosplit.split.data
 
-import com.downstairs.split.Split
+import com.downstairs.tosplit.split.Split
 
 data class SplitUiModel(val id: Int, val payerName: String, val value: String) {
 

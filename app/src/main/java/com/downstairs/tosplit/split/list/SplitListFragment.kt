@@ -1,4 +1,4 @@
-package com.downstairs.split.list
+package com.downstairs.tosplit.split.list
 
 import android.content.Context
 import android.os.Bundle
@@ -9,13 +9,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.downstairs.R
 import com.downstairs.core.extensions.getCoreComponent
 import com.downstairs.core.extensions.navigate
 import com.downstairs.core.tools.Instruction
 import com.downstairs.core.tools.Navigation
 import com.downstairs.core.tools.State
-import com.downstairs.split.injection.DaggerSplitComponent
+import com.downstairs.tosplit.R
+import com.downstairs.tosplit.injection.DaggerSplitComponent
 import kotlinx.android.synthetic.main.split_list_fragment.*
 import javax.inject.Inject
 
