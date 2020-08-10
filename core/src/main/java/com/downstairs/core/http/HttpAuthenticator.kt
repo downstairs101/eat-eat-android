@@ -14,14 +14,13 @@ constructor(private val authInteractor: AuthInteractor) : Authenticator {
 
     companion object {
         const val AUTH_HEADER = "Authorization"
-        const val ATTEMPTS_HEADER = "X-AttemptsHeader"
         const val MAX_ATTEMPTS = 2
     }
 
     override fun authenticate(route: Route?, response: Response): Request? {
         val request = response.request()
 
-        return if (request.header(AUTH_HEADER) != null && isMaxAttemptsNotReached(request)) {
+        return if (request.header(AUTH_HEADER) != null && isMaxAttemptsNotReached(response)) {
             authorizedRequest(request)
         } else {
             null
@@ -34,21 +33,21 @@ constructor(private val authInteractor: AuthInteractor) : Authenticator {
         return if (result is CredentialResult.ValidCredential) {
             request.newBuilder()
                 .header(AUTH_HEADER, result.idToken)
-                .header(ATTEMPTS_HEADER, getIncrementedAttempts(request))
                 .build()
         } else {
             null
         }
     }
 
-    private fun isMaxAttemptsNotReached(request: Request) = getAttempts(request) != MAX_ATTEMPTS
+    private fun isMaxAttemptsNotReached(response: Response) = getAttempts(response) <= MAX_ATTEMPTS
 
-    private fun getIncrementedAttempts(request: Request): String {
-        var attempts = getAttempts(request)
-        return "${++attempts}"
-    }
-
-    private fun getAttempts(request: Request): Int {
-        return (request.header(ATTEMPTS_HEADER) ?: "0").toInt()
+    private fun getAttempts(response: Response): Int {
+        var priorResponse: Response? = response
+        var attempts = 1
+        while (priorResponse != null) {
+            priorResponse = priorResponse.priorResponse()
+            attempts++
+        }
+        return attempts
     }
 }
