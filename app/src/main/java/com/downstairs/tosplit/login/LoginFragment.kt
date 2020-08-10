@@ -28,6 +28,10 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setupListeners()
+    }
+
+    private fun setupListeners() {
         loginButton.setOnClickListener {
             viewModel.signIn(GoogleAuth(this))
         }
