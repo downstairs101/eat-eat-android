@@ -44,6 +44,8 @@ class FirebaseClient @Inject constructor() {
         }
     }
 
+    fun isUserAlreadyAuthorized() = Firebase.auth.currentUser != null
+
     fun onResult(authResultData: AuthResultData) {
         authMethod?.onResult(authResultData)
     }
