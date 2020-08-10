@@ -17,11 +17,11 @@ class AuthInteractor @Inject constructor(private val firebase: FirebaseClient) {
 
     private fun isUserAlreadyAuthorized() = firebase.isUserAlreadyAuthorized()
 
-    suspend fun getIdToken() {
-        try {
-            firebase.getUserIdToken()
+    suspend fun getIdToken(): CredentialResult {
+        return try {
+            CredentialResult.ValidCredential(firebase.getUserIdToken())
         } catch (error: Throwable) {
-
+            CredentialResult.InvalidCredential
         }
     }
 

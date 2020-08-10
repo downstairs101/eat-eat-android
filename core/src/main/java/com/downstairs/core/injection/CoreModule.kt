@@ -1,5 +1,7 @@
 package com.downstairs.core.injection
 
+import com.downstairs.core.auth.AuthInteractor
+import com.downstairs.core.http.HttpAuthenticator
 import com.downstairs.core.http.HttpClient
 import com.downstairs.core.http.HttpManager
 import dagger.Module
@@ -20,7 +22,13 @@ class CoreModule {
 
     @Provides
     @Singleton
-    internal fun providesHttpClient() = HttpClient().instantiate()
+    internal fun providesAuthenticator(authInteractor: AuthInteractor) =
+        HttpAuthenticator(authInteractor)
+
+    @Provides
+    @Singleton
+    internal fun providesHttpClient(httpAuthenticator: HttpAuthenticator) =
+        HttpClient().instantiate(httpAuthenticator)
 
     @Provides
     @Singleton

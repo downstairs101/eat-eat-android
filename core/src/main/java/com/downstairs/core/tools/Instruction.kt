@@ -19,8 +19,7 @@ sealed class Failure {
 
 class Navigation(@IdRes val destination: Int) : Instruction() {
 
-    var arguments: Array<out Pair<String, Any?>> = arrayOf(Pair("", ""))
-        private set
+    private var arguments: Array<out Pair<String, Any?>> = arrayOf(Pair("", ""))
 
     val bundledArgs: Bundle
         get() = bundleOf(*arguments)
