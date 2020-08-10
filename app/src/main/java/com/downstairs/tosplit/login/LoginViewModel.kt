@@ -25,22 +25,16 @@ class LoginViewModel @Inject constructor(
 
     fun signIn(authMethod: AuthMethod) {
         viewModelScope.launchIO {
-            val result = authInteractor.authorize(authMethod)
-
-            if (result is AuthResult.Authorized) {
-                authorizedUser()
-            } else {
-                unauthorizedUser()
-            }
+            onAuthResult(authInteractor.authorize(authMethod))
         }
     }
 
-    private fun authorizedUser() {
-        _viewInstruction.postValue(instruction.navigateToHome())
-    }
-
-    private fun unauthorizedUser() {
-
+    private fun onAuthResult(result: AuthResult) {
+        if (result is AuthResult.Authorized) {
+            _viewInstruction.postValue(instruction.navigateToHome())
+        } else {
+            _viewInstruction.postValue(instruction.failure())
+        }
     }
 
     fun processSignInResult(authResultData: AuthResultData) {

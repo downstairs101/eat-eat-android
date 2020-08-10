@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -11,6 +12,7 @@ import com.downstairs.core.auth.AuthResultData
 import com.downstairs.core.auth.GoogleAuth
 import com.downstairs.core.extensions.getCoreComponent
 import com.downstairs.core.extensions.navigate
+import com.downstairs.core.tools.Failure
 import com.downstairs.core.tools.Instruction
 import com.downstairs.core.tools.Navigation
 import com.downstairs.tosplit.R
@@ -44,13 +46,20 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     }
 
     private fun setupObservers() {
-        viewModel.viewInstruction.observe(viewLifecycleOwner, Observer { onInstructionChange(it) })
+        viewModel.viewInstruction.observe(viewLifecycleOwner, Observer {
+            onInstructionChange(it)
+        })
     }
 
     private fun onInstructionChange(instruction: Instruction) {
         when (instruction) {
+            is Failure -> onAuthFailure()
             is Navigation -> findNavController().navigate(instruction)
         }
+    }
+
+    private fun onAuthFailure() {
+        Toast.makeText(requireContext(), "Erro ao efetuar login", Toast.LENGTH_LONG).show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
