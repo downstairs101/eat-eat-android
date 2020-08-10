@@ -7,5 +7,9 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.downstairs.tosplit.login.LoginFragment"
-        android:label="LoginFragment" />
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/fromLoginToHome"
+            app:destination="@id/split_navigation_graph" />
+    </fragment>
 </navigation>
