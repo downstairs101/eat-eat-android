@@ -14,8 +14,12 @@
     <style name="Style.Toolbar.Surface" parent="Widget.MaterialComponents.Toolbar.Surface" />
 
     <!--Small components -->
-    <style name="Style.Button.Secondary.Round" parent="Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="Style.Button.Secondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="strokeColor">?colorPrimary</item>
+    </style>
+
+    <style name="Style.Button.Primary.Surface" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">?colorSurface</item>
     </style>
 
     <!--Medium components -->
