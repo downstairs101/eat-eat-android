@@ -8,7 +8,7 @@ object Release {
 }
 
 object Development {
-    val keystoreFile = getKeystoreFile("DEV_KEYSTORE_FILE_PATH")
+    val keystoreFile = File(System.getenv("DEV_KEYSTORE_FILE_PATH"))//getKeystoreFile("DEV_KEYSTORE_FILE_PATH")
     val keystorePass = getKeystorePass("DEV_KEYSTORE_PASS")
     val keyAlias = getKeystoreAlias("DEV_KEY_ALIAS")
     val keyPass = getKeyPass("DEV_KEY_PASS")
@@ -16,7 +16,7 @@ object Development {
 
 private fun getKeystoreFile(variable: String): File {
     val home =  System.getProperty("user.home")
-    val path = System.getProperty(variable) ?: "$home/.android/debug.keystore"
+    val path = System.getenv(variable) ?: "$home/.android/debug.keystore"
     return File(path)
 }
 
@@ -32,7 +32,3 @@ private fun getKeystoreAlias(variable: String): String {
 private fun getKeyPass(variable: String): String {
     return System.getenv(variable) ?: "android"
 }
-
-
-class KeystoreNotFound(filePath: String?) :
-    RuntimeException("Keystore file not found for path $filePath")

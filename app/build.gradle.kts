@@ -35,7 +35,7 @@ android {
             )
         }
 
-        getByName("debug"){
+        getByName("debug") {
             signingConfig = signingConfigs.getByName("development")
         }
 
