@@ -15,13 +15,8 @@ object Development {
 }
 
 private fun getKeystoreFile(variable: String): File {
-
-    val path = System.getProperty(variable) ?: "${System.getProperty("HOME")}/.android/debug.keystore"
-
-    if (path.isNullOrBlank()) {
-        throw KeystoreNotFound(path)
-    }
-
+    val home =  System.getProperty("user.home")
+    val path = System.getProperty(variable) ?: "$home/.android/debug.keystore"
     return File(path)
 }
 
