@@ -34,4 +34,7 @@
         <item name="backgroundTint">@color/color_surface</item>
     </style>
 
+    <style name="MeuBotaoChavoso" parent="Widget.MaterialComponents.Button">
+        <item name="background">@color/black</item>
+    </style>
 </resources>

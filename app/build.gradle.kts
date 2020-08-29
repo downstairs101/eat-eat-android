@@ -10,10 +10,17 @@ android {
 
     signingConfigs {
         create("release") {
-            keyAlias = "to_split_release_key"
-            keyPassword = "D.SY82w3x4:3"
-            storePassword = "VSsF}JxM{64}"
-            storeFile = file("${project.rootDir}/to_split_keystore")
+            storeFile = Release.keystoreFile
+            storePassword = Release.keystorePass
+            keyAlias = Release.keyAlias
+            keyPassword = Release.keyPass
+        }
+
+        create("development") {
+            storeFile = Development.keystoreFile
+            storePassword = Development.keystorePass
+            keyAlias = Development.keyAlias
+            keyPassword = Development.keyPass
         }
     }
 
@@ -22,14 +29,31 @@ android {
             signingConfig = signingConfigs.getByName("release")
 
             isMinifyEnabled = false
-            isDebuggable = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-
-            buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:8080/\"")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
 
-        getByName("debug") {
-            buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:8080/\"")
+        getByName("debug"){
+            signingConfig = signingConfigs.getByName("development")
+        }
+
+        create("local") {
+            initWith(getByName("debug"))
+            buildConfigField("String", "BASE_URL", "\"http://localhost:8080/\"")
+            applicationIdSuffix = ".local"
+        }
+
+        create("staging") {
+            initWith(getByName("debug"))
+            buildConfigField("String", "BASE_URL", "\"https://tosplitapi.azurewebsites.net/\"")
+            applicationIdSuffix = ".staging"
+        }
+
+        create("production") {
+            initWith(getByName("release"))
+            buildConfigField("String", "BASE_URL", "\"https://tosplitapi.azurewebsites.net/\"")
         }
     }
 }
@@ -55,7 +79,7 @@ dependencies {
     implementation(Dependencies.Androidx.lifecycleViewModel)
     implementation(Dependencies.Androidx.lifecycleExtensions)
 
-    implementation("com.google.firebase:firebase-analytics:17.4.3")
+    implementation("com.google.firebase:firebase-analytics:17.5.0")
 
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitMoshi)

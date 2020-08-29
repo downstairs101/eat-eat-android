@@ -16,7 +16,14 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
+
+        create("local") { initWith(getByName("debug")) }
+
+        create("staging") { initWith(getByName("release")) }
+
+        create("production") { initWith(getByName("release")) }
     }
+
 }
 
 dependencies {

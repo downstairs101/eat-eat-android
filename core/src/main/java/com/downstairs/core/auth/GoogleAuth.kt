@@ -58,8 +58,10 @@ class GoogleAuth(private val fragment: Fragment) : AuthMethod {
     }
 
     private fun getSignInOptions() =
+        // 588997750243-5ml4tl6vng6euusii6460p19ot1u18l5.apps.googleusercontent.com
+        // 946510688628-i2qear5kvlf0korr0d1ia2fi3ga3gt4u.apps.googleusercontent.com
         GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("588997750243-5ml4tl6vng6euusii6460p19ot1u18l5.apps.googleusercontent.com")
+            .requestIdToken("946510688628-i2qear5kvlf0korr0d1ia2fi3ga3gt4u.apps.googleusercontent.com")
             .requestEmail()
             .build()
 }

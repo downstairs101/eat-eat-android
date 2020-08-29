@@ -62,4 +62,10 @@ fun AndroidExtension.applyCommonConfigs() {
     testOptions {
         unitTests.isIncludeAndroidResources = true
     }
+
+    variantFilter {
+        if (buildType.name.contains("release") || buildType.name.contains("debug")) {
+            ignore = true
+        }
+    }
 }
