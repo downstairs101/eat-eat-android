@@ -8,7 +8,7 @@ object Release {
 }
 
 object Development {
-    val keystoreFile = File(System.getenv("DEV_KEYSTORE_FILE_PATH"))//getKeystoreFile("DEV_KEYSTORE_FILE_PATH")
+    val keystoreFile = getKeystoreFile("DEV_KEYSTORE_FILE_PATH")
     val keystorePass = getKeystorePass("DEV_KEYSTORE_PASS")
     val keyAlias = getKeystoreAlias("DEV_KEY_ALIAS")
     val keyPass = getKeyPass("DEV_KEY_PASS")
