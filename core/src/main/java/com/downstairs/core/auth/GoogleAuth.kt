@@ -1,6 +1,7 @@
 package com.downstairs.core.auth
 
 import androidx.fragment.app.Fragment
+import com.downstairs.core.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -57,13 +58,14 @@ class GoogleAuth(private val fragment: Fragment) : AuthMethod {
         }
     }
 
-    private fun getSignInOptions() =
-        // 588997750243-5ml4tl6vng6euusii6460p19ot1u18l5.apps.googleusercontent.com
-        // 946510688628-i2qear5kvlf0korr0d1ia2fi3ga3gt4u.apps.googleusercontent.com
-        GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("946510688628-i2qear5kvlf0korr0d1ia2fi3ga3gt4u.apps.googleusercontent.com")
+    private fun getSignInOptions(): GoogleSignInOptions {
+        val googleAuthClientId = fragment.getString(R.string.google_auth_client_id)
+
+        return GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(googleAuthClientId)
             .requestEmail()
             .build()
+    }
 }
 
 class AuthClientPackageException : Throwable("The client id may be wrong")
