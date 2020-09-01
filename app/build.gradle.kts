@@ -39,9 +39,9 @@ android {
             signingConfig = signingConfigs.getByName("development")
         }
 
-        create("local") {
+        create("local"){
             initWith(getByName("debug"))
-            buildConfigField("String", "BASE_URL", "\"http://localhost:8080/\"")
+            buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:80/\"")
             applicationIdSuffix = ".local"
         }
 
