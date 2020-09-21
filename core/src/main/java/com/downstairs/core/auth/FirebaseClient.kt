@@ -19,6 +19,10 @@ class FirebaseClient @Inject constructor() {
         signInWithCredential(authCredential)
     }
 
+    fun isUserAuthorized() = Firebase.auth.currentUser != null
+
+    fun isUserUnauthorized() = Firebase.auth.currentUser == null
+
     suspend fun getUserIdToken(): String {
         val currentUser = Firebase.auth.currentUser
             ?: throw Throwable("Current user is null, please, perform authorization")
@@ -43,8 +47,6 @@ class FirebaseClient @Inject constructor() {
                 .addOnFailureListener { continuation.resumeWithException(it) }
         }
     }
-
-    fun isUserAlreadyAuthorized() = Firebase.auth.currentUser != null
 
     fun onResult(authResultData: AuthResultData) {
         authMethod?.onResult(authResultData)
