@@ -1,8 +1,7 @@
 package com.downstairs.tosplit.splash
 
 import com.downstairs.core.auth.FirebaseClient
-import com.squareup.moshi.Json
-import retrofit2.http.GET
+import com.downstairs.tosplit.user.UserRepository
 import javax.inject.Inject
 
 class SplashInteractor @Inject constructor(
@@ -28,28 +27,3 @@ class SplashInteractor @Inject constructor(
     }
 }
 
-class UserRepository @Inject constructor(private val userService: UserService) {
-    suspend fun getUser(): User {
-        return userService.getUser().toDomain()
-    }
-}
-
-data class User(val name: String)
-
-interface UserService {
-
-    @GET("/user")
-    suspend fun getUser(): UserRemote
-}
-
-data class UserRemote(
-    @Json(name = "name") val name: String
-) {
-    fun toDomain() = User(name)
-}
-
-sealed class UserStatus {
-    object Authorized : UserStatus()
-    object Unauthorized : UserStatus()
-    object Incomplete : UserStatus()
-}
