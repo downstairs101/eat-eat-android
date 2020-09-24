@@ -1,6 +1,5 @@
 package com.downstairs.tosplit.splash
 
-import androidx.core.widget.AutoScrollHelper
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
