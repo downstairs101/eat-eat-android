@@ -2,7 +2,7 @@ package com.downstairs.tosplit.split.list
 
 import androidx.lifecycle.Observer
 import com.downstairs.core.tools.Instruction
-import com.downstairs.core.tools.Navigation
+import com.downstairs.core.tools.Direction
 import com.downstairs.core.tools.State
 import com.downstairs.tosplit.split.Split
 import com.downstairs.tosplit.split.data.SplitUiModel
@@ -89,7 +89,7 @@ class SplitsViewModelTest {
         viewModel.viewState.observeForever(observer)
         viewModel.onItemClick(SplitUiModel(1,"Some Payer", "100.00"))
 
-        verify(observer).onChanged(isA<Navigation>())
+        verify(observer).onChanged(isA<Direction>())
     }
 
 

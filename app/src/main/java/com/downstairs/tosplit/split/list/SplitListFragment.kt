@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.core.extensions.getCoreComponent
 import com.downstairs.core.extensions.navigate
 import com.downstairs.core.tools.Instruction
-import com.downstairs.core.tools.Navigation
+import com.downstairs.core.tools.Direction
 import com.downstairs.core.tools.State
 import com.downstairs.tosplit.R
 import com.downstairs.tosplit.injection.DaggerSplitComponent
@@ -70,7 +70,7 @@ class SplitListFragment : Fragment(R.layout.split_list_fragment) {
             is State.Success -> toSuccessState()
             is State.Loading -> toLoadingState()
             is State.Failed -> toFailedState()
-            is Navigation -> findNavController().navigate(instruction)
+            is Direction -> findNavController().navigate(instruction)
         }
     }
 

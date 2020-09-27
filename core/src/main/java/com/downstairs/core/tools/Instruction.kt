@@ -17,7 +17,7 @@ sealed class Failure {
     object Undefined : Failure()
 }
 
-class Navigation(@IdRes val destination: Int) : Instruction() {
+class Direction(@IdRes val destination: Int) : Instruction() {
 
     private var arguments: Array<out Pair<String, Any?>> = arrayOf(Pair("", ""))
 

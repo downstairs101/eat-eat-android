@@ -5,7 +5,7 @@ import javax.inject.Inject
 class AuthInteractor @Inject constructor(private val firebase: FirebaseClient) {
 
     suspend fun authorize(authMethod: AuthMethod): AuthResult {
-        if (isUserAlreadyAuthorized()) return AuthResult.Authorized
+        if (firebase.isUserAuthorized()) return AuthResult.Authorized
 
         return try {
             firebase.authorize(authMethod)
@@ -15,7 +15,11 @@ class AuthInteractor @Inject constructor(private val firebase: FirebaseClient) {
         }
     }
 
-    private fun isUserAlreadyAuthorized() = firebase.isUserAuthorized()
+    fun checkAuthStatus() = if (firebase.isUserUnauthorized()) {
+        AuthResult.Authorized
+    } else {
+        AuthResult.Unauthorized
+    }
 
     suspend fun getIdToken(): CredentialResult {
         return try {

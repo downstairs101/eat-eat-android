@@ -10,7 +10,7 @@ import com.downstairs.core.auth.AuthResult
 import com.downstairs.core.auth.AuthResultData
 import com.downstairs.core.extensions.launchIO
 import com.downstairs.core.tools.Instruction
-import com.downstairs.core.tools.Navigation
+import com.downstairs.core.tools.Direction
 import com.downstairs.core.tools.ViewInstruction
 import com.downstairs.tosplit.R
 import javax.inject.Inject
@@ -44,5 +44,5 @@ class LoginViewModel @Inject constructor(
 
 class LoginViewInstruction @Inject constructor() : ViewInstruction() {
 
-    fun navigateToHome() = Navigation(R.id.fromLoginToHome)
+    fun navigateToHome() = Direction(R.id.fromLoginToHome)
 }

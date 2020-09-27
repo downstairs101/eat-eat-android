@@ -14,7 +14,7 @@ import com.downstairs.core.extensions.getCoreComponent
 import com.downstairs.core.extensions.navigate
 import com.downstairs.core.tools.Failure
 import com.downstairs.core.tools.Instruction
-import com.downstairs.core.tools.Navigation
+import com.downstairs.core.tools.Direction
 import com.downstairs.tosplit.R
 import com.downstairs.tosplit.injection.DaggerAppComponent
 import kotlinx.android.synthetic.main.login_fragment.*
@@ -54,7 +54,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     private fun onInstructionChange(instruction: Instruction) {
         when (instruction) {
             is Failure -> onAuthFailure()
-            is Navigation -> findNavController().navigate(instruction)
+            is Direction -> findNavController().navigate(instruction)
         }
     }
 
