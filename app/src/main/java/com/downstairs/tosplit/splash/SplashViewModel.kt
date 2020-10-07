@@ -31,5 +31,5 @@ class SplashInstruction @Inject constructor() : ViewInstruction() {
 
     fun homeDirection() = Direction(R.id.fromSpashToHome)
 
-    fun loginDirection() = Direction(R.id.fromLoginToHome)
+    fun loginDirection() = Direction(R.id.fromSpashToLogin)
 }

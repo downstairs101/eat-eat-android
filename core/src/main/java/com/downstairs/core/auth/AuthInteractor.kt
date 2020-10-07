@@ -15,7 +15,7 @@ class AuthInteractor @Inject constructor(private val firebase: FirebaseClient) {
         }
     }
 
-    fun checkAuthStatus() = if (firebase.isUserUnauthorized()) {
+    fun checkAuthStatus() = if (firebase.isUserAuthorized()) {
         AuthResult.Authorized
     } else {
         AuthResult.Unauthorized
