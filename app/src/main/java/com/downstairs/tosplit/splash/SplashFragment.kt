@@ -8,8 +8,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.downstairs.core.extensions.getCoreComponent
 import com.downstairs.core.extensions.navigate
-import com.downstairs.core.tools.Direction
-import com.downstairs.core.tools.Instruction
+import com.downstairs.core.tools.instruction.Direction
+import com.downstairs.core.tools.instruction.Instruction
 import com.downstairs.tosplit.R
 import com.downstairs.tosplit.injection.DaggerAppComponent
 import javax.inject.Inject

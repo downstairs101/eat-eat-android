@@ -11,9 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.core.extensions.getCoreComponent
 import com.downstairs.core.extensions.navigate
-import com.downstairs.core.tools.Instruction
-import com.downstairs.core.tools.Direction
-import com.downstairs.core.tools.State
+import com.downstairs.core.tools.instruction.Instruction
+import com.downstairs.core.tools.instruction.Direction
+import com.downstairs.core.tools.instruction.State
 import com.downstairs.tosplit.R
 import com.downstairs.tosplit.injection.DaggerSplitComponent
 import kotlinx.android.synthetic.main.split_list_fragment.*

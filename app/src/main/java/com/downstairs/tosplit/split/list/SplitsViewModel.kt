@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.downstairs.core.tools.Instruction
+import com.downstairs.core.tools.instruction.Instruction
 import com.downstairs.core.tools.SingleLiveEvent
 import com.downstairs.tosplit.split.Split
 import com.downstairs.tosplit.split.data.SplitUiModel

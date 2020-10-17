@@ -12,9 +12,9 @@ import com.downstairs.core.auth.AuthResultData
 import com.downstairs.core.auth.method.GoogleAuth
 import com.downstairs.core.extensions.getCoreComponent
 import com.downstairs.core.extensions.navigate
-import com.downstairs.core.tools.Failure
-import com.downstairs.core.tools.Instruction
-import com.downstairs.core.tools.Direction
+import com.downstairs.core.tools.instruction.Failure
+import com.downstairs.core.tools.instruction.Instruction
+import com.downstairs.core.tools.instruction.Direction
 import com.downstairs.tosplit.R
 import com.downstairs.tosplit.injection.DaggerAppComponent
 import kotlinx.android.synthetic.main.login_fragment.*

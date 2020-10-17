@@ -9,9 +9,9 @@ import com.downstairs.core.auth.method.AuthMethod
 import com.downstairs.core.auth.AuthResult
 import com.downstairs.core.auth.AuthResultData
 import com.downstairs.core.extensions.launchIO
-import com.downstairs.core.tools.Instruction
-import com.downstairs.core.tools.Direction
-import com.downstairs.core.tools.ViewInstruction
+import com.downstairs.core.tools.instruction.Instruction
+import com.downstairs.core.tools.instruction.Direction
+import com.downstairs.core.tools.instruction.ViewInstruction
 import com.downstairs.tosplit.R
 import javax.inject.Inject
 

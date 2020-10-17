@@ -1,9 +1,9 @@
 package com.downstairs.tosplit.split.list
 
 import androidx.lifecycle.Observer
-import com.downstairs.core.tools.Instruction
-import com.downstairs.core.tools.Direction
-import com.downstairs.core.tools.State
+import com.downstairs.core.tools.instruction.Instruction
+import com.downstairs.core.tools.instruction.Direction
+import com.downstairs.core.tools.instruction.State
 import com.downstairs.tosplit.split.Split
 import com.downstairs.tosplit.split.data.SplitUiModel
 import com.downstairs.tosplit.split.data.UserRemote
