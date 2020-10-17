@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.downstairs.core.auth.AuthResultData
-import com.downstairs.core.auth.GoogleAuth
+import com.downstairs.core.auth.method.GoogleAuth
 import com.downstairs.core.extensions.getCoreComponent
 import com.downstairs.core.extensions.navigate
 import com.downstairs.core.tools.Failure

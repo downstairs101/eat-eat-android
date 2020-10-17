@@ -1,7 +1,8 @@
-package com.downstairs.core.auth
+package com.downstairs.core.auth.method
 
 import androidx.fragment.app.Fragment
 import com.downstairs.core.R
+import com.downstairs.core.auth.AuthResultData
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions

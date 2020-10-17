@@ -1,5 +1,6 @@
-package com.downstairs.core.auth
+package com.downstairs.core.auth.credentials
 
+import com.downstairs.core.auth.FirebaseClient
 import javax.inject.Inject
 
 class CredentialsManager @Inject constructor(private val firebase: FirebaseClient) {

@@ -1,5 +1,6 @@
 package com.downstairs.core.auth
 
+import com.downstairs.core.auth.method.AuthMethod
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase

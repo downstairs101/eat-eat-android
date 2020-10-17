@@ -1,7 +1,7 @@
 package com.downstairs.core.http
 
-import com.downstairs.core.auth.CredentialResult
-import com.downstairs.core.auth.CredentialsManager
+import com.downstairs.core.auth.credentials.CredentialResult
+import com.downstairs.core.auth.credentials.CredentialsManager
 import com.downstairs.core.http.HttpAuthenticator.Companion.AUTH_HEADER
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor

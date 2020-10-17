@@ -1,5 +1,6 @@
 package com.downstairs.core.auth
 
+import com.downstairs.core.auth.method.AuthMethod
 import javax.inject.Inject
 
 class AuthInteractor @Inject constructor(private val firebase: FirebaseClient) {
