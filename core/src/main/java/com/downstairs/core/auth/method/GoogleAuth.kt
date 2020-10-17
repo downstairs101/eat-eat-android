@@ -2,6 +2,7 @@ package com.downstairs.core.auth.method
 
 import androidx.fragment.app.Fragment
 import com.downstairs.core.R
+import com.downstairs.core.auth.AuthClientPackageException
 import com.downstairs.core.auth.AuthResultData
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -69,4 +70,3 @@ class GoogleAuth(private val fragment: Fragment) : AuthMethod {
     }
 }
 
-class AuthClientPackageException : Throwable("The client id may be wrong")
