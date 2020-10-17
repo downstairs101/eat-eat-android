@@ -1,6 +1,6 @@
 package com.downstairs.core.injection
 
-import com.downstairs.core.auth.AuthInteractor
+import com.downstairs.core.auth.credentials.CredentialsManager
 import com.downstairs.core.http.AuthInterceptor
 import com.downstairs.core.http.HttpAuthenticator
 import com.downstairs.core.http.HttpClient
@@ -23,8 +23,8 @@ class CoreModule {
 
     @Provides
     @Singleton
-    internal fun providesAuthenticator(authInteractor: AuthInteractor) =
-        HttpAuthenticator(authInteractor)
+    internal fun providesAuthenticator(credentialsManager: CredentialsManager) =
+        HttpAuthenticator(credentialsManager)
 
     @Provides
     @Singleton

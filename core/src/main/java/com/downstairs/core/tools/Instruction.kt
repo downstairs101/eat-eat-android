@@ -6,7 +6,7 @@ import androidx.core.os.bundleOf
 
 sealed class Instruction
 
-sealed class State : Instruction() {
+open class State : Instruction() {
     object Success : State()
     object Loading : State()
     data class Failed(val failure: Failure) : State()

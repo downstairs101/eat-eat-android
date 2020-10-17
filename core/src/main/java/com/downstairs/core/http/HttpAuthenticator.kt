@@ -1,7 +1,7 @@
 package com.downstairs.core.http
 
-import com.downstairs.core.auth.AuthInteractor
 import com.downstairs.core.auth.credentials.CredentialResult
+import com.downstairs.core.auth.credentials.CredentialsManager
 import kotlinx.coroutines.runBlocking
 import okhttp3.Authenticator
 import okhttp3.Request
@@ -10,7 +10,7 @@ import okhttp3.Route
 import javax.inject.Inject
 
 class HttpAuthenticator @Inject
-constructor(private val authInteractor: AuthInteractor) : Authenticator {
+constructor(private val credentialsManager: CredentialsManager) : Authenticator {
 
     companion object {
         const val AUTH_HEADER = "Authorization"
@@ -28,7 +28,7 @@ constructor(private val authInteractor: AuthInteractor) : Authenticator {
     }
 
     private fun authorizedRequest(request: Request): Request? {
-        val result = runBlocking { authInteractor.getIdToken() }
+        val result = runBlocking { credentialsManager.getIdToken() }
 
         return if (result is CredentialResult.ValidCredential) {
             request.newBuilder()
