@@ -21,14 +21,6 @@ class AuthInteractor @Inject constructor(private val firebase: FirebaseClient) {
         AuthResult.Unauthorized
     }
 
-    suspend fun getIdToken(): CredentialResult {
-        return try {
-            CredentialResult.ValidCredential(firebase.getUserIdToken())
-        } catch (error: Throwable) {
-            CredentialResult.InvalidCredential
-        }
-    }
-
     fun processAuthResult(authResultData: AuthResultData) {
         firebase.onResult(authResultData)
     }
