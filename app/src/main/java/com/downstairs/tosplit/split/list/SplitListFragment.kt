@@ -15,7 +15,7 @@ import com.downstairs.core.tools.instruction.Instruction
 import com.downstairs.core.tools.instruction.Direction
 import com.downstairs.core.tools.instruction.State
 import com.downstairs.tosplit.R
-import com.downstairs.tosplit.injection.DaggerSplitComponent
+import com.downstairs.tosplit.split.injection.DaggerSplitComponent
 import kotlinx.android.synthetic.main.split_list_fragment.*
 import javax.inject.Inject
 

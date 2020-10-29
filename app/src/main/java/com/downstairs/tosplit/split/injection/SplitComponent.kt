@@ -1,7 +1,8 @@
-package com.downstairs.tosplit.injection
+package com.downstairs.tosplit.split.injection
 
 import com.downstairs.core.injection.CoreComponent
 import com.downstairs.core.injection.FeatureScope
+import com.downstairs.tosplit.injection.ViewModelModule
 import com.downstairs.tosplit.split.list.SplitListFragment
 import dagger.Component
 

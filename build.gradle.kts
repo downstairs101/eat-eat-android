@@ -69,3 +69,7 @@ fun AndroidExtension.applyCommonConfigs() {
         }
     }
 }
+
+tasks.register("clean") {
+    delete(project.buildDir)
+}

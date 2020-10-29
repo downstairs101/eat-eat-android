@@ -21,7 +21,3 @@ class MainActivity : AppCompatActivity(R.layout.main_activity) {
         findNavController(R.id.mainFragmentContainer).navigateUp(this)
     }
 }
-
-
-
-
