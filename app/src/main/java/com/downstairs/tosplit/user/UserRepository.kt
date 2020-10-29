@@ -2,9 +2,14 @@ package com.downstairs.tosplit.user
 
 import javax.inject.Inject
 
-class UserRepository @Inject constructor(private val userService: UserService) {
+class UserRepository @Inject constructor(private val userService: UserServiceApi) {
 
     suspend fun getUser(): User {
-        return userService.getUser().toDomain()
+        try {
+            return userService.getUser().toDomain()
+        } catch (error: Throwable) {
+            if (error is KotlinNullPointerException) throw UserNotFoundException()
+            else throw error
+        }
     }
 }
