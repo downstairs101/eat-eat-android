@@ -10,7 +10,15 @@ class UserComplianceInteractor @Inject constructor(private val userRepository: U
 
             UserComplianceResult.Compliance
         } catch (error: Throwable) {
+            parseComplianceError(error)
+        }
+    }
+
+    private fun parseComplianceError(error: Throwable): UserComplianceResult {
+        return if (error is UserNotFoundException) {
             UserComplianceResult.Noncompliance
+        } else {
+            UserComplianceResult.Undefined
         }
     }
 }

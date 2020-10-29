@@ -39,4 +39,13 @@ class UserComplianceInteractorTest {
 
         assertThat(result).isEqualTo(UserComplianceResult.Noncompliance)
     }
+
+    @Test
+    fun `returns undefined result on user compliance check error`() = runBlockingTest {
+        whenever(userRepository.getUser()).then { throw Throwable() }
+
+        val result = interactor.checkUserCompliance()
+
+        assertThat(result).isEqualTo(UserComplianceResult.Undefined)
+    }
 }
