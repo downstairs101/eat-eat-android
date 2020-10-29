@@ -8,9 +8,9 @@ class UserComplianceInteractor @Inject constructor(private val userRepository: U
         return try {
             userRepository.getUser()
 
-            UserComplianceResult.IncompleteData
+            UserComplianceResult.Noncompliance
         } catch (error: Throwable) {
-            UserComplianceResult.IncompleteData
+            UserComplianceResult.Noncompliance
         }
     }
 }

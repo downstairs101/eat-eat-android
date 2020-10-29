@@ -23,11 +23,11 @@ class UserComplianceInteractorTest {
     }
 
     @Test
-    fun `returns user data incomplete result when user does not exists`() = runBlockingTest {
+    fun `returns user noncompliance result when user does not exists`() = runBlockingTest {
         whenever(userRepository.getUser()).then { throw UserNotFoundException() }
 
         val result = interactor.checkUserCompliance()
 
-        assertThat(result).isEqualTo(UserComplianceResult.IncompleteData)
+        assertThat(result).isEqualTo(UserComplianceResult.Noncompliance)
     }
 }
