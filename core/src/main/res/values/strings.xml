@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EatEat</string>
+    <string name="horizontal_view">Change View</string>
+
+    <string name="edit_place_menu_title">edit</string>
+    <string name="place_details_view_title">Place Details</string>
+</resources>

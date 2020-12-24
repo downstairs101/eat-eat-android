@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeNavigationGraph"
+    app:startDestination="@id/splitListFragment2">
+    <fragment
+        android:id="@+id/splitDetailFragment"
+        android:name="com.downstairs.tosplit.split.detail.SplitDetailFragment"
+        android:label="split_detail_fragment"
+        tools:layout="@layout/split_detail_fragment" >
+        <action
+            android:id="@+id/fromDetailsToSplits"
+            app:destination="@id/splitListFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/splitListFragment2"
+        android:name="com.downstairs.tosplit.split.list.SplitListFragment"
+        android:label="split_list_fragment"
+        tools:layout="@layout/split_list_fragment" />
+</navigation>

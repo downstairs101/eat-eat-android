@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Colors -->
+    <style name="Style.Background.Tint.Surface" parent="AppTheme.DayNight">
+        <item name="backgroundTint">?colorSurface</item>
+        <item name="backgroundColor">?colorSurface</item>
+        <item name="cardBackgroundColor">?colorSurface</item>
+    </style>
+
+    <!--Application Bars -->
+    <style name="Style.Bottom.Bar.Surface" parent="Widget.MaterialComponents.BottomAppBar" />
+
+    <style name="Style.Toolbar.Surface" parent="Widget.MaterialComponents.Toolbar.Surface" />
+
+    <!--Small components -->
+    <style name="Style.Button.Secondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">?colorPrimary</item>
+    </style>
+
+    <style name="Style.Button.Primary.Surface" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">?colorSurface</item>
+    </style>
+
+    <!--Medium components -->
+    <style name="Style.CardView.Surface.Rounded" parent="Style.Background.Tint.Surface">
+        <item name="shapeAppearance">?shapeAppearanceMediumComponent</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <!--Large components -->
+    <style name="Style.BottomSheet.Surface.Rounded.Top" parent="Widget.Design.BottomSheet.Modal">
+        <item name="shapeAppearance">@style/Shape.Rounded16.Top</item>
+        <item name="backgroundTint">@color/color_surface</item>
+    </style>
+
+    <style name="MeuBotaoChavoso" parent="Widget.MaterialComponents.Button">
+        <item name="background">@color/black</item>
+    </style>
+</resources>
