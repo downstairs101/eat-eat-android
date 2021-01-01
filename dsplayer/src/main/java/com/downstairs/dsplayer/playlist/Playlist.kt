@@ -21,7 +21,7 @@ class Playlist {
         current()
     }
 
-    fun add(content: Content) {
+    private fun add(content: Content) {
         contentList.add(content)
         iterator = contentList.listIterator(currentIndex)
     }

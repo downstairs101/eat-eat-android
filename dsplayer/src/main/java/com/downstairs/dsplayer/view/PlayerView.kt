@@ -23,6 +23,8 @@ class PlayerView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr), LifecycleObserver {
 
+    private val serviceController = PlayerServiceController(context)
+
     fun setLifecycleOwner(lifecycleOwner: LifecycleOwner) {
         lifecycleOwner.lifecycle.addObserver(this)
     }
@@ -38,7 +40,7 @@ class PlayerView @JvmOverloads constructor(
     }
 
     fun load(vararg content: Content) {
-        PlayerServiceController.connect(context) { player ->
+        serviceController.connect { player ->
             bindView(player)
             player.addContent(content[0])
         }
@@ -54,6 +56,6 @@ class PlayerView @JvmOverloads constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     private fun onDestroy() {
-        PlayerServiceController.disconnect(context)
+        serviceController.disconnect()
     }
 }
