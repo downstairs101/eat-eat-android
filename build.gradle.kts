@@ -43,11 +43,11 @@ fun AndroidExtension.applyCommonConfigs() {
     println("Applying common configs to android modules")
 
     compileSdkVersion(29)
-    buildToolsVersion("29.0.3")
+    buildToolsVersion("30.0.3")
 
     defaultConfig {
         minSdkVersion(21)
-        targetSdkVersion(29)
+        targetSdkVersion(30)
 
         versionCode = 1
         versionName = "1.0"
