@@ -1,6 +1,6 @@
 object Versions {
     const val kotlin = "1.3.72"
-    const val navigation = "2.2.2"
+    const val navigation = "2.3.2"
     const val lifecycle = "2.2.0"
     const val retrofit = "2.6.1"
     const val dagger = "2.25.3"
@@ -83,7 +83,7 @@ object Plugins {
 }
 
 object Path {
-    const val androidGradle = "com.android.tools.build:gradle:4.0.0"
+    const val androidGradle = "com.android.tools.build:gradle:4.1.0"
     const val playServices = "com.google.gms:google-services:4.3.3"
     const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 }

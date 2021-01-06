@@ -3,6 +3,7 @@ package com.downstairs.tosplit.split.list
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -80,6 +81,7 @@ class SplitListFragment : Fragment(R.layout.split_list_fragment) {
 
     private fun toFailedState() {
         freeViews()
+        Toast.makeText(context, "Error on load splits", Toast.LENGTH_LONG).show()
     }
 
     private fun toLoadingState() {
