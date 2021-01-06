@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-typealias AndroidBasePlugin = com.android.build.gradle.BasePlugin
+typealias AppPlugin = com.android.build.gradle.AppPlugin
+typealias LibraryPlugin = com.android.build.gradle.LibraryPlugin
 typealias AndroidExtension = com.android.build.gradle.TestedExtension
 
 buildscript {
@@ -26,7 +27,7 @@ allprojects {
 
 subprojects {
     plugins.whenPluginAdded {
-        if (this is AndroidBasePlugin) {
+        if (this is AppPlugin || this is LibraryPlugin) {
             extensions.findByType<AndroidExtension>()?.applyCommonConfigs()
         }
     }
