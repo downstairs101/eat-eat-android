@@ -1,7 +1,11 @@
+plugins {
+    `kotlin-dsl`
+}
+
 repositories {
     jcenter()
 }
 
-plugins {
-    `kotlin-dsl`
+dependencies {
+    implementation("com.github.ajalt.mordant:mordant:2.0.0-alpha1")
 }

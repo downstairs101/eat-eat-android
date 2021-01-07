@@ -4,6 +4,8 @@ typealias AppPlugin = com.android.build.gradle.AppPlugin
 typealias LibraryPlugin = com.android.build.gradle.LibraryPlugin
 typealias AndroidExtension = com.android.build.gradle.TestedExtension
 
+apply<LintPlugin>()
+
 buildscript {
 
     repositories {
@@ -28,7 +30,7 @@ allprojects {
 subprojects {
     plugins.whenPluginAdded {
         if (this is AppPlugin || this is LibraryPlugin) {
-            extensions.findByType<AndroidExtension>()?.applyCommonConfigs()
+            extensions.findByType<AndroidExtension>()?.androidConfig(name)
         }
     }
 
@@ -39,7 +41,7 @@ subprojects {
 }
 
 
-fun AndroidExtension.applyCommonConfigs() {
+fun AndroidExtension.androidConfig(moduleName: String) {
     println("Applying common configs to android modules")
 
     compileSdkVersion(29)
@@ -68,6 +70,12 @@ fun AndroidExtension.applyCommonConfigs() {
         if (buildType.name.contains("release") || buildType.name.contains("debug")) {
             ignore = true
         }
+    }
+
+    lintOptions {
+        xmlOutput = File("$rootDir/reports/${moduleName}-lint.xml")
+        htmlOutput = File("$rootDir/reports/${moduleName}-lint.html")
+        isAbortOnError = false
     }
 }
 
