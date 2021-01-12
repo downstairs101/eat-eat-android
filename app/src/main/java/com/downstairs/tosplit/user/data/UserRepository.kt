@@ -1,5 +1,6 @@
-package com.downstairs.tosplit.user
+package com.downstairs.tosplit.user.data
 
+import com.downstairs.tosplit.user.UserNotFoundException
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(private val userService: UserServiceApi) {

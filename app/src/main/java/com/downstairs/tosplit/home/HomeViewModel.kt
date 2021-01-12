@@ -3,8 +3,8 @@ package com.downstairs.tosplit.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.downstairs.core.tools.instruction.ViewInstruction
-import com.downstairs.tosplit.user.UserComplianceInteractor
-import com.downstairs.tosplit.user.UserComplianceResult
+import com.downstairs.tosplit.user.compliance.UserComplianceInteractor
+import com.downstairs.tosplit.user.compliance.UserComplianceResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

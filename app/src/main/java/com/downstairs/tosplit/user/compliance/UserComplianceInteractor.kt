@@ -1,5 +1,7 @@
-package com.downstairs.tosplit.user
+package com.downstairs.tosplit.user.compliance
 
+import com.downstairs.tosplit.user.UserNotFoundException
+import com.downstairs.tosplit.user.data.UserRepository
 import javax.inject.Inject
 
 class UserComplianceInteractor @Inject constructor(private val userRepository: UserRepository) {

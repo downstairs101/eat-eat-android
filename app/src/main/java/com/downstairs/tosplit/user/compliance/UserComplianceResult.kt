@@ -1,4 +1,4 @@
-package com.downstairs.tosplit.user
+package com.downstairs.tosplit.user.compliance
 
 sealed class UserComplianceResult {
     object Compliance : UserComplianceResult()
