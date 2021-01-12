@@ -7,7 +7,6 @@ typealias AndroidExtension = com.android.build.gradle.TestedExtension
 apply<LintPlugin>()
 
 buildscript {
-
     repositories {
         google()
         jcenter()

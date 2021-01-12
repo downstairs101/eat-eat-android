@@ -6,9 +6,16 @@ import com.downstairs.tosplit.user.UserComplianceInteractor
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(userComplianceInteractor: UserComplianceInteractor) : ViewModel() {
+class HomeViewModel @Inject
+constructor(
+    private val userComplianceInteractor: UserComplianceInteractor
+) : ViewModel() {
 
     init {
+        checkUserCompliance()
+    }
+
+    private fun checkUserCompliance() {
         viewModelScope.launch {
             userComplianceInteractor.checkUserCompliance()
         }
