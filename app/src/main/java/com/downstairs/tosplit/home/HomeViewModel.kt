@@ -2,7 +2,6 @@ package com.downstairs.tosplit.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.downstairs.core.tools.instruction.Direction
 import com.downstairs.core.tools.instruction.ViewInstruction
 import com.downstairs.tosplit.user.UserComplianceInteractor
 import com.downstairs.tosplit.user.UserComplianceResult
