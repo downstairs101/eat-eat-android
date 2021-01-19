@@ -8,5 +8,14 @@
         android:id="@+id/splitListFragment"
         android:name="com.downstairs.tosplit.split.list.SplitListFragment"
         android:label="split_list_fragment"
-        tools:layout="@layout/split_list_fragment" />
+        tools:layout="@layout/split_list_fragment" >
+        <action
+            android:id="@+id/toUserRegister"
+            app:destination="@id/userRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userRegisterFragment"
+        android:name="com.downstairs.tosplit.user.register.UserRegisterFragment"
+        android:label="UserRegisterFragment"
+        tools:layout="@layout/user_register_fragment" />
 </navigation>
