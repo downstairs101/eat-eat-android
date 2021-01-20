@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.downstairs.core.auth.AuthResultData
 import com.downstairs.core.auth.method.GoogleAuth
 import com.downstairs.core.extensions.getCoreComponent
-import com.downstairs.core.extensions.navigate
 import com.downstairs.core.tools.instruction.Failure
 import com.downstairs.core.tools.instruction.Instruction
 import com.downstairs.core.tools.instruction.Direction
@@ -54,7 +53,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     private fun onInstructionChange(instruction: Instruction) {
         when (instruction) {
             is Failure -> onAuthFailure()
-            is Direction -> findNavController().navigate(instruction)
+            is Direction -> findNavController().navigate(instruction.direction)
         }
     }
 

@@ -44,5 +44,5 @@ class LoginViewModel @Inject constructor(
 
 class LoginViewInstruction @Inject constructor() : ViewInstruction() {
 
-    fun navigateToHome() = Direction(R.id.fromLoginToHome)
+    fun navigateToHome() = Direction(LoginFragmentDirections.fromLoginToHome())
 }

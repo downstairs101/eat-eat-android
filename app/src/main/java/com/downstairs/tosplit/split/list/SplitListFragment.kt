@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downstairs.core.extensions.getCoreComponent
-import com.downstairs.core.extensions.navigate
 import com.downstairs.core.tools.instruction.Instruction
 import com.downstairs.core.tools.instruction.Direction
 import com.downstairs.core.tools.instruction.State
@@ -71,7 +70,7 @@ class SplitListFragment : Fragment(R.layout.split_list_fragment) {
             is State.Success -> toSuccessState()
             is State.Loading -> toLoadingState()
             is State.Failed -> toFailedState()
-            is Direction -> findNavController().navigate(instruction)
+            is Direction -> findNavController().navigate(instruction.direction)
         }
     }
 

@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.downstairs.core.extensions.getCoreComponent
-import com.downstairs.core.extensions.navigate
 import com.downstairs.core.tools.instruction.Direction
 import com.downstairs.core.tools.instruction.Instruction
 import com.downstairs.tosplit.R
@@ -31,7 +30,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private fun onInstructionChanged(instruction: Instruction) {
         when (instruction) {
-            is Direction -> findNavController().navigate(instruction)
+            is Direction -> findNavController().navigate(instruction.direction)
         }
     }
 }

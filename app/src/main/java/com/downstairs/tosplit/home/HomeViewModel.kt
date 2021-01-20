@@ -7,6 +7,7 @@ import com.downstairs.core.tools.SingleLiveEvent
 import com.downstairs.core.tools.instruction.Direction
 import com.downstairs.core.tools.instruction.Instruction
 import com.downstairs.core.tools.instruction.ViewInstruction
+import com.downstairs.tosplit.HomeNavigationGraphXmlDirections
 import com.downstairs.tosplit.R
 import com.downstairs.tosplit.user.compliance.UserComplianceInteractor
 import com.downstairs.tosplit.user.compliance.UserComplianceResult
@@ -41,6 +42,5 @@ constructor(
 
 class HomeInstruction @Inject constructor() : ViewInstruction() {
 
-    fun navigateToUserRegister() = Direction(R.id.toUserRegister)
-
+    fun navigateToUserRegister() = Direction(HomeNavigationGraphXmlDirections.toUserRegister())
 }

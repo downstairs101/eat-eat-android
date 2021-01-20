@@ -8,7 +8,6 @@ import com.downstairs.core.tools.instruction.Direction
 import com.downstairs.core.tools.instruction.Instruction
 import com.downstairs.core.tools.SingleLiveEvent
 import com.downstairs.core.tools.instruction.ViewInstruction
-import com.downstairs.tosplit.R
 import javax.inject.Inject
 
 class SplashViewModel @Inject constructor(
@@ -21,15 +20,15 @@ class SplashViewModel @Inject constructor(
 
     fun checkUserStatus() {
         when (authInteractor.checkAuthStatus()) {
-            is AuthResult.Authorized -> _viewInstruction.postValue(instruction.homeDirection())
-            is AuthResult.Unauthorized -> _viewInstruction.postValue(instruction.loginDirection())
+            is AuthResult.Authorized -> _viewInstruction.postValue(instruction.navigateToHome())
+            is AuthResult.Unauthorized -> _viewInstruction.postValue(instruction.navigateToLogin())
         }
     }
 }
 
 class SplashInstruction @Inject constructor() : ViewInstruction() {
 
-    fun homeDirection() = Direction(R.id.fromSpashToHome)
+    fun navigateToHome() = Direction(SplashFragmentDirections.fromSpashToHome())
 
-    fun loginDirection() = Direction(R.id.fromSpashToLogin)
+    fun navigateToLogin() = Direction(SplashFragmentDirections.fromSpashToLogin())
 }

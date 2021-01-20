@@ -1,5 +1,7 @@
 package com.downstairs.core.tools.instruction
 
+import androidx.navigation.NavDirections
+
 open class Instruction
 
 open class State : Instruction() {
@@ -7,6 +9,8 @@ open class State : Instruction() {
     object Loading : State()
     data class Failed(val failure: Failure) : State()
 }
+
+class Direction(val direction: NavDirections) : Instruction()
 
 sealed class Failure {
     object NoInternetConnection : Failure()

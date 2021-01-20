@@ -9,7 +9,3 @@ fun NavController.navigateUp(activity: Activity) {
         activity.finish()
     }
 }
-
-fun NavController.navigate(direction: Direction) {
-    navigate(direction.destination, direction.bundledArgs)
-}

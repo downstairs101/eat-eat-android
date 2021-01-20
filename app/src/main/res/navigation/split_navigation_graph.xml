@@ -14,9 +14,13 @@
         android:id="@+id/splitsFragment"
         android:name="com.downstairs.tosplit.split.list.SplitListFragment"
         android:label="splits_fragment"
-        tools:layout="@layout/split_list_fragment" >
+        tools:layout="@layout/split_list_fragment">
         <action
             android:id="@+id/fromSplitsToSplitDetails"
-            app:destination="@id/splitDetailsFragment" />
+            app:destination="@id/splitDetailsFragment">
+            <argument
+                android:name="splitId"
+                app:argType="long" />
+        </action>
     </fragment>
 </navigation>

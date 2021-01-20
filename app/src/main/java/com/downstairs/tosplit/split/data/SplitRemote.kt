@@ -4,7 +4,7 @@ import com.downstairs.tosplit.split.Split
 import com.squareup.moshi.Json
 
 data class SplitRemote(
-    @Json(name = "id") val id: Int,
+    @Json(name = "id") val id: Long,
     @Json(name = "name") val name: String,
     @Json(name = "value") val value: Double,
     @Json(name = "splitters") val splitters: List<UserRemote>

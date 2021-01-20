@@ -2,7 +2,7 @@ package com.downstairs.tosplit.split.data
 
 import com.downstairs.tosplit.split.Split
 
-data class SplitUiModel(val id: Int, val payerName: String, val value: String) {
+data class SplitUiModel(val id: Long, val payerName: String, val value: String) {
 
     companion object {
 

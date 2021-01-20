@@ -33,7 +33,7 @@ class SplitsViewModel @Inject constructor(
     }
 
     fun onItemClick(splitUiModel: SplitUiModel) {
-        val navigation = viewInstruction.navigateToSplitDetails(splitUiModel)
+        val navigation = viewInstruction.navigateToSplitDetails(splitUiModel.id)
         _viewInstruction.postValue(navigation)
     }
 
