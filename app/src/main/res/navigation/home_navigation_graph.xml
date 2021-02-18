@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_navigation_graph.xml"
     app:startDestination="@id/split_navigation_graph">
 
-    <action
-        android:id="@+id/toUserRegister"
-        app:destination="@id/userRegisterFragment" />
 
     <include app:graph="@navigation/split_navigation_graph" />
-
-    <fragment
-        android:id="@+id/userRegisterFragment"
-        android:name="com.downstairs.tosplit.user.register.UserRegisterFragment"
-        android:label="UserRegisterFragment"
-        tools:layout="@layout/user_register_fragment" />
 </navigation>

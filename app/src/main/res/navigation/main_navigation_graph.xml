@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation_graph"
     app:startDestination="@id/splashFragment">
-    <include app:graph="@navigation/split_navigation_graph" />
+    <action
+        android:id="@+id/toUserRegister"
+        app:destination="@id/userRegisterFragment" />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.downstairs.tosplit.login.LoginFragment"
@@ -31,4 +34,10 @@
         android:name="com.downstairs.tosplit.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/home_fragment" />
+
+    <dialog
+        android:id="@+id/userRegisterFragment"
+        android:name="com.downstairs.tosplit.user.register.UserRegisterFragment"
+        android:label="UserRegisterFragment"
+        tools:layout="@layout/user_register_fragment" />
 </navigation>

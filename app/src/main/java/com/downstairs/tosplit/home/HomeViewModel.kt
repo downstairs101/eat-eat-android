@@ -7,8 +7,7 @@ import com.downstairs.core.tools.SingleLiveEvent
 import com.downstairs.core.tools.instruction.Direction
 import com.downstairs.core.tools.instruction.Instruction
 import com.downstairs.core.tools.instruction.ViewInstruction
-import com.downstairs.tosplit.HomeNavigationGraphXmlDirections
-import com.downstairs.tosplit.R
+import com.downstairs.tosplit.MainNavigationGraphDirections
 import com.downstairs.tosplit.user.compliance.UserComplianceInteractor
 import com.downstairs.tosplit.user.compliance.UserComplianceResult
 import kotlinx.coroutines.launch
@@ -42,5 +41,5 @@ constructor(
 
 class HomeInstruction @Inject constructor() : ViewInstruction() {
 
-    fun navigateToUserRegister() = Direction(HomeNavigationGraphXmlDirections.toUserRegister())
+    fun navigateToUserRegister() = Direction(MainNavigationGraphDirections.toUserRegister())
 }
