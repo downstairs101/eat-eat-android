@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation_graph"
     app:startDestination="@id/splashFragment">
+
     <action
         android:id="@+id/toUserRegister"
         app:destination="@id/userRegisterFragment" />
@@ -35,9 +36,13 @@
         android:label="HomeFragment"
         tools:layout="@layout/home_fragment" />
 
-    <dialog
+    <fragment
         android:id="@+id/userRegisterFragment"
         android:name="com.downstairs.tosplit.user.register.UserRegisterFragment"
         android:label="UserRegisterFragment"
-        tools:layout="@layout/user_register_fragment" />
+        tools:layout="@layout/user_register_fragment">
+        <action
+            android:id="@+id/fromUserRegisterToHomeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

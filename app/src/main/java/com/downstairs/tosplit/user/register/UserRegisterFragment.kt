@@ -1,17 +1,12 @@
 package com.downstairs.tosplit.user.register
 
-import android.app.Dialog
 import android.os.Bundle
-import android.view.View.inflate
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import com.downstairs.tosplit.R
 
-class UserRegisterFragment : DialogFragment() {
+class UserRegisterFragment : Fragment(R.layout.user_register_fragment) {
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val view = inflate(context, R.layout.user_register_fragment, null)
-        return Dialog(requireContext(), R.style.AppTheme_DayNight).apply {
-            setContentView(view)
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 }
