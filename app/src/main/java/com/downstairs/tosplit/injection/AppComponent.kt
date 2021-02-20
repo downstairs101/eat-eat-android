@@ -5,10 +5,11 @@ import com.downstairs.core.injection.CoreComponent
 import com.downstairs.core.injection.FeatureScope
 import com.downstairs.tosplit.login.LoginFragment
 import com.downstairs.tosplit.splash.SplashFragment
+import com.downstairs.tosplit.user.injection.UserComponent
 import dagger.Component
 
 @FeatureScope
-@Component(dependencies = [CoreComponent::class])
+@Component(dependencies = [CoreComponent::class], modules = [AppModule::class])
 interface AppComponent {
 
     @Component.Factory

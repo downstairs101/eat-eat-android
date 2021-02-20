@@ -9,7 +9,7 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class FirebaseClient @Inject constructor() {
+class AuthManager @Inject constructor() {
 
     private var authMethod: AuthMethod? = null
 
@@ -21,8 +21,6 @@ class FirebaseClient @Inject constructor() {
     }
 
     fun isUserAuthorized() = Firebase.auth.currentUser != null
-
-    fun isUserUnauthorized() = Firebase.auth.currentUser == null
 
     suspend fun getUserIdToken(): String {
         val currentUser = Firebase.auth.currentUser

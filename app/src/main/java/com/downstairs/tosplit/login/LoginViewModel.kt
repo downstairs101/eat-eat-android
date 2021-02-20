@@ -4,20 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.downstairs.core.auth.AuthInteractor
 import com.downstairs.core.auth.method.AuthMethod
-import com.downstairs.core.auth.AuthResult
 import com.downstairs.core.auth.AuthResultData
 import com.downstairs.core.extensions.launchIO
 import com.downstairs.core.tools.instruction.Instruction
 import com.downstairs.core.tools.instruction.Direction
 import com.downstairs.core.tools.instruction.ViewInstruction
-import com.downstairs.tosplit.R
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
     private val instruction: LoginViewInstruction,
-    private val authInteractor: AuthInteractor
+    private val loginInteractor: LoginInteractor
 ) : ViewModel() {
 
     private val _viewInstruction = MutableLiveData<Instruction>()
@@ -25,12 +22,12 @@ class LoginViewModel @Inject constructor(
 
     fun signIn(authMethod: AuthMethod) {
         viewModelScope.launchIO {
-            onAuthResult(authInteractor.authorize(authMethod))
+            onAuthResult(loginInteractor.authorize(authMethod))
         }
     }
 
     private fun onAuthResult(result: AuthResult) {
-        if (result is AuthResult.Authorized) {
+        if (result is AuthResult.Compliance) {
             _viewInstruction.postValue(instruction.navigateToHome())
         } else {
             _viewInstruction.postValue(instruction.failure())
@@ -38,7 +35,7 @@ class LoginViewModel @Inject constructor(
     }
 
     fun processSignInResult(authResultData: AuthResultData) {
-        authInteractor.processAuthResult(authResultData)
+        loginInteractor.processAuthResult(authResultData)
     }
 }
 

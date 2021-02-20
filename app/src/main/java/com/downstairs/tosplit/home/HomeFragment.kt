@@ -25,14 +25,6 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel.viewInstruction.observe(viewLifecycleOwner, Observer {
-            onInstructionChanged(it)
-        })
-    }
 
-    private fun onInstructionChanged(instruction: Instruction) {
-        when (instruction) {
-            is Direction -> findNavController().navigate(instruction.direction)
-        }
     }
 }
