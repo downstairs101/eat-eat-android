@@ -13,4 +13,8 @@ class UserRepository @Inject constructor(private val userService: UserServiceApi
             else throw error
         }
     }
+
+    suspend fun saveUser(user: User) {
+        userService.saveUser(UserRemote(user.name))
+    }
 }
