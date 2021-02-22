@@ -1,5 +1,5 @@
 #ToSplit
 
 #### How to run:
-Testing pre-commit hook
+Testing pre-commit hooks
 
