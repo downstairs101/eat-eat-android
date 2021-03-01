@@ -102,7 +102,7 @@ class SplitsViewModelTest {
     }
 
     private fun getSplit(
-        id: Int = 1,
+        id: Long = 1,
         name: String = "Car rent",
         user: UserRemote = UserRemote("Some Payer"),
         value: Double = 230.00

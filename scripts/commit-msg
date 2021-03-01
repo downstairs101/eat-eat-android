@@ -1,0 +1,47 @@
+#!/bin/bash
+# shellcheck disable=SC2001
+prefix_regex="^(feature|fix|doc){1}"
+task_regex="^(\\(AB{1}#[0-9]+\\)){1}"
+separator_regex="^(: ){1}"
+message_regex="^.{20,80}$"
+
+regex_array=("$prefix_regex"
+  "$task_regex"
+  "$separator_regex"
+  "$message_regex"
+)
+
+error_msg_array=("The message must starts with feature, fix or doc"
+  "The Azure tag must be in '(AB#[0-9]+)' pattern"
+  "The Azure tag must be followed by ': ' separator"
+  "The commit message size must be 20 to 80 chars"
+)
+
+commit_msg_file=${1:?Missing commit message file}
+commit_msg=$(cat "$commit_msg_file")
+input="$commit_msg"
+
+remove_string() {
+  echo "$1" | sed -E -e "s/$2//"
+}
+
+matches() {
+  if [[ $1 =~ $2 ]]; then
+    input=$(remove_string "$1" "$2")
+    return 0
+  else
+    return 1
+  fi
+}
+
+for i in "${!regex_array[@]}"; do
+  if ! matches "$input" "${regex_array[$i]}"; then
+    echo ""
+    echo "${error_msg_array[$i]}"
+    echo ""
+    echo "Example: feature(ABC-123): My example of a good commit message :)"
+    exit 1
+  fi
+done
+
+exit 0

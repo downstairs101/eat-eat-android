@@ -6,6 +6,10 @@ typealias AndroidExtension = com.android.build.gradle.TestedExtension
 
 apply<LintPlugin>()
 
+plugins {
+    id("org.jetbrains.gradle.plugin.idea-ext") version "1.0"
+}
+
 buildscript {
     repositories {
         google()
@@ -77,6 +81,18 @@ fun AndroidExtension.androidConfig(moduleName: String) {
         htmlOutput = File("$rootDir/reports/${moduleName}-lint.html")
         isAbortOnError = false
     }
+}
+
+tasks.register("projectConfig"){
+    println("\nUpdate project configs")
+
+    project.exec {
+        commandLine = "ln -f scripts/commit-msg .git/hooks/".split(" ")
+    }
+}
+
+tasks.named("init"){
+    dependsOn(":projectConfig")
 }
 
 tasks.register("clean") {
