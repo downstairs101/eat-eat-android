@@ -1,6 +1,6 @@
 #!/bin/bash
 # shellcheck disable=SC2001
-prefix_regex="^(feature|fix|doc){1}"
+prefix_regex="^(feature|fix|debt){1}"
 task_regex="^(\\(AB{1}#[0-9]+\\)){1}"
 separator_regex="^(: ){1}"
 message_regex="^.{20,80}$"
@@ -39,7 +39,7 @@ for i in "${!regex_array[@]}"; do
     echo ""
     echo "${error_msg_array[$i]}"
     echo ""
-    echo "Example: feature(ABC-123): My example of a good commit message :)"
+    echo "Example: feature(AB#12): My example of a good commit message :)"
     exit 1
   fi
 done
