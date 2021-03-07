@@ -32,9 +32,9 @@ object Dependencies {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     }
 
-    object Auth{
-        const val firebaseAuth= "com.google.firebase:firebase-auth-ktx:19.3.2"
-        const val playServicesAuth =  "com.google.android.gms:play-services-auth:18.1.0"
+    object Auth {
+        const val firebaseAuth = "com.google.firebase:firebase-auth-ktx:19.3.2"
+        const val playServicesAuth = "com.google.android.gms:play-services-auth:18.1.0"
     }
 
     const val materialDesign = "com.google.android.material:material:1.1.0"
@@ -86,4 +86,5 @@ object Path {
     const val androidGradle = "com.android.tools.build:gradle:4.1.0"
     const val playServices = "com.google.gms:google-services:4.3.3"
     const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.3"
 }

@@ -16,7 +16,7 @@ buildscript {
         classpath(Path.androidGradle)
         classpath(Path.kotlinGradle)
         classpath(Path.playServices)
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.3")
+        classpath(Path.safeArgs)
     }
 }
 
