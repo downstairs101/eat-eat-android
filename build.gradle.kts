@@ -6,10 +6,6 @@ typealias AndroidExtension = com.android.build.gradle.TestedExtension
 
 apply<LintPlugin>()
 
-plugins {
-    id("org.jetbrains.gradle.plugin.idea-ext") version "1.0"
-}
-
 buildscript {
     repositories {
         google()
@@ -20,7 +16,7 @@ buildscript {
         classpath(Path.androidGradle)
         classpath(Path.kotlinGradle)
         classpath(Path.playServices)
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.2")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.3")
     }
 }
 
