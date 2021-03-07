@@ -14,12 +14,11 @@ regex_array=("$prefix_regex"
 error_msg_array=("The message must starts with feature, fix or doc"
   "The Azure tag must be in '(AB#[0-9]+)' pattern"
   "The Azure tag must be followed by ': ' separator"
-  "The commit message size must be 20 to 80 chars"
+  "The commit message title must be 20 to 80 chars long"
 )
 
 commit_msg_file=${1:?Missing commit message file}
-commit_msg=$(cat "$commit_msg_file")
-input="$commit_msg"
+input=$(head -1 "$commit_msg_file")
 
 remove_string() {
   echo "$1" | sed -E -e "s/$2//"
